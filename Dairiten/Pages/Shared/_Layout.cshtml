@@ -12,7 +12,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Dairiten</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">ハトネッツ少額短期保険準備株式会社</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -32,14 +32,67 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        <div class="row h-100">
+			<div class="col-2" style="background:#66CDAA">
+                <details>
+                    <summary>契約管理</summary>
+                    <p>
+                    <a href="#" style="text-decoration:none;">　申込入力</a>
+				    <br/>
+				    <a href="#" style="text-decoration:none;">　申込検索</a>
+				    <br/>
+				    <a href="#" style="text-decoration:none;">　契約検索</a>
+				    <br/>
+				    <a href="#" style="text-decoration:none;">　名寄せリスト</a>
+				    <br/>
+                    <a href="#" style="text-decoration:none;">　申込書送付一覧</a>
+				    <br/>
+                    </p>
+                </details>
+				<details>
+                    <summary>更新管理</summary>
+                    <p>
+                    <a href="#" style="text-decoration:none;">　更新対象一覧</a>
+				    <br/>
+                    </p>
+                </details>
+                <details>
+                    <summary>精算管理</summary>
+                    <p>
+                    <a href="#" style="text-decoration:none;">　日次集計表</a>
+				    <br/>
+                    </p>
+                </details>
+                <details>
+                    <summary>物件管理</summary>
+                    <p>
+                    <a href="#" style="text-decoration:none;">　物件情報取込</a>
+				    <br/>
+                    <a href="#" style="text-decoration:none;">　物件情報検索</a>
+				    <br/>
+                    </p>
+                </details>
+                <br/>
+                <br/>
+                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                  <div class="card-header">問合せ先<br/>　事務センター</div>
+                  <div class="card-body text-secondary">
+                    <p class="card-title">フリーダイヤル</p>
+                    <p class="card-text">0120-xxxx-xx</p>
+                  </div>
+                </div>
+			</div>
+            <div class="col-10">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
     </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - Dairiten - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2022 - SakumaTest - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
 
