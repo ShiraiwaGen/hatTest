@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject SignInManager<IdentityUser> SignInManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -9,6 +11,8 @@
     <link rel="stylesheet" href="~/Dairiten.styles.css" asp-append-version="true" />
 </head>
 <body>
+@if (SignInManager.IsSignedIn(User))
+{
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
@@ -18,14 +22,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
+                    <button type="button" class="btn btn-primary">操作方法はこちら</button>
                     <partial name="_LoginPartial" />
                 </div>
             </div>
@@ -34,7 +31,7 @@
     <div class="container">
         <div class="row h-100">
 			<div class="col-2" style="background:#66CDAA">
-                <details>
+                <details open>
                     <summary>契約管理</summary>
                     <p>
                     <a asp-area="" asp-page="/Moshikominyuryoku" style="text-decoration:none;">　申込入力</a>
@@ -49,21 +46,21 @@
 				    <br/>
                     </p>
                 </details>
-				<details>
+				<details open>
                     <summary>更新管理</summary>
                     <p>
                     <a href="#" style="text-decoration:none;">　更新対象一覧</a>
 				    <br/>
                     </p>
                 </details>
-                <details>
+                <details open>
                     <summary>精算管理</summary>
                     <p>
                     <a href="#" style="text-decoration:none;">　日次集計表</a>
 				    <br/>
                     </p>
                 </details>
-                <details>
+                <details open>
                     <summary>物件管理</summary>
                     <p>
                     <a href="#" style="text-decoration:none;">　物件情報取込</a>
@@ -89,7 +86,15 @@
             </div>
         </div>
     </div>
-
+}
+else
+{
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+}
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2022 - SakumaTest - <a asp-area="" asp-page="/Privacy">Privacy</a>
