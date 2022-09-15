@@ -4,19 +4,40 @@
     ViewData["Title"] = "申込検索";
 }
 
-<div class="text-start">
-    <h4 class="" style="background:#DCDCDC">申込検索</h4>
-</div>
+<div class="container">
+    <div class="text-start">
+        <h4 class="" style="background:#DCDCDC">申込検索</h4>
+    </div>
 
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" asp-area="" asp-page="/Moshikomikensaku">検索条件</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" asp-area="" asp-page="/MoshikomikensakuKekka">検索結果</a>
-  </li>
-</ul>
-
-<div class="text-center">
-    <p>ここは検索条件ページです。</p>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" asp-area="" asp-page="/Moshikomikensaku">検索条件</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" asp-area="" asp-page="/MoshikomikensakuKekka">検索結果</a>
+      </li>
+    </ul>
+    <br>
+    <div class="komoku1 text-white mb-1">代理店コード</div>
+    <div class="atai1 mb-1"></div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="komoku1 text-white mb-1">有効状態</div>
+            <div class="atai2 mb-1"></div>
+            <div class="komoku1 text-white mb-1">成立状況</div>
+            <div class="atai2 mb-1"></div>
+        </div>
+        <div class="col-md-6">
+            <div class="komoku2 text-white mb-1">契約者名</div>
+            <div class="komoku3 text-white mb-1">カナ</div>
+            <div class="atai2 mb-1"></div>
+            <div class="komoku3 text-white mb-1">漢字</div>
+            <div class="atai2 mb-1"></div>
+            <div class="komoku2 text-white mb-1">被保険者名</div>
+            <div class="komoku3 text-white mb-1">カナ</div>
+            <div class="atai2 mb-1"></div>
+            <div class="komoku3 text-white mb-1">漢字</div>
+            <div class="atai2 mb-1"></div>
+        </div>
+    </div>
 </div>

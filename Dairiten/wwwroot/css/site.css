@@ -16,3 +16,42 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.komoku1 {
+    float: left;
+    height: 24px;
+    width: 180px;
+    background-color: #4169E1;
+    margin: 0 0 1px; /* 箱と箱の間のスペース設定 左から　上 左右 下　の幅を設定しています */
+    padding: 1px 3px; /* 箱の中の文字と箱の幅のスペース設定　左から　上下 左右 */
+}
+
+.komoku2 {
+    float: left;
+    height: 52px;
+    width: 100px;
+    background-color: #4169E1;
+    margin: 0 1px 1px; /* 箱と箱の間のスペース設定 左から　上 左右 下　の幅を設定しています */
+    padding: 1px 3px; /* 箱の中の文字と箱の幅のスペース設定　左から　上下 左右 */
+}
+
+.komoku3 {
+    float: left;
+    height: 24px;
+    width: 80px;
+    background-color: #4169E1;
+    margin: 0 0 1px; /* 箱と箱の間のスペース設定 左から　上 左右 下　の幅を設定しています */
+    padding: 1px 3px; /* 箱の中の文字と箱の幅のスペース設定　左から　上下 左右 */
+}
+
+.atai1 {
+    height: 24px;
+    width: auto;
+    background-color: #DCDCDC
+}
+
+.atai2 {
+    height: 24px;
+    width: auto;
+    background-color: #DCDCDC
+}
