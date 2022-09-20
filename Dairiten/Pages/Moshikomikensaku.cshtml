@@ -22,31 +22,87 @@
     <div class="atai1 mb-1"></div>
     <div class="row g-0">
         <div class="col-md-6">
-            <div class="komoku1 text-white mb-1">有効状態</div>
+            <div class="komoku1 text-white mb-1" style="margin-right: 11px;">有効状態</div>
             <div class="atai2 mb-1">
-                <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px; margin-left:10px;">
-                  <option selected></option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;">
+                    <option selected></option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
                 </select>
             </div>
-            <div class="komoku1 text-white mb-1">成立状況</div>
-            <div class="atai2 mb-1"></div>
-            <div class="komoku1 text-white mb-1">入力者区分</div>
-            <div class="atai2 mb-1"></div>
-            <div class="komoku1 text-white mb-1">商品区分</div>
-            <div class="atai2 mb-1"></div>
+            <div class="komoku1 text-white mb-1" style="margin-right: 11px;">成立状況</div>
+            <div class="atai2 mb-1">
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;">
+                    <option selected></option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="komoku1 text-white mb-1" style="margin-right: 11px;">入力者区分</div>
+            <div class="atai2 mb-1">
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;">
+                    <option selected></option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="komoku1 text-white mb-1" style="margin-right: 11px;">商品区分</div>
+            <div class="atai2 mb-1">
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;">
+                    <option selected></option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
             <div class="komoku1 text-white mb-1">証券番号</div>
-            <div class="atai2 mb-1"></div>
+            <div class="atai2 mb-1">
+                <div class="row mb-3">
+                  <div class="col-sm-9">
+                    <input type="tel" class="form-control form-control-sm" id="Shoken_no">
+                  </div>
+                  <label for="Shoken_no" class="col-sm-3 col-form-label col-form-label-sm" style="color:red">(半角)</label>
+                </div>
+            </div>
             <div class="komoku1 text-white mb-1">旧証券番号</div>
-            <div class="atai2 mb-1"></div>
+            <div class="atai2 mb-1">
+                <div class="row mb-3">
+                  <div class="col-sm-9">
+                    <input type="tel" class="form-control form-control-sm" id="Old_shoken_no">
+                  </div>
+                  <label for="Old_shoken_no" class="col-sm-3 col-form-label col-form-label-sm" style="color:red">(半角)</label>
+                </div>
+            </div>
             <div class="komoku1 text-white mb-1">募集人コード</div>
-            <div class="atai2 mb-1"></div>
-            <div class="komoku1 text-white mb-1">コード</div>
-            <div class="atai2 mb-1"></div>
-            <div class="komoku1 text-white mb-1">集金方法</div>
-            <div class="atai2 mb-1"></div>
+            <div class="atai2 mb-1">
+                <div class="row mb-3">
+                  <div class="col-sm-9">
+                    <input type="tel" class="form-control form-control-sm" id="BoshuninCD">
+                  </div>
+                  <label for="BoshuninCD" class="col-sm-3 col-form-label col-form-label-sm" style="color:red">(半角)</label>
+                </div>
+            </div>
+            <div class="komoku1 text-white mb-1" style="margin-right: 11px;">コード</div>
+            <div class="atai2 mb-1">
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;">
+                    <option selected></option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="komoku1 text-white mb-1" style="margin-right: 11px;">集金方法</div>
+            <div class="atai2 mb-1">
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;">
+                    <option selected></option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
         </div>
         <div class="col-md-6">
             <div class="komoku2 text-white mb-1">契約者名</div>
@@ -88,19 +144,55 @@
                 </div>
             </div>
             <div class="komoku1 text-white mb-1">被保険者住所</div>
-            <div class="atai2 mb-1"></div>
+            <div class="atai2 mb-1">
+                <div class="row mb-3">
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control form-control-sm" id="HihokenshaAdd">
+                  </div>
+                  <label for="HihokenshaAdd" class="col-sm-3 col-form-label col-form-label-sm" style="color:red">(全角)</label>
+                </div>
+            </div>
             <div class="komoku1 text-white mb-1">被保険者建物名</div>
-            <div class="atai2 mb-1"></div>
+            <div class="atai2 mb-1">
+                <div class="row mb-3">
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control form-control-sm" id="HihokenshaTatemono">
+                  </div>
+                  <label for="HihokenshaTatemono" class="col-sm-3 col-form-label col-form-label-sm" style="color:red">(全角)</label>
+                </div>
+            </div>
             <div class="komoku1 text-white mb-1">申込書作成日</div>
-            <div class="atai2 mb-1"></div>
+            <div class="atai2 mb-1">
+                <div class="row mb-3">
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control form-control-sm" id="Sakuseibi_s">
+                  </div>
+                  <label for="Sakuseibi_s" class="col-sm-1 col-form-label col-form-label-sm">～</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control form-control-sm" id="Sakuseibi_e">
+                  </div>
+                  <label for="Sakuseibi_e" class="col-sm-3 col-form-label col-form-label-sm" style="color:red; font-size: 11px;">(YYYY/MM/DD)</label>
+                </div>
+            </div>
             <div class="komoku1 text-white mb-1">保険始期</div>
-            <div class="atai2 mb-1"></div>
+            <div class="atai2 mb-1">
+                <div class="row mb-3">
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control form-control-sm" id="Hokenshiki_s">
+                  </div>
+                  <label for="Hokenshiki_s" class="col-sm-1 col-form-label col-form-label-sm">～</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control form-control-sm" id="Hokenshiki_e">
+                  </div>
+                  <label for="Hokenshiki_e" class="col-sm-3 col-form-label col-form-label-sm" style="color:red; font-size: 11px;">(YYYY/MM/DD)</label>
+                </div>
+            </div>
             <div class="komoku1 text-white mb-1"></div>
             <div class="atai2 mb-1"></div>
         </div>
     </div>
     <div class="text-end">
-        <button type="button" class="btn btn-primary">クリア</button>
-        <button type="button" class="btn btn-primary">検索</button>
+        <button type="button" class="btn btn-primary" style="width: 150px;">クリア</button>
+        <button type="button" class="btn btn-primary" style="width: 150px;">検索</button>
     </div>
 </div>
