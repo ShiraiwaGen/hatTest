@@ -2,10 +2,10 @@
 
 namespace Dairiten.Models
 {
-    public class Keiyaku
+    public class t_keiyaku
     {
         [Display(Name = "契約キー")]
-        public int Id { get; set; }                             //契約キー
+        public int id { get; set; }                             //契約キー
 
         [Required]
         [Display(Name = "代理店キー")]
