@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Dairiten.Models;
 
 namespace Dairiten.Data
 {
@@ -9,5 +10,8 @@ namespace Dairiten.Data
             : base(options)
         {
         }
+
+        //public DbSet<Dairiten.Models.m_dairiten> m_dairiten { get; set; } = default!;
+        public DbSet<m_dairiten> m_dairiten { get; set; }
     }
 }
