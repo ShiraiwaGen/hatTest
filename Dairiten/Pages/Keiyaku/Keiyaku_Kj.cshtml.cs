@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Dairiten.Pages
 {
     [Authorize]
-    public class MoshikomikensakuKekkaModel : PageModel
+    public class Keiyaku_KjModel : PageModel
     {
         public void OnGet()
         {

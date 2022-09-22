@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Dairiten.Pages
 {
-    public class MoshikominyuryokuModel : PageModel
+    public class Moshikomi_InModel : PageModel
     {
         public void OnGet()
         {
