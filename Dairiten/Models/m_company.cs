@@ -1,8 +1,10 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Dairiten.Models
 {
+    [Keyless]
     public class m_company
     {
         [DisplayName("保険会社名")]

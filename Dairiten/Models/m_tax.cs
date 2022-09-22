@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace Dairiten.Models
 {
@@ -16,6 +17,6 @@ namespace Dairiten.Models
 
         [DisplayName("消費税")]
         [RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "少数以下２桁以上は入力できません")]
-        public decimal tax { get; set; }
+        public float tax { get; set; }
     }
 }
