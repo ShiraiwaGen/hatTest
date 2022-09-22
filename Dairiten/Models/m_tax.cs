@@ -13,7 +13,7 @@ namespace Dairiten.Models
         [DataType(DataType.Date)]
         public DateTime shuryobi { get; set; }
         [DisplayName("消費税")]
-        [RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "少数以下２桁以上は入力できません"]
+        [RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "少数以下２桁以上は入力できません")]
         public decimal tax { get; set; }
     }
 }
