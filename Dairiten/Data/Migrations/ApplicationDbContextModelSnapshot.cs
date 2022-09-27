@@ -22,6 +22,406 @@ namespace Dairiten.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("Dairiten.Models.m_company", b =>
+                {
+                    b.Property<string>("Office_day")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("Office_end")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Office_name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("Office_start")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Office_tel")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("bank")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("bank_account_holder")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("bank_account_holder_kana")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("bank_account_no")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("bank_account_type")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("bank_shiten")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("company_name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("insurance_name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("passbook_symbol")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.ToTable("m_company", (string)null);
+                });
+
+            modelBuilder.Entity("Dairiten.Models.m_dairiten", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<bool>("csv_kbn")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("dairiten_address")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("dairiten_branch")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("dairiten_code")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("dairiten_fax")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("dairiten_kbn")
+                        .HasColumnType("int");
+
+                    b.Property<string>("dairiten_manager")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("dairiten_mei")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<float>("dairiten_ritsu")
+                        .HasColumnType("real");
+
+                    b.Property<string>("dairiten_tel")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("dairiten_zip")
+                        .IsRequired()
+                        .HasMaxLength(7)
+                        .HasColumnType("nvarchar(7)");
+
+                    b.Property<bool>("fax_kbn")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("haigyo_kbn")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("license_no")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("license_update")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<bool>("online_payment")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("seisan")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("todofuken_code")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("m_dairiten", (string)null);
+                });
+
+            modelBuilder.Entity("Dairiten.Models.m_master", b =>
+                {
+                    b.Property<int>("m_master_kbn_id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("m_master_kbn_id"), 1L, 1);
+
+                    b.Property<string>("item_name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("item_no")
+                        .HasColumnType("int");
+
+                    b.HasKey("m_master_kbn_id");
+
+                    b.ToTable("m_master", (string)null);
+                });
+
+            modelBuilder.Entity("Dairiten.Models.m_master_kbn", b =>
+                {
+                    b.Property<int>("master_kbn")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("master_kbn"), 1L, 1);
+
+                    b.Property<string>("master_kbn_name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("master_kbn");
+
+                    b.ToTable("m_master_kbn", (string)null);
+                });
+
+            modelBuilder.Entity("Dairiten.Models.m_shohin", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<int>("hokenkikan")
+                        .HasColumnType("int");
+
+                    b.Property<int>("hokenryo")
+                        .HasColumnType("int");
+
+                    b.Property<string>("shohin_name")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("m_shohin", (string)null);
+                });
+
+            modelBuilder.Entity("Dairiten.Models.m_tax", b =>
+                {
+                    b.Property<int>("id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("kaisibi")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("shuryobi")
+                        .HasColumnType("datetime2");
+
+                    b.Property<float>("tax")
+                        .HasColumnType("real");
+
+                    b.ToTable("m_tax", (string)null);
+                });
+
+            modelBuilder.Entity("Dairiten.Models.t_bukken", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<string>("b_address1")
+                        .IsRequired()
+                        .HasMaxLength(55)
+                        .HasColumnType("nvarchar(55)");
+
+                    b.Property<string>("b_address2")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("b_address3")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("b_address4")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<int>("b_kodate")
+                        .HasColumnType("int");
+
+                    b.Property<int>("b_zip")
+                        .HasMaxLength(7)
+                        .HasColumnType("int");
+
+                    b.Property<int>("bukken_no")
+                        .HasColumnType("int");
+
+                    b.Property<int>("m_dairiten_id")
+                        .HasMaxLength(12)
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("t_bukken", (string)null);
+                });
+
+            modelBuilder.Entity("Dairiten.Models.t_company_employee", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<string>("employee_code")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<bool>("employee_del")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("employee_mei")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("employee_pass")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("employee_sei")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("pass_day")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("id");
+
+                    b.ToTable("t_company_employee", (string)null);
+                });
+
+            modelBuilder.Entity("Dairiten.Models.t_dairiten_employee", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<string>("employee_code")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("employee_del")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("employee_mei")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("employee_pass")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("employee_sei")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("m_dairiten_id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("pass_day")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("id");
+
+                    b.ToTable("t_dairiten_employee", (string)null);
+                });
+
+            modelBuilder.Entity("Dairiten.Models.t_karibukken", b =>
+                {
+                    b.Property<string>("b_address1")
+                        .IsRequired()
+                        .HasMaxLength(55)
+                        .HasColumnType("nvarchar(55)");
+
+                    b.Property<string>("b_address2")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("b_address3")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("b_address4")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<int>("b_kodate")
+                        .HasColumnType("int");
+
+                    b.Property<int>("b_zip")
+                        .HasMaxLength(7)
+                        .HasColumnType("int");
+
+                    b.Property<int>("bukken_no")
+                        .HasColumnType("int");
+
+                    b.Property<int>("employee_key")
+                        .HasColumnType("int");
+
+                    b.Property<int>("m_dairiten_id")
+                        .HasMaxLength(12)
+                        .HasColumnType("int");
+
+                    b.ToTable("t_karibukken", (string)null);
+                });
+
             modelBuilder.Entity("Dairiten.Models.t_keiyaku", b =>
                 {
                     b.Property<int>("Id")
@@ -496,6 +896,105 @@ namespace Dairiten.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("t_keiyaku", (string)null);
+                });
+
+            modelBuilder.Entity("Dairiten.Models.t_moshikomisho", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<int>("sofu_day")
+                        .HasColumnType("int");
+
+                    b.Property<int>("sofu_kbn")
+                        .HasColumnType("int");
+
+                    b.Property<string>("sofuyoteizuki")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("t_dairiten_employee_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("t_seikyu_id")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("t_moshikomisho", (string)null);
+                });
+
+            modelBuilder.Entity("Dairiten.Models.t_nayose", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<DateTime>("error_datetime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("nayose_error_kbn")
+                        .HasColumnType("int");
+
+                    b.Property<int>("nayose_kbn")
+                        .HasColumnType("int");
+
+                    b.Property<string>("riyu")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("shori_datetime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("t_company_employee_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("t_keiyaku_id")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("t_nayose", (string)null);
+                });
+
+            modelBuilder.Entity("Dairiten.Models.t_seikyu", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<DateTime>("haraikomi_day")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("haraikomi_kbn")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("keijobi")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("m_dairiten_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("seikyu_no")
+                        .HasColumnType("int");
+
+                    b.Property<int>("seisankingaku")
+                        .HasColumnType("int");
+
+                    b.Property<int>("t_company_employee_id")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("t_seikyu", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

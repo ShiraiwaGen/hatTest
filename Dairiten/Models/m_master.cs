@@ -3,8 +3,9 @@ using System.ComponentModel;
 
 namespace Dairiten.Models
 {
-    public class m_maester
+    public class m_master
     {
+        [Key]
         [DisplayName("マスター区分")]
         [RegularExpression(@"[0-9]+", ErrorMessage = "半角数字のみ入力できます")]
         [Required]

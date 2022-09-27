@@ -5,6 +5,7 @@ namespace Dairiten.Models
 {
     public class m_master_kbn
     {
+        [Key]
         [DisplayName("マスター区分")]
         [Required]
         [RegularExpression(@"[0-9]+", ErrorMessage = "半角数字のみ入力できます")]

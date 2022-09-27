@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dairiten.Models
 {
+    [Keyless]
     public class m_tax
     {
         public int id { get; set; }

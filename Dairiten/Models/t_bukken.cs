@@ -5,7 +5,9 @@ namespace Dairiten.Models
 {
     public class t_bukken
     {
+        [Display(Name = "物件キー")]
         public int id { get; set; }
+
         [DisplayName("物件番号")]
         [Required]
         public int bukken_no { get; set; }
