@@ -3,7 +3,7 @@
 
 // Write your JavaScript code.
 
-function buttonClick() {
+function shohinKbnBtnClick() {
     let btnJutaku = document.getElementById("shohinKbnRadio1");
     let jutakuForm = document.getElementById("jutaku-form");
     let jigyoForm = document.getElementById("jigyo-form");

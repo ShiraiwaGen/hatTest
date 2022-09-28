@@ -26,36 +26,40 @@
             <div class="atai2 mb-1">
                 <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;">
                     <option selected></option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 16))
+                    {
+                        <option value=@Html.DisplayFor(modelItem => item.item_no)>@Html.DisplayFor(modelItem => item.item_name)</option>
+                    }
                 </select>
             </div>
             <div class="komoku1 text-white mb-1" style="margin-right: 11px;">成立状況</div>
             <div class="atai2 mb-1">
                 <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;">
                     <option selected></option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 30))
+                    {
+                        <option value=@Html.DisplayFor(modelItem => item.item_no)>@Html.DisplayFor(modelItem => item.item_name)</option>
+                    }
                 </select>
             </div>
             <div class="komoku1 text-white mb-1" style="margin-right: 11px;">入力者区分</div>
             <div class="atai2 mb-1">
                 <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;">
                     <option selected></option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 18))
+                    {
+                        <option value=@Html.DisplayFor(modelItem => item.item_no)>@Html.DisplayFor(modelItem => item.item_name)</option>
+                    }
                 </select>
             </div>
             <div class="komoku1 text-white mb-1" style="margin-right: 11px;">商品区分</div>
             <div class="atai2 mb-1">
                 <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;">
                     <option selected></option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 7))
+                    {
+                        <option value=@Html.DisplayFor(modelItem => item.item_no)>@Html.DisplayFor(modelItem => item.item_name)</option>
+                    }
                 </select>
             </div>
             <div class="komoku1 text-white mb-1">証券番号</div>
@@ -89,18 +93,20 @@
             <div class="atai2 mb-1">
                 <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;">
                     <option selected></option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 33))
+                    {
+                        <option value=@Html.DisplayFor(modelItem => item.item_no)>@Html.DisplayFor(modelItem => item.item_name)</option>
+                    }
                 </select>
             </div>
             <div class="komoku1 text-white mb-1" style="margin-right: 11px;">集金方法</div>
             <div class="atai2 mb-1">
                 <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;">
                     <option selected></option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 13))
+                    {
+                        <option value=@Html.DisplayFor(modelItem => item.item_no)>@Html.DisplayFor(modelItem => item.item_name)</option>
+                    }
                 </select>
             </div>
         </div>

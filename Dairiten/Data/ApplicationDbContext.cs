@@ -32,7 +32,11 @@ namespace Dairiten.Data
             modelBuilder.Entity<m_company>().ToTable("m_company");
             modelBuilder.Entity<m_shohin>().ToTable("m_shohin");
             modelBuilder.Entity<m_dairiten>().ToTable("m_dairiten");
-            modelBuilder.Entity<m_master>().ToTable("m_master");
+            modelBuilder.Entity<m_master>(e =>
+            {
+                e.HasKey(m => new { m.m_master_kbn_id, m.item_no });
+                e.ToTable("m_master");
+            });
             modelBuilder.Entity<m_master_kbn>().ToTable("m_master_kbn");
             modelBuilder.Entity<m_tax>().ToTable("m_tax");
             modelBuilder.Entity<t_keiyaku>().ToTable("t_keiyaku");
