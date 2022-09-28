@@ -3,18 +3,15 @@ using System.ComponentModel;
 
 namespace Dairiten.Models
 {
-    public class t_dairiten_employee
+    public class t_company_employee
     {
+        [DisplayName("保険会社社員キー")]
         public int id { get; set; }
 
-        [DisplayName("代理店キー")]
+        [DisplayName("社員コード")]
         [Required]
-        public int m_dairiten_id { get; set; }
-
-        [DisplayName("募集人コード")]
-        [Required]
-        [RegularExpression(@"[a-zA-Z0-9]+", ErrorMessage = "半角英数字のみ入力できます")]
-        [StringLength(50, ErrorMessage = "募集人コードは５０文字以内でお願いします")]
+        [RegularExpression(@"[a-zA-Z0-9]+", ErrorMessage = "社員コードは半角英数字のみ入力できます")]
+        [StringLength(10, ErrorMessage = "社員コードは１０文字以内でお願いします")]
         public string employee_code { get; set; }
 
         [DisplayName("社員_姓")]
@@ -35,5 +32,6 @@ namespace Dairiten.Models
 
         public DateTime pass_day { get; set; }
         public bool employee_del { get; set; }
+
     }
 }

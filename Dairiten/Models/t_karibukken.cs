@@ -1,8 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace Dairiten.Models
 {
+    [Keyless]
     public class t_karibukken
     {
         [DisplayName("物件番号")]
