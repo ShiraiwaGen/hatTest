@@ -15,3 +15,7 @@ function shohinKbnBtnClick() {
         jutakuForm.style.display = "none";
     }
 }
+
+function CrearBtnClick() {
+    window.location.reload();
+}

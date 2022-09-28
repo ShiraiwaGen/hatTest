@@ -18,8 +18,11 @@
       </li>
     </ul>
     <br>
-    <div class="komoku1 text-white mb-1">代理店コード</div>
-    <div class="atai1 mb-1"></div>
+    <div class="komoku1 text-white mb-1" style="margin-right: 11px;">代理店コード</div>
+    <div class="atai1 mb-1">
+        <label class="col-form-label col-form-label" style="margin-right: 20px;">@User.Identity?.Name</label>
+        <label class="col-form-label col-form-label">@User.Identity?.Name</label>
+    </div>
     <div class="row g-0">
         <div class="col-md-6">
             <div class="komoku1 text-white mb-1" style="margin-right: 11px;">有効状態</div>
@@ -68,7 +71,7 @@
                   <div class="col-sm-9">
                     <input type="tel" class="form-control form-control-sm" id="Shoken_no">
                   </div>
-                  <label for="Shoken_no" class="col-sm-3 col-form-label col-form-label-sm" style="color:red">(半角)</label>
+                  <label for="Shoken_no" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角)</label>
                 </div>
             </div>
             <div class="komoku1 text-white mb-1">旧証券番号</div>
@@ -77,7 +80,7 @@
                   <div class="col-sm-9">
                     <input type="tel" class="form-control form-control-sm" id="Old_shoken_no">
                   </div>
-                  <label for="Old_shoken_no" class="col-sm-3 col-form-label col-form-label-sm" style="color:red">(半角)</label>
+                  <label for="Old_shoken_no" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角)</label>
                 </div>
             </div>
             <div class="komoku1 text-white mb-1">募集人コード</div>
@@ -86,7 +89,7 @@
                   <div class="col-sm-9">
                     <input type="tel" class="form-control form-control-sm" id="BoshuninCD">
                   </div>
-                  <label for="BoshuninCD" class="col-sm-3 col-form-label col-form-label-sm" style="color:red">(半角)</label>
+                  <label for="BoshuninCD" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角)</label>
                 </div>
             </div>
             <div class="komoku1 text-white mb-1" style="margin-right: 11px;">コード</div>
@@ -118,7 +121,7 @@
                   <div class="col-sm-9">
                     <input type="text" class="form-control form-control-sm" id="KeiyakushameiKana">
                   </div>
-                  <label for="KeiyakushameiKana" class="col-sm-3 col-form-label col-form-label-sm" style="color:red">(半角カナ)</label>
+                  <label for="KeiyakushameiKana" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角カナ)</label>
                 </div>
             </div>
             <div class="komoku3 text-white mb-1">漢字</div>
@@ -127,7 +130,7 @@
                   <div class="col-sm-9">
                     <input type="text" class="form-control form-control-sm" id="Keiyakushamei">
                   </div>
-                  <label for="Keiyakushamei" class="col-sm-3 col-form-label col-form-label-sm" style="color:red">(全角)</label>
+                  <label for="Keiyakushamei" class="col-sm-3 col-form-label col-form-label-sm text-red">(全角)</label>
                 </div>
             </div>
             <div class="komoku2 text-white mb-1">被保険者名</div>
@@ -137,7 +140,7 @@
                   <div class="col-sm-9">
                     <input type="text" class="form-control form-control-sm" id="HihokenshameiKana">
                   </div>
-                  <label for="HihokenshameiKana" class="col-sm-3 col-form-label col-form-label-sm" style="color:red">(半角カナ)</label>
+                  <label for="HihokenshameiKana" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角カナ)</label>
                 </div>
             </div>
             <div class="komoku3 text-white mb-1">漢字</div>
@@ -146,7 +149,7 @@
                   <div class="col-sm-9">
                     <input type="text" class="form-control form-control-sm" id="Hihokenshamei">
                   </div>
-                  <label for="Hihokenshamei" class="col-sm-3 col-form-label col-form-label-sm" style="color:red">(全角)</label>
+                  <label for="Hihokenshamei" class="col-sm-3 col-form-label col-form-label-sm text-red">(全角)</label>
                 </div>
             </div>
             <div class="komoku1 text-white mb-1">被保険者住所</div>
@@ -155,7 +158,7 @@
                   <div class="col-sm-9">
                     <input type="text" class="form-control form-control-sm" id="HihokenshaAdd">
                   </div>
-                  <label for="HihokenshaAdd" class="col-sm-3 col-form-label col-form-label-sm" style="color:red">(全角)</label>
+                  <label for="HihokenshaAdd" class="col-sm-3 col-form-label col-form-label-sm text-red">(全角)</label>
                 </div>
             </div>
             <div class="komoku1 text-white mb-1">被保険者建物名</div>
@@ -164,7 +167,7 @@
                   <div class="col-sm-9">
                     <input type="text" class="form-control form-control-sm" id="HihokenshaTatemono">
                   </div>
-                  <label for="HihokenshaTatemono" class="col-sm-3 col-form-label col-form-label-sm" style="color:red">(全角)</label>
+                  <label for="HihokenshaTatemono" class="col-sm-3 col-form-label col-form-label-sm text-red">(全角)</label>
                 </div>
             </div>
             <div class="komoku1 text-white mb-1">申込書作成日</div>
@@ -177,7 +180,7 @@
                   <div class="col-sm-4">
                     <input type="text" class="form-control form-control-sm" id="Sakuseibi_e">
                   </div>
-                  <label for="Sakuseibi_e" class="col-sm-3 col-form-label col-form-label-sm" style="color:red; font-size: 11px;">(YYYY/MM/DD)</label>
+                  <label for="Sakuseibi_e" class="col-sm-3 col-form-label col-form-label-sm text-red" style="font-size: 11px;">(YYYY/MM/DD)</label>
                 </div>
             </div>
             <div class="komoku1 text-white mb-1">保険始期</div>
@@ -190,7 +193,7 @@
                   <div class="col-sm-4">
                     <input type="text" class="form-control form-control-sm" id="Hokenshiki_e">
                   </div>
-                  <label for="Hokenshiki_e" class="col-sm-3 col-form-label col-form-label-sm" style="color:red; font-size: 11px;">(YYYY/MM/DD)</label>
+                  <label for="Hokenshiki_e" class="col-sm-3 col-form-label col-form-label-sm text-red" style="font-size: 11px;">(YYYY/MM/DD)</label>
                 </div>
             </div>
             <div class="komoku1 text-white mb-1"></div>
@@ -198,7 +201,7 @@
         </div>
     </div>
     <div class="text-end">
-        <button type="button" class="btn btn-primary" style="width: 150px;">クリア</button>
+        <button type="button" class="btn btn-primary" style="width: 150px;" onclick="CrearBtnClick()">クリア</button>
         <button type="button" class="btn btn-primary" style="width: 150px;">検索</button>
     </div>
 </div>
