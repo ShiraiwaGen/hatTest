@@ -1,6 +1,7 @@
 ﻿using Dairiten.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata;
 
 namespace Dairiten.Data
 {
@@ -25,6 +26,7 @@ namespace Dairiten.Data
         public DbSet<Dairiten.Models.t_seikyu> t_seikyu { get; set; }
         public DbSet<Dairiten.Models.t_moshikomisho> t_moshikomisho { get; set; }
         public DbSet<Dairiten.Models.t_nayose> t_nayose { get; set; }
+        public DbSet<Dairiten.Models.t_kaiyaku> t_kaiyaku { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -43,6 +45,9 @@ namespace Dairiten.Data
             modelBuilder.Entity<t_seikyu>().ToTable("t_seikyu");
             modelBuilder.Entity<t_moshikomisho>().ToTable("t_moshikomisho");
             modelBuilder.Entity<t_nayose>().ToTable("t_nayose");
+            modelBuilder.Entity<t_kaiyaku>().ToTable("t_kaiyaku");
+
+            modelBuilder.Entity<m_master_kbn>().HasData(new m_master_kbn { master_kbn = 1, master_kbn_name = "事故内容" });
         }
     }
 }
