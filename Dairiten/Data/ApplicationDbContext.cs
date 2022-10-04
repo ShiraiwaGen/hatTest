@@ -90,7 +90,7 @@ namespace Dairiten.Data
             modelBuilder.Entity<m_master_kbn>().HasData(new m_master_kbn { master_kbn = 33, master_kbn_name = "コード" });
             modelBuilder.Entity<m_master_kbn>().HasData(new m_master_kbn { master_kbn = 34, master_kbn_name = "弥生レコード区分" });
             modelBuilder.Entity<m_master_kbn>().HasData(new m_master_kbn { master_kbn = 35, master_kbn_name = "戸建区分" });
-            //マスター　初期値　PRIMARY KEY重複エラー
+            //マスター　初期値　
             modelBuilder.Entity<m_master>().HasData(new m_master { m_master_kbn_id = 1, item_no = 1, item_name = "火災" });
             modelBuilder.Entity<m_master>().HasData(new m_master { m_master_kbn_id = 1, item_no = 2, item_name = "落雷" });
             modelBuilder.Entity<m_master>().HasData(new m_master { m_master_kbn_id = 1, item_no = 3, item_name = "破裂・爆発" });

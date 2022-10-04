@@ -1,0 +1,46 @@
+﻿@page
+@model Dairiten.Pages.Bukken.Bukken_InModel
+@{
+    ViewData["Title"] = "物件情報取込";
+}
+
+<div class="container-fluid g-1">
+    <div class="text-start">
+        <h4 class="" style="background:#DCDCDC">物件情報取込</h4>
+    </div>
+
+    <form method="post">        
+        <div class="komoku1 text-white mb-1" style="margin-right: 11px;">　</div>
+        <div class="atai1 mb-1">
+            <label for="memo1" class="col-form-label col-form-label">取込対象の代理店コードと取り込むファイルを指定してください。</label>
+        </div>
+        <div class="komoku1 text-white mb-1" style="margin-right: 11px;">代理店コード</div>
+        <div class="atai1 mb-1">
+            <label class="col-form-label col-form-label" style="margin-right: 20px;">@User.Identity?.Name</label>
+            <label class="col-form-label col-form-label">@User.Identity?.Name</label>
+        </div>
+        <div class="komoku1 text-white mb-1" style="margin-right: 11px;">取込ファイル</div>
+        <div class="atai1 mb-1">
+            <!--<input type="file" id="formfile" name="formfile" accept=".csv" />
+            <input type="button" class="btn btn-primary form-control" value="参照" />-->
+
+            <input type="file" id="file" accept=".csv" onchange="$('#fake_text_box').val($(this).val())">
+            <!--<input type="text" id="file_upload" value="参照" onClick="$('#file').click();">-->
+            <!--<input type="text" id="fake_text_box" value="" size="35" readonly onClick="$('#file').click();">-->
+        </div>
+        <br>
+        <div class="text-start">
+            支店が複数存在する場合は、支店ごとに取込みをおこなってください。
+        </div>
+        <br>
+        <div class="text-end">
+            <button type="button" class="btn btn-primary" style="width: 150px;" onclick="clearFormAll()">クリア</button>
+            <button type="button" class="btn btn-primary" style="width: 200px;">取込ファイル内容表示</button>
+        </div>
+    </form>
+
+    <p>取込物件一覧</p>
+    <div class="text-center">
+        <p>物件表示</p>
+    </div>
+</div>
