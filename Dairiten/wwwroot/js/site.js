@@ -63,12 +63,12 @@ function clearElement(element) {
 }
 
 /* DataTables */
-$.extend($.fn.dataTable.defaults, {
-    // 日本語化
-    language: {
-        url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Japanese.json"
-    }
-});
+//$.extend($.fn.dataTable.defaults, {
+//    // 日本語化
+//    language: {
+//        url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Japanese.json"
+//    }
+//});
 $("#mytable").DataTable({
     // 件数切替の値を10～50の10刻みにする
     lengthMenu: [10, 20, 30, 40, 50, 100],
@@ -98,9 +98,11 @@ $("#mytable").DataTable({
             "last": ">>"
         }
     },
-    "columns": [//列の幅を変更する
-        { "width": "10%" },//1列目
-        { "width": "70%" },//2列目
-    ],
+    //"columns": [//列の幅を変更する
+    //    { "width": "10%" },//1列目
+    //    { "width": "70%" },//2列目
+    //],
     fixedHeader: true,//テーブルヘッダーを固定
+    stateSave: true,//保持機能を有効にする
+    searching: true, // falseにすると独自の検索も反映されない
 });

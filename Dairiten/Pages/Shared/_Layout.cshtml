@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Dairiten.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css" /> @*Datatables*@
+    <link rel="stylesheet" href="~/css/datatables.min.css" /> @*DataTables*@
 </head>
 <body>
 @if (SignInManager.IsSignedIn(User))
@@ -98,7 +98,7 @@ else
 }
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.js"></script>   @*Datatables*@
+    <script src="~/js/datatables.min.js"></script>   @*DataTables*@
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
