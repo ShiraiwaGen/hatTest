@@ -14,12 +14,14 @@ namespace Dairiten.Models
         [DisplayName("開始日")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime kaisibi { get; set; }
+        //public DateTime kaisibi { get; set; }
+        public String kaisibi { get; set; }
 
         [DisplayName("終了日")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime shuryobi { get; set; }
+        //public DateTime shuryobi { get; set; }
+        public String? shuryobi { get; set; }
 
         [DisplayName("消費税")]
         [RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "少数以下２桁以上は入力できません")]
