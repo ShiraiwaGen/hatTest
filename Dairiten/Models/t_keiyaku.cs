@@ -13,7 +13,7 @@ namespace Dairiten.Models
 
         [Required]
         [Display(Name = "募集人キー")]
-        public string employee_key { get; set; }               //募集人キー
+        public int employee_key { get; set; }                   //募集人キー
 
         [Required]
         [MinLength(10, ErrorMessage = "証券番号は１０桁でお願いします")]

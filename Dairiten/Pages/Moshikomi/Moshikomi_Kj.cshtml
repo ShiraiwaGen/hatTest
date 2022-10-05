@@ -47,21 +47,21 @@
                 </div>
                 <div class="komoku1 text-white mb-1" style="margin-right: 11px;">入力者区分</div>
                 <div class="atai2 mb-1">
-                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;">
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;" name="inputter">
                         <option selected></option>
                         @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 18))
                         {
-                            <option value=@Html.DisplayFor(modelItem => item.item_no)>@Html.DisplayFor(modelItem => item.item_name)</option>
+                            <option>@Html.DisplayFor(modelItem => item.item_name)</option>
                         }
                     </select>
                 </div>
                 <div class="komoku1 text-white mb-1" style="margin-right: 11px;">商品区分</div>
                 <div class="atai2 mb-1">
-                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;">
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;" name="shohin">
                         <option selected></option>
                         @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 7))
                         {
-                            <option value=@Html.DisplayFor(modelItem => item.item_no)>@Html.DisplayFor(modelItem => item.item_name)</option>
+                            <option>@Html.DisplayFor(modelItem => item.item_name)</option>
                         }
                     </select>
                 </div>
@@ -69,7 +69,7 @@
                 <div class="atai2 mb-1">
                     <div class="row mb-3">
                       <div class="col-sm-9">
-                        <input type="tel" class="form-control form-control-sm" id="shoken_no" asp-for="data.shoken_no">
+                        <input type="tel" class="form-control form-control-sm" id="shoken_no" asp-for="data.shoken_no" pattern="^[a-zA-Z0-9]+$">
                       </div>
                       <label for="shoken_no" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角)</label>
                     </div>
@@ -78,7 +78,7 @@
                 <div class="atai2 mb-1">
                     <div class="row mb-3">
                       <div class="col-sm-9">
-                        <input type="tel" class="form-control form-control-sm" id="old_shoken_no" asp-for="data.old_shoken_no">
+                        <input type="tel" class="form-control form-control-sm" id="old_shoken_no" asp-for="data.old_shoken_no" pattern="^[a-zA-Z0-9]+$">
                       </div>
                       <label for="old_shoken_no" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角)</label>
                     </div>
@@ -87,28 +87,28 @@
                 <div class="atai2 mb-1">
                     <div class="row mb-3">
                       <div class="col-sm-9">
-                        <input type="tel" class="form-control form-control-sm" id="BoshuninCD">
+                        <input type="tel" class="form-control form-control-sm" name="boshuninCD" pattern="^[a-zA-Z0-9]+$">
                       </div>
-                      <label for="BoshuninCD" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角)</label>
+                      <label for="boshuninCD" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角)</label>
                     </div>
                 </div>
                 <div class="komoku1 text-white mb-1" style="margin-right: 11px;">コード</div>
                 <div class="atai2 mb-1">
-                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;">
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;" name="code">
                         <option selected></option>
                         @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 33))
                         {
-                            <option value=@Html.DisplayFor(modelItem => item.item_no)>@Html.DisplayFor(modelItem => item.item_name)</option>
+                            <option>@Html.DisplayFor(modelItem => item.item_name)</option>
                         }
                     </select>
                 </div>
                 <div class="komoku1 text-white mb-1" style="margin-right: 11px;">集金方法</div>
                 <div class="atai2 mb-1">
-                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;">
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;" name="shukinhoho">
                         <option selected></option>
                         @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 13))
                         {
-                            <option value=@Html.DisplayFor(modelItem => item.item_no)>@Html.DisplayFor(modelItem => item.item_name)</option>
+                            <option>@Html.DisplayFor(modelItem => item.item_name)</option>
                         }
                     </select>
                 </div>
@@ -128,9 +128,9 @@
                 <div class="atai2 mb-1">
                     <div class="row mb-3">
                       <div class="col-sm-9">
-                        <input type="text" class="form-control form-control-sm" id="Keiyakushamei">
+                        <input type="text" class="form-control form-control-sm" id="keiyakushamei" name="keiyakushamei">
                       </div>
-                      <label for="Keiyakushamei" class="col-sm-3 col-form-label col-form-label-sm text-red">(全角)</label>
+                      <label for="keiyakushamei" class="col-sm-3 col-form-label col-form-label-sm text-red">(全角)</label>
                     </div>
                 </div>
                 <div class="komoku2 text-white mb-1">被保険者名</div>
@@ -138,62 +138,60 @@
                 <div class="atai2 mb-1">
                     <div class="row mb-3">
                       <div class="col-sm-9">
-                        <input type="text" class="form-control form-control-sm" id="HihokenshameiKana">
+                        <input type="text" class="form-control form-control-sm" id="hihokenshameiKana" name="hihokenshameiKana" pattern="^[｡-ﾟ+]+$">
                       </div>
-                      <label for="HihokenshameiKana" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角カナ)</label>
+                      <label for="hihokenshameiKana" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角カナ)</label>
                     </div>
                 </div>
                 <div class="komoku3 text-white mb-1">漢字</div>
                 <div class="atai2 mb-1">
                     <div class="row mb-3">
                       <div class="col-sm-9">
-                        <input type="text" class="form-control form-control-sm" id="Hihokenshamei">
+                        <input type="text" class="form-control form-control-sm" id="hihokenshamei" name="hihokenshamei">
                       </div>
-                      <label for="Hihokenshamei" class="col-sm-3 col-form-label col-form-label-sm text-red">(全角)</label>
+                      <label for="hihokenshamei" class="col-sm-3 col-form-label col-form-label-sm text-red">(全角)</label>
                     </div>
                 </div>
                 <div class="komoku1 text-white mb-1">被保険者住所</div>
                 <div class="atai2 mb-1">
                     <div class="row mb-3">
                       <div class="col-sm-9">
-                        <input type="text" class="form-control form-control-sm" id="HihokenshaAdd">
+                        <input type="text" class="form-control form-control-sm" id="hihokenshaAdd" name="hihokenshaAdd">
                       </div>
-                      <label for="HihokenshaAdd" class="col-sm-3 col-form-label col-form-label-sm text-red">(全角)</label>
+                      <label for="hihokenshaAdd" class="col-sm-3 col-form-label col-form-label-sm text-red">(全角)</label>
                     </div>
                 </div>
                 <div class="komoku1 text-white mb-1">被保険者建物名</div>
                 <div class="atai2 mb-1">
                     <div class="row mb-3">
                       <div class="col-sm-9">
-                        <input type="text" class="form-control form-control-sm" id="HihokenshaTatemono">
+                        <input type="text" class="form-control form-control-sm" id="hihokenshaTatemono" name="hihokenshaTatemono">
                       </div>
-                      <label for="HihokenshaTatemono" class="col-sm-3 col-form-label col-form-label-sm text-red">(全角)</label>
+                      <label for="hihokenshaTatemono" class="col-sm-3 col-form-label col-form-label-sm text-red">(全角)</label>
                     </div>
                 </div>
                 <div class="komoku1 text-white mb-1">申込書作成日</div>
                 <div class="atai2 mb-1">
                     <div class="row mb-3">
-                      <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm" id="Sakuseibi_s">
+                      <div class="col-sm-5">
+                        <input type="date" class="form-control form-control-sm" id="sakuseibi_s" asp-for="sakuseibi_s" value="年/月/日">
                       </div>
-                      <label for="Sakuseibi_s" class="col-sm-1 col-form-label col-form-label-sm">～</label>
-                      <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm" id="Sakuseibi_e">
+                      <label for="sakuseibi_s" class="col-sm-1 col-form-label col-form-label-sm">～</label>
+                      <div class="col-sm-5">
+                        <input type="date" class="form-control form-control-sm" id="sakuseibi_e" asp-for="sakuseibi_e" value="年/月/日">
                       </div>
-                      <label for="Sakuseibi_e" class="col-sm-3 col-form-label col-form-label-sm text-red" style="font-size: 11px;">(YYYY/MM/DD)</label>
                     </div>
                 </div>
                 <div class="komoku1 text-white mb-1">保険始期</div>
                 <div class="atai2 mb-1">
                     <div class="row mb-3">
-                      <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm" id="Hokenshiki_s">
+                      <div class="col-sm-5">
+                        <input type="date" class="form-control form-control-sm" id="hokenshiki_s" asp-for="hokenshiki_s" value="年/月/日">
                       </div>
-                      <label for="Hokenshiki_s" class="col-sm-1 col-form-label col-form-label-sm">～</label>
-                      <div class="col-sm-4">
-                        <input type="text" class="form-control form-control-sm" id="Hokenshiki_e">
+                      <label for="hokenshiki_s" class="col-sm-1 col-form-label col-form-label-sm">～</label>
+                      <div class="col-sm-5">
+                        <input type="date" class="form-control form-control-sm" id="hokenshiki_e" asp-for="hokenshiki_e" value="年/月/日">
                       </div>
-                      <label for="Hokenshiki_e" class="col-sm-3 col-form-label col-form-label-sm text-red" style="font-size: 11px;">(YYYY/MM/DD)</label>
                     </div>
                 </div>
                 <div class="komoku1 text-white mb-1"></div>

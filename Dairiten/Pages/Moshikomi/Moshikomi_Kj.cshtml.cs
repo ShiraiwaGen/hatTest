@@ -23,6 +23,18 @@ namespace Dairiten.Pages
         [BindProperty]
         public t_keiyaku data { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public DateTime sakuseibi_s { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public DateTime sakuseibi_e { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public DateTime hokenshiki_s { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public DateTime hokenshiki_e { get; set; }
+
         public async Task OnGetAsync()
         {
             m_Master = await _context.m_master.ToListAsync();
@@ -35,6 +47,10 @@ namespace Dairiten.Pages
 
             int yukojotai_num = -1;       //有効状態
             int seiritsujokyo_num = -1;   //成立状況
+            int inputter_num = -1;        //入力者区分
+            int shohin_num = -1;          //商品区分
+            int code_num = -1;            //コード
+            int shukinhoho_num = -1;      //集金方法
 
             //有効状態
             string yukojotai_selected = (string)Request.Form["yukojotai"];
@@ -67,7 +83,34 @@ namespace Dairiten.Pages
             }
 
             //入力者区分
+            string inputter_selected = (string)Request.Form["inputter"];
+            if (!string.IsNullOrEmpty(inputter_selected))
+            {
+                foreach (var master in _context.m_master.Where(m => m.m_master_kbn_id == 18))
+                {
+                    if (inputter_selected.Equals(master.item_name))
+                    {
+                        inputter_num = master.item_no;
+                        break;
+                    }
+                }
+                moshikomis = moshikomis.Where(k => k.inputter_kbn == inputter_num);
+            }
+
             //商品区分
+            string shohin_selected = (string)Request.Form["shohin"];
+            if (!string.IsNullOrEmpty(shohin_selected))
+            {
+                foreach (var master in _context.m_master.Where(m => m.m_master_kbn_id == 7))
+                {
+                    if (shohin_selected.Equals(master.item_name))
+                    {
+                        shohin_num = master.item_no;
+                        break;
+                    }
+                }
+                moshikomis = moshikomis.Where(k => k.shohin_kbn == shohin_num);
+            }
 
             //証券番号
             if (!string.IsNullOrEmpty(data.shoken_no))
@@ -82,14 +125,131 @@ namespace Dairiten.Pages
             }
 
             //募集人コード
+            string search_boshuninCD = (string)Request.Form["boshuninCD"];
+            if (!string.IsNullOrEmpty(search_boshuninCD))
+            {
+                var d = from e in _context.t_dairiten_employee
+                        where e.employee_code == search_boshuninCD
+                        select e.id;
+                if (d.Count() > 0)
+                { 
+                    moshikomis = moshikomis.Where(k => k.employee_key == d.First());
+                }
+                else 
+                {
+                    moshikomis = moshikomis.Where(k => k.employee_key == -1);
+                }
+            }
+
             //コード
+            string code_selected = (string)Request.Form["code"];
+            if (!string.IsNullOrEmpty(code_selected))
+            {
+                foreach (var master in _context.m_master.Where(m => m.m_master_kbn_id == 33))
+                {
+                    if (code_selected.Equals(master.item_name))
+                    {
+                        code_num = master.item_no;
+                        break;
+                    }
+                }
+                if (moshikomis.Where(k => k.other_code1 == code_num).Count() > 0)
+                { 
+                    moshikomis = moshikomis.Where(k => k.other_code1 == code_num);
+                }
+                else if (moshikomis.Where(k => k.other_code2 == code_num).Count() > 0)
+                {
+                    moshikomis = moshikomis.Where(k => k.other_code2 == code_num);
+                }
+                else if (moshikomis.Where(k => k.other_code3 == code_num).Count() > 0)
+                {
+                    moshikomis = moshikomis.Where(k => k.other_code3 == code_num);
+                }
+                else
+                {
+                    moshikomis = moshikomis.Where(k => k.other_code3 == -1);
+                }
+            }
+
             //集金方法
+            string shukinhoho_selected = (string)Request.Form["shukinhoho"];
+            if (!string.IsNullOrEmpty(shukinhoho_selected))
+            {
+                foreach (var master in _context.m_master.Where(m => m.m_master_kbn_id == 13))
+                {
+                    if (shukinhoho_selected.Equals(master.item_name))
+                    {
+                        shukinhoho_num = master.item_no;
+                        break;
+                    }
+                }
+                moshikomis = moshikomis.Where(k => k.shukinhoho == shukinhoho_num);
+            }
 
             //契約者名カナ
-            string keiyakushameiKana_selected = (string)Request.Form["keiyakushameiKana"];
-            if (!string.IsNullOrEmpty(keiyakushameiKana_selected))
+            string search_KeiyakushameiKana = (string)Request.Form["keiyakushameiKana"];
+            if (!string.IsNullOrEmpty(search_KeiyakushameiKana))
             {
-                moshikomis = moshikomis.Where(k => (k.k_sei_kana + k.k_mei_kana).Equals(keiyakushameiKana_selected));
+                moshikomis = moshikomis.Where(k => (k.k_sei_kana + k.k_mei_kana).Contains(search_KeiyakushameiKana));
+            }
+
+            //契約者名漢字
+            string search_Keiyakushamei = System.Text.RegularExpressions.Regex.Replace((string)Request.Form["keiyakushamei"], @"[\s]+", "");
+            if (!string.IsNullOrEmpty(search_Keiyakushamei))
+            {
+                moshikomis = moshikomis.Where(k => (k.k_sei + k.k_mei).Contains(search_Keiyakushamei));
+            }
+
+            //被保険者名カナ
+            string search_HihokenshameiKana = (string)Request.Form["hihokenshameiKana"];
+            if (!string.IsNullOrEmpty(search_HihokenshameiKana))
+            {
+                moshikomis = moshikomis.Where(k => (k.h_sei_kana + k.h_mei_kana).Contains(search_HihokenshameiKana));
+            }
+
+            //被保険者名漢字
+            string search_Hihokenshamei = System.Text.RegularExpressions.Regex.Replace((string)Request.Form["hihokenshamei"], @"[\s]+", "");
+            if (!string.IsNullOrEmpty(search_Hihokenshamei))
+            {
+                moshikomis = moshikomis.Where(k => (k.h_sei + k.h_mei).Contains(search_Hihokenshamei));
+            }
+
+            //被保険者住所
+            string search_HihokenshaAdd = System.Text.RegularExpressions.Regex.Replace((string)Request.Form["hihokenshaAdd"], @"[\s]+", "");
+            if (!string.IsNullOrEmpty(search_HihokenshaAdd))
+            {
+                moshikomis = moshikomis.Where(k => (k.h_address1 + k.h_address2).Contains(search_HihokenshaAdd));
+            }
+
+            //被保険者建物名
+            string search_HihokenshaTatemono = System.Text.RegularExpressions.Regex.Replace((string)Request.Form["hihokenshaTatemono"], @"[\s]+", "");
+            if (!string.IsNullOrEmpty(search_HihokenshaTatemono))
+            {
+                moshikomis = moshikomis.Where(k => k.h_address3.Contains(search_HihokenshaTatemono));
+            }
+
+            //申込書作成日(Start)
+            if (sakuseibi_s.Date != DateTime.Parse("0001/01/01 00:00:00"))
+            {
+                moshikomis = moshikomis.Where(k => k.moshikomisho_day >= sakuseibi_s);
+            }
+
+            //申込書作成日(End)
+            if (sakuseibi_e.Date != DateTime.Parse("0001/01/01 00:00:00"))
+            {
+                moshikomis = moshikomis.Where(k => k.moshikomisho_day <= sakuseibi_e);
+            }
+
+            //保険始期(Start)
+            if (hokenshiki_s.Date != DateTime.Parse("0001/01/01 00:00:00"))
+            {
+                moshikomis = moshikomis.Where(k => k.hokenshiki >= hokenshiki_s);
+            }
+
+            //保険始期(End)
+            if (hokenshiki_e.Date != DateTime.Parse("0001/01/01 00:00:00"))
+            {
+                moshikomis = moshikomis.Where(k => k.hokenshiki <= hokenshiki_e);
             }
 
             Keiyakus = moshikomis.ToList();
