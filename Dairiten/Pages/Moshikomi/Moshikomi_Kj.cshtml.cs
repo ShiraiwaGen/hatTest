@@ -18,6 +18,8 @@ namespace Dairiten.Pages
 
         public IList<m_master> m_Master { get; set; }
 
+        public IList<m_dairiten> m_Dairiten { get; set; }
+
         public IList<t_keiyaku> Keiyakus { get; set; }
 
         [BindProperty]
@@ -38,6 +40,7 @@ namespace Dairiten.Pages
         public async Task OnGetAsync()
         {
             m_Master = await _context.m_master.ToListAsync();
+            m_Dairiten = await _context.m_dairiten.ToListAsync();//代理店情報表示用に使用予定
         }
 
         public void OnPost()

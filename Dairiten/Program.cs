@@ -1,4 +1,6 @@
+using Dairiten.Areas.Identity;
 using Dairiten.Data;
+using Dairiten.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,9 +12,34 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddRazorPages();
+builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddErrorDescriber<IdentityErrorDescriberJP>();
+builder.Services.AddRazorPages(options =>
+{
+    options.Conventions.AddPageRoute("/Account/Login", "");
+});
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    // パスワードに英数以外を含む必要があるか
+    options.Password.RequireNonAlphanumeric = true;
+    // パスワードに大文字を含む必要があるか
+    options.Password.RequireUppercase = true;
+    // パスワードに小文字を含む必要があるか
+    options.Password.RequireLowercase = true;
+    // パスワードに数値を含む必要があるか
+    options.Password.RequireDigit = true;
+});
+
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(3);
+    options.LoginPath = "/Identity/Account/Login";
+});
 
 var app = builder.Build();
 

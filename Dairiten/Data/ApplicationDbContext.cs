@@ -13,6 +13,7 @@ namespace Dairiten.Data
         {
         }
 
+        public DbSet<AppUser> appUsers { get; set; }
         public DbSet<Dairiten.Models.m_company> m_company { get; set; }
         public DbSet<Dairiten.Models.m_shohin> m_shohin { get; set; }
         public DbSet<Dairiten.Models.m_dairiten> m_dairiten { get; set; }

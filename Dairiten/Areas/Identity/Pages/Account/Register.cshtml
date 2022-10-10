@@ -13,9 +13,24 @@
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
-                <label asp-for="Input.Email">募集人ＩＤ</label>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                <input asp-for="Input.m_dairiten_id" class="form-control" autocomplete="off" aria-required="true" />
+                <label asp-for="Input.m_dairiten_id">代理店キー</label>
+                <span asp-validation-for="Input.m_dairiten_id" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.employee_code" class="form-control" autocomplete="off" aria-required="true" />
+                <label asp-for="Input.employee_code">募集人コード</label>
+                <span asp-validation-for="Input.employee_code" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.employee_sei" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Input.employee_sei">社員_姓</label>
+                <span asp-validation-for="Input.employee_sei" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.employee_mei" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Input.employee_mei">社員_名</label>
+                <span asp-validation-for="Input.employee_mei" class="text-danger"></span>
             </div>
             <div class="form-floating">
                 <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
