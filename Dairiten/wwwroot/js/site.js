@@ -69,11 +69,9 @@ function clearElement(element) {
 //        url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Japanese.json"
 //    }
 //});
-$("#mytable").DataTable({
-    // 件数切替の値を10～50の10刻みにする
-    lengthMenu: [10, 20, 30, 40, 50, 100],
-    // 件数のデフォルトの値を50にする
-    displayLength: 50,
+$("#mytable").DataTable({    
+    lengthMenu: [10, 20, 30, 40, 50, 100],    // 件数切替の値を10～50の10刻みにする
+    displayLength: 20,  // 件数のデフォルトの値を20にする
     //scrollX: true,
     //scrollY: 200,
     //columnDefs: [
@@ -105,4 +103,5 @@ $("#mytable").DataTable({
     fixedHeader: true,//テーブルヘッダーを固定
     stateSave: true,//保持機能を有効にする
     searching: true, // falseにすると独自の検索も反映されない
+    bProcessing: true,//ソート処理などの処理中を表すインジケータの表示有無
 });

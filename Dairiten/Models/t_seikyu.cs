@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Dairiten.Models
 {
@@ -28,6 +29,7 @@ namespace Dairiten.Models
         [Required]
         public int seisankingaku { get; set; }
 
+        [ForeignKey("m_dairiten")]
         [DisplayName("代理店キー")]
         [Required]
         public int m_dairiten_id { get; set; }
