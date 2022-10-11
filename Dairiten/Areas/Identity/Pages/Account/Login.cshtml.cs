@@ -76,7 +76,11 @@ namespace Dairiten.Areas.Identity.Pages.Account
             {
                 // 募集人コードが一致するユーザを取得
                 AppUser user = await _userManager.FindByNameAsync(Input.employee_code);
-
+                if (user == null)
+                {
+                    ModelState.AddModelError(string.Empty, "ログインに失敗しました。");
+                    return Page();
+                }
                 var result = await _signInManager.PasswordSignInAsync(user, Input.Password, false, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
