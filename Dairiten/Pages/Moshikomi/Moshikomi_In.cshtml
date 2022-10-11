@@ -9,16 +9,120 @@
         <h4 class="" style="background:#DCDCDC">申込入力</h4>
     </div>
 </div>
-
+<p>★申込書を入力、もしくは修正できます。</p>
+<p>★基本情報</p>
+<div class="row g-0">
+    <div class="col-4">
+        <div class="komoku4 text-white mb-1">証券番号</div>
+            <div class="atai2 mb-1">
+                <label class="col-form-label"></label>
+            </div>
+    </div>
+    <div class="col-4">
+        <div class="komoku4 text-white mb-1">旧証券番号</div>
+            <div class="atai2 mb-1">
+                <label class="col-form-label"></label>
+            </div>
+    </div>
+    <div class="col-4">
+        <div class="komoku4 text-white mb-1">受付区分</div>
+            <div class="atai2 mb-1">
+                <label class="col-form-label"></label>
+            </div>
+    </div>
+</div>
+<br>
 <form>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="shohinKbnRadio" id="shohinKbnRadio1" onclick="shohinKbnBtnClick()" checked>
-    <label class="form-check-label" for="shohinKbnRadio1">住宅用</label>
-  </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="shohinKbnRadio" id="shohinKbnRadio2" onclick="shohinKbnBtnClick()">
-    <label class="form-check-label" for="shohinKbnRadio2">事業用</label></div>
+    <div class="row g-0">
+        <div class="col-2">
+            <div class="komoku5 text-white mb-1">商品区分</div>
+        </div>
+        <div class="col-5">
+            <div class="atai2 mb-1 py-1">
+                <div class="form-check form-check-inline" style="margin-left: 10px;">
+                    <input class="form-check-input" type="radio" name="shohinKbnRadio" id="shohinKbnRadio1" onclick="shohinKbnBtnClick()" checked>
+                    <label class="form-check-label" for="shohinKbnRadio1">住宅用</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="shohinKbnRadio" id="shohinKbnRadio2" onclick="shohinKbnBtnClick()">
+                    <label class="form-check-label" for="shohinKbnRadio2">事業用</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="comment1 mb-1">
+                <label class="col-form-label" style="margin-left: 10px; line-height: 16px;"></label>
+            </div>
+        </div>
+    </div>
 </form>
+<form>
+    <div class="row g-0">
+        <div class="col-2">
+            <div class="komoku5 text-white mb-1">用法</div>
+        </div>
+        <div class="col-5">
+            <div class="atai2 mb-1 py-1">
+                <div class="form-check form-check-inline" style="margin-left: 10px;">
+                    <input class="form-check-input" type="radio" name="yohoRadio" id="yohoRadio1" onclick="yohoBtnClick()" checked>
+                    <label class="form-check-label" for="yohoRadio1">事務所・店舗</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="yohoRadio" id="yohoRadio2" onclick="yohoBtnClick()">
+                    <label class="form-check-label" for="yohoRadio2">飲食店</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="comment1 mb-1">
+                <label class="col-form-label" style="margin-left: 10px; line-height: 16px;"></label>
+            </div>
+        </div>
+    </div>
+</form>
+<form>
+    <div class="row g-0">
+        <div class="col-2">
+            <div class="komoku5 text-white mb-1">契約者区分</div>
+        </div>
+        <div class="col-5">
+            <div class="atai2 mb-1 py-1">
+                <div class="form-check form-check-inline" style="margin-left: 10px;">
+                    <input class="form-check-input" type="radio" name="keiyakushaKbnRadio" id="keiyakushaKbnRadio1" onclick="keiyakushaKbnBtnClick()" checked>
+                    <label class="form-check-label" for="keiyakushaKbnRadio1">個人</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="keiyakushaKbnRadio" id="keiyakushaKbnRadio2" onclick="keiyakushaKbnBtnClick()">
+                    <label class="form-check-label" for="keiyakushaKbnRadio2">法人</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="keiyakushaKbnRadio" id="keiyakushaKbnRadio3" onclick="keiyakushaKbnBtnClick()">
+                    <label class="form-check-label" for="keiyakushaKbnRadio3">個人事業主</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="comment1 mb-1">
+                <label class="col-form-label" style="margin-left: 10px; line-height: 16px;">契約者区分を選択してください</label>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="row g-0">
+        <div class="col-2">
+            <div class="komoku5 text-white mb-1">申込書作成日</div>
+        </div>
+        <div class="col-5">
+            <div class="atai2 mb-1">
+                <input type="date" class="form-control form-control-sm w-50" style="margin-left: 10px;" id="moshikomisho_day" value="年/月/日">
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="comment1 mb-1">
+                <label class="col-form-label" style="margin-left: 10px; line-height: 16px;"></label>
+            </div>
+        </div>
+    </div>
 <br>
 <br>
 
