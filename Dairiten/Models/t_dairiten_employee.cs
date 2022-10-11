@@ -1,12 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Dairiten.Models
 {
     public class t_dairiten_employee
     {
+        [DisplayName("募集人キー")]
         public int id { get; set; }
 
+        [ForeignKey("m_dairiten")]
         [DisplayName("代理店キー")]
         [Required]
         public int m_dairiten_id { get; set; }

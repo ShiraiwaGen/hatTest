@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Dairiten.Models
 {
@@ -8,6 +9,7 @@ namespace Dairiten.Models
         [DisplayName("解約キー")]
         public int id { get; set; }
 
+        [ForeignKey("t_kaiyaku")]
         [DisplayName("契約キー")]
         [Required]
         public int t_keiyaku_id { get; set; }
@@ -41,6 +43,7 @@ namespace Dairiten.Models
         [Required]
         public int zangetsusu { get; set; }
 
+        [ForeignKey("t_seikyu")]
         [DisplayName("請求キー")]
         public int t_seikyu_id { get; set; }
 
