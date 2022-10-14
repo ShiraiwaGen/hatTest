@@ -119,7 +119,7 @@
                 <div class="atai2 mb-1">
                     <div class="row mb-3">
                       <div class="col-sm-9">
-                        <input type="text" class="form-control form-control-sm" id="keiyakushameiKana" name="keiyakushameiKana" pattern="^[｡-ﾟ+]+$">
+                        <input type="text" class="form-control form-control-sm" id="keiyakushameiKana" name="keiyakushameiKana" onchange="toFullZenkana(this, id)">
                       </div>
                       <label for="keiyakushameiKana" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角カナ)</label>
                     </div>
@@ -138,7 +138,7 @@
                 <div class="atai2 mb-1">
                     <div class="row mb-3">
                       <div class="col-sm-9">
-                        <input type="text" class="form-control form-control-sm" id="hihokenshameiKana" name="hihokenshameiKana" pattern="^[｡-ﾟ+]+$">
+                        <input type="text" class="form-control form-control-sm" id="hihokenshameiKana" name="hihokenshameiKana" onchange="toFullZenkana(this, id)">
                       </div>
                       <label for="hihokenshameiKana" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角カナ)</label>
                     </div>
@@ -174,11 +174,11 @@
                 <div class="atai2 mb-1">
                     <div class="row mb-3">
                       <div class="col-sm-5">
-                        <input type="date" class="form-control form-control-sm" id="sakuseibi_s" asp-for="sakuseibi_s" value="年/月/日">
+                        <input type="date" class="form-control form-control-sm" id="date1_From" asp-for="sakuseibi_From" value="年/月/日" onChange="onChange1()">
                       </div>
-                      <label for="sakuseibi_s" class="col-sm-1 col-form-label col-form-label-sm">～</label>
+                      <label for="date1_From" class="col-sm-1 col-form-label col-form-label-sm">～</label>
                       <div class="col-sm-5">
-                        <input type="date" class="form-control form-control-sm" id="sakuseibi_e" asp-for="sakuseibi_e" value="年/月/日">
+                        <input type="date" class="form-control form-control-sm" id="date1_To" asp-for="sakuseibi_To" value="年/月/日" onChange="onChange1()">
                       </div>
                     </div>
                 </div>
@@ -186,11 +186,11 @@
                 <div class="atai2 mb-1">
                     <div class="row mb-3">
                       <div class="col-sm-5">
-                        <input type="date" class="form-control form-control-sm" id="hokenshiki_s" asp-for="hokenshiki_s" value="年/月/日">
+                        <input type="date" class="form-control form-control-sm" id="date2_From" asp-for="hokenshiki_From" value="年/月/日" onChange="onChange2()">
                       </div>
-                      <label for="hokenshiki_s" class="col-sm-1 col-form-label col-form-label-sm">～</label>
+                      <label for="date2_From" class="col-sm-1 col-form-label col-form-label-sm">～</label>
                       <div class="col-sm-5">
-                        <input type="date" class="form-control form-control-sm" id="hokenshiki_e" asp-for="hokenshiki_e" value="年/月/日">
+                        <input type="date" class="form-control form-control-sm" id="date2_To" asp-for="hokenshiki_To" value="年/月/日" onChange="onChange2()">
                       </div>
                     </div>
                 </div>
@@ -199,8 +199,8 @@
             </div>
         </div>
         <div class="text-end">
-            <button type="button" class="btn btn-primary" style="width: 150px;" onclick="CrearBtnClick()">クリア</button>
-            <button type="submit" class="btn btn-primary" style="width: 150px;">検索</button>
+            <button type="button" class="btn btn-primary" style="width: 150px;" id="clear_Btn" onclick="clearFormAll()">クリア</button>
+            <button type="submit" class="btn btn-primary" style="width: 150px;" id="search_Btn">検索</button>
         </div>
     </div>
 </form>

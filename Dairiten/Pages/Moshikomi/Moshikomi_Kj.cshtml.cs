@@ -26,16 +26,16 @@ namespace Dairiten.Pages
         public t_keiyaku data { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public DateTime sakuseibi_s { get; set; }
+        public DateTime sakuseibi_From { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public DateTime sakuseibi_e { get; set; }
+        public DateTime sakuseibi_To { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public DateTime hokenshiki_s { get; set; }
+        public DateTime hokenshiki_From { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public DateTime hokenshiki_e { get; set; }
+        public DateTime hokenshiki_To { get; set; }
 
         public async Task OnGetAsync()
         {
@@ -190,7 +190,7 @@ namespace Dairiten.Pages
             }
 
             //契約者名カナ
-            string search_KeiyakushameiKana = (string)Request.Form["keiyakushameiKana"];
+            string search_KeiyakushameiKana = System.Text.RegularExpressions.Regex.Replace((string)Request.Form["keiyakushameiKana"], @"[\s]+", "");
             if (!string.IsNullOrEmpty(search_KeiyakushameiKana))
             {
                 moshikomis = moshikomis.Where(k => (k.k_sei_kana + k.k_mei_kana).Contains(search_KeiyakushameiKana));
@@ -204,7 +204,7 @@ namespace Dairiten.Pages
             }
 
             //被保険者名カナ
-            string search_HihokenshameiKana = (string)Request.Form["hihokenshameiKana"];
+            string search_HihokenshameiKana = System.Text.RegularExpressions.Regex.Replace((string)Request.Form["hihokenshameiKana"], @"[\s]+", "");
             if (!string.IsNullOrEmpty(search_HihokenshameiKana))
             {
                 moshikomis = moshikomis.Where(k => (k.h_sei_kana + k.h_mei_kana).Contains(search_HihokenshameiKana));
@@ -231,28 +231,28 @@ namespace Dairiten.Pages
                 moshikomis = moshikomis.Where(k => k.h_address3.Contains(search_HihokenshaTatemono));
             }
 
-            //申込書作成日(Start)
-            if (sakuseibi_s.Date != DateTime.Parse("0001/01/01 00:00:00"))
+            //申込書作成日(From)
+            if (sakuseibi_From.Date != DateTime.Parse("0001/01/01 00:00:00"))
             {
-                moshikomis = moshikomis.Where(k => k.moshikomisho_day >= sakuseibi_s);
+                moshikomis = moshikomis.Where(k => k.moshikomisho_day >= sakuseibi_From);
             }
 
-            //申込書作成日(End)
-            if (sakuseibi_e.Date != DateTime.Parse("0001/01/01 00:00:00"))
+            //申込書作成日(To)
+            if (sakuseibi_To.Date != DateTime.Parse("0001/01/01 00:00:00"))
             {
-                moshikomis = moshikomis.Where(k => k.moshikomisho_day <= sakuseibi_e);
+                moshikomis = moshikomis.Where(k => k.moshikomisho_day <= sakuseibi_To);
             }
 
-            //保険始期(Start)
-            if (hokenshiki_s.Date != DateTime.Parse("0001/01/01 00:00:00"))
+            //保険始期(From)
+            if (hokenshiki_From.Date != DateTime.Parse("0001/01/01 00:00:00"))
             {
-                moshikomis = moshikomis.Where(k => k.hokenshiki >= hokenshiki_s);
+                moshikomis = moshikomis.Where(k => k.hokenshiki >= hokenshiki_From);
             }
 
-            //保険始期(End)
-            if (hokenshiki_e.Date != DateTime.Parse("0001/01/01 00:00:00"))
+            //保険始期(To)
+            if (hokenshiki_To.Date != DateTime.Parse("0001/01/01 00:00:00"))
             {
-                moshikomis = moshikomis.Where(k => k.hokenshiki <= hokenshiki_e);
+                moshikomis = moshikomis.Where(k => k.hokenshiki <= hokenshiki_To);
             }
 
             Keiyakus = moshikomis.ToList();

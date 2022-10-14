@@ -39,12 +39,22 @@
                 <div>
                     <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">ログイン</button>
                 </div>
+            </form>
+                <br>
+                <div class="row">
+                    <form class="col-6" asp-area="Identity" asp-page="/Account/Manage/ChangePassword" method="get">
+                        <button id="pass-change-submit" type="submit" class="w-100 btn btn-lg btn-primary">パスワードの変更</button>
+                    </form>
+                    <form class="col-6">
+                        <button id="close-submit" type="submit" class="w-100 btn btn-lg btn-primary" onclick="window.close();">閉じる</button>
+                    </form>
+                </div>
                 <div>
                     <p>
                         <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">新規ユーザー登録</a>
                     </p>
                 </div>
-            </form>
+            
         </section>
     </div>
 </div>

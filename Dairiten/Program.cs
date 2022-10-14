@@ -37,7 +37,7 @@ builder.Services.AddDistributedMemoryCache();
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Cookie.HttpOnly = true;
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(3);
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
     options.LoginPath = "/Identity/Account/Login";
 });
 

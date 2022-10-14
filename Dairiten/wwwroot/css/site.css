@@ -21,6 +21,7 @@ body {
     float: left;
     height: 32px;
     width: 180px;
+    line-height: 32px;
     background-color: #4169E1;
     margin: 0 0 1px; /* 箱と箱の間のスペース設定 左から　上 左右 下　の幅を設定しています */
     padding: 1px 3px; /* 箱の中の文字と箱の幅のスペース設定　左から　上下 左右 */
@@ -39,6 +40,27 @@ body {
     float: left;
     height: 32px;
     width: 80px;
+    line-height: 32px;
+    background-color: #4169E1;
+    margin: 0 0 1px; /* 箱と箱の間のスペース設定 左から　上 左右 下　の幅を設定しています */
+    padding: 1px 3px; /* 箱の中の文字と箱の幅のスペース設定　左から　上下 左右 */
+}
+
+.komoku4 {
+    float: left;
+    height: 32px;
+    width: 100px;
+    line-height: 32px;
+    background-color: #4169E1;
+    margin: 0 0 1px; /* 箱と箱の間のスペース設定 左から　上 左右 下　の幅を設定しています */
+    padding: 1px 3px; /* 箱の中の文字と箱の幅のスペース設定　左から　上下 左右 */
+}
+
+.komoku5 {
+    float: left;
+    height: 32px;
+    width: 300px;
+    line-height: 32px;
     background-color: #4169E1;
     margin: 0 0 1px; /* 箱と箱の間のスペース設定 左から　上 左右 下　の幅を設定しています */
     padding: 1px 3px; /* 箱の中の文字と箱の幅のスペース設定　左から　上下 左右 */
@@ -54,6 +76,12 @@ body {
     height: 32px;
     width: auto;
     background-color: #DCDCDC
+}
+
+.comment1 {
+    height: 32px;
+    width: auto;
+    background-color: #BBBBBB
 }
 
 .text-red {
