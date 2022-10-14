@@ -1,6 +1,8 @@
 ﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
+const { event } = require("jquery");
+
 //import { Modal } from "../lib/bootstrap/dist/js/bootstrap.bundle";
 
 // Write your JavaScript code.
@@ -16,6 +18,17 @@ function shohinKbnBtnClick() {
     } else {
         jigyoForm.style.display = "";
         jutakuForm.style.display = "none";
+    }
+}
+
+/*告知事項等ラジオボタン（申込入力画面）*/
+function other_hokenBtnClick() {
+    let btnNO = document.getElementById("other_hokenRadio1");
+    let otherHokenForm = document.getElementById("other_hoken-form");
+    if (btnNO.checked) {
+        otherHokenForm.style.display = "none";
+    } else {
+        otherHokenForm.style.display = "";
     }
 }
 
@@ -115,3 +128,14 @@ function toFullZenkana(elm, id) {
     }
     document.getElementById(id).value = fullStr;
 } 
+
+/*保証人区分「その他」選択時*/
+function hoshonin_kbnChange() {
+    let txt_hoshonin = document.getElementById("hoshonin_kbn_other");
+    var selected = $("#hoshonin_kbn").children("option:selected");
+    if (selected.text() == 'その他') {
+        txt_hoshonin.disabled = false;
+    } else {
+        txt_hoshonin.disabled = true;
+    }
+}

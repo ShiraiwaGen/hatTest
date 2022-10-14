@@ -15,6 +15,7 @@ html {
 
 body {
   margin-bottom: 60px;
+  padding-top: 65px;
 }
 
 .komoku1 {
@@ -58,9 +59,107 @@ body {
 
 .komoku5 {
     float: left;
-    height: 32px;
+    height: 70px;
+    width: auto;
+    line-height: 32px;
+    background-color: #4169E1;
+    margin: 0 0 0; /* 箱と箱の間のスペース設定 左から　上 左右 下　の幅を設定しています */
+    padding: 1px 3px; /* 箱の中の文字と箱の幅のスペース設定　左から　上下 左右 */
+}
+
+.komoku6 {
+    float: left;
+    height: 80px;
     width: 300px;
     line-height: 32px;
+    background-color: #4169E1;
+    margin: 0 0 1px; /* 箱と箱の間のスペース設定 左から　上 左右 下　の幅を設定しています */
+    padding: 1px 3px; /* 箱の中の文字と箱の幅のスペース設定　左から　上下 左右 */
+}
+
+.komoku7 {
+    float: left;
+    height: 70px;
+    width: auto;
+    line-height: 32px;
+    background-color: #4169E1;
+    margin: 0 0 1px; /* 箱と箱の間のスペース設定 左から　上 左右 下　の幅を設定しています */
+    padding: 1px 3px; /* 箱の中の文字と箱の幅のスペース設定　左から　上下 左右 */
+}
+
+.komoku8 {
+    float: left;
+    height: 248px;
+    width: auto;
+    background-color: #4169E1;
+    margin: 0 1px 1px; /* 箱と箱の間のスペース設定 左から　上 左右 下　の幅を設定しています */
+    padding: 1px 3px; /* 箱の中の文字と箱の幅のスペース設定　左から　上下 左右 */
+}
+
+.komoku9 {
+    float: left;
+    height: 32px;
+    width: auto;
+    line-height: 32px;
+    background-color: #4169E1;
+    margin: 0 0 1px; /* 箱と箱の間のスペース設定 左から　上 左右 下　の幅を設定しています */
+    padding: 1px 3px; /* 箱の中の文字と箱の幅のスペース設定　左から　上下 左右 */
+}
+
+.komoku10 {
+    float: left;
+    height: 204px;
+    width: auto;
+    background-color: #4169E1;
+    margin: 0 1px 1px; /* 箱と箱の間のスペース設定 左から　上 左右 下　の幅を設定しています */
+    padding: 1px 3px; /* 箱の中の文字と箱の幅のスペース設定　左から　上下 左右 */
+}
+
+.komoku11 {
+    float: left;
+    height: 100px;
+    width: auto;
+    line-height: 38px;
+    background-color: #4169E1;
+    margin: 0 0 1px; /* 箱と箱の間のスペース設定 左から　上 左右 下　の幅を設定しています */
+    padding: 1px 3px; /* 箱の中の文字と箱の幅のスペース設定　左から　上下 左右 */
+}
+
+.komoku12 {
+    float: left;
+    height: 32px;
+    width: auto;
+    line-height: 32px;
+    background-color: #4169E1;
+    margin: 0 0 0; /* 箱と箱の間のスペース設定 左から　上 左右 下　の幅を設定しています */
+    padding: 1px 3px; /* 箱の中の文字と箱の幅のスペース設定　左から　上下 左右 */
+}
+
+.komoku13 {
+    float: left;
+    height: 144px;
+    width: auto;
+    line-height: 32px;
+    background-color: #4169E1;
+    margin: 0 0 1px; /* 箱と箱の間のスペース設定 左から　上 左右 下　の幅を設定しています */
+    padding: 1px 3px; /* 箱の中の文字と箱の幅のスペース設定　左から　上下 左右 */
+}
+
+.komoku14 {
+    float: left;
+    height: 36px;
+    width: auto;
+    line-height: 32px;
+    background-color: #4169E1;
+    margin: 0 0 1px; /* 箱と箱の間のスペース設定 左から　上 左右 下　の幅を設定しています */
+    padding: 1px 3px; /* 箱の中の文字と箱の幅のスペース設定　左から　上下 左右 */
+}
+
+.komoku15 {
+    float: left;
+    height: 110px;
+    width: auto;
+    line-height: 38px;
     background-color: #4169E1;
     margin: 0 0 1px; /* 箱と箱の間のスペース設定 左から　上 左右 下　の幅を設定しています */
     padding: 1px 3px; /* 箱の中の文字と箱の幅のスペース設定　左から　上下 左右 */
@@ -69,21 +168,80 @@ body {
 .atai1 {
     height: 32px;
     width: auto;
-    background-color: #DCDCDC
+    background-color: #DCDCDC;
 }
 
 .atai2 {
     height: 32px;
     width: auto;
-    background-color: #DCDCDC
+    background-color: #DCDCDC;
+}
+
+.atai3 {
+    height: 80px;
+    width: auto;
+    background-color: #DCDCDC;
+}
+
+.atai4 {
+    height: 70px;
+    width: auto;
+    background-color: #DCDCDC;
+}
+
+.atai5 {
+    height: 100px;
+    width: auto;
+    background-color: #DCDCDC;
+}
+
+.atai6 {
+    height: 110px;
+    width: auto;
+    background-color: #DCDCDC;
 }
 
 .comment1 {
     height: 32px;
     width: auto;
-    background-color: #BBBBBB
+    background-color: #BBBBBB;
+}
+
+.comment2 {
+    height: 80px;
+    width: auto;
+    background-color: #BBBBBB;
+    position: relative;
+}
+
+.comment3 {
+    height: 70px;
+    width: auto;
+    background-color: #BBBBBB;
+    position: relative;
+}
+
+.comment4 {
+    height: 100px;
+    width: auto;
+    background-color: #BBBBBB;
+    position: relative;
+}
+
+.comment5 {
+    height: 110px;
+    width: auto;
+    background-color: #BBBBBB;
+    position: relative;
 }
 
 .text-red {
     color: red;
+}
+
+.center-moji {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
 }

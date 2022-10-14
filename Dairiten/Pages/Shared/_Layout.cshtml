@@ -16,7 +16,7 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">ハトネッツ少額短期保険準備株式会社</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -31,8 +31,8 @@
         </nav>
     </header>
     <div class="container-fluid">
-        <div class="row h-100">
-			<div class="col-2" style="background:#66CDAA">
+        <div class="row">
+			<div class="col-2" style="background: #66CDAA; position: sticky; top: 65px; height: 1000px;">
                 <details open>
                     <summary>契約管理</summary>
                     <p>
