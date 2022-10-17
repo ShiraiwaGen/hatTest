@@ -22,7 +22,21 @@ namespace Dairiten.Pages
         }
         public void OnPost()
         {
+            int hojinkeitai_num = -1;      //法人形態
 
+            //法人形態を取得
+            string hojinkeitai_selected = (string)Request.Form["hojinkeitai"];
+            if (!string.IsNullOrEmpty(hojinkeitai_selected))
+            {
+                foreach (var master in _context.m_master.Where(m => m.m_master_kbn_id == 14))
+                {
+                    if (hojinkeitai_selected.Equals(master.item_name))
+                    {
+                        hojinkeitai_num = master.item_no;
+                        break;
+                    }
+                }
+            }
         }
     }
 }
