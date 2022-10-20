@@ -46,9 +46,10 @@ namespace Dairiten.Models
         public string dairiten_address { get; set; }
 
         [DisplayName("廃業区分")]
-        [RegularExpression(@"[0-9]+", ErrorMessage = "廃業区分は半角数字のみ入力できます")]
-        [Range(0, 1, ErrorMessage = "廃業区分は０か１でお願いします")]
-        public bool haigyo_kbn { get; set; } 
+        //[RegularExpression(@"[0-9]+", ErrorMessage = "廃業区分は半角数字のみ入力できます")]
+        //[Range(0, 1, ErrorMessage = "廃業区分は０か１でお願いします")]
+        //public bool haigyo_kbn { get; set; } 
+        public bool haigyo_kbn { get; set; }
 
         [DisplayName("精算")]
         [RegularExpression(@"[0-9]+", ErrorMessage = "精算は半角数字のみ入力できます")]

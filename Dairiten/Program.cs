@@ -1,8 +1,14 @@
 using Dairiten.Areas.Identity;
 using Dairiten.Data;
 using Dairiten.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
+using System.Text;
+using System.Xml.Linq;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +36,8 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequireLowercase = true;
     // パスワードに数値を含む必要があるか
     options.Password.RequireDigit = true;
+    //// ロックアウト：何回認証に失敗したらロックアウトするか
+    //options.Lockout.MaxFailedAccessAttempts = 5;
 });
 
 builder.Services.AddDistributedMemoryCache();
@@ -66,3 +74,52 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
+
+namespace Dairiten
+{
+    public static class Program_Model
+    {
+        private static readonly Dairiten.Data.ApplicationDbContext _context;
+
+        //代理店名、コード、募集人キー取得
+        public static string[] Dairiten_Get()
+        {
+            //string currentUserId = User.Identity.GetUserId();
+            string currentUserId = "ad97ccd7 - 77ad - 4130 - 95fe - b18f6a201239";
+            string[] arr = new string[2];
+
+            var nowData = from m in _context.m_dairiten
+                          join t in _context.appUsers
+                          on m.id equals t.m_dairiten_id
+                          where t.Id == currentUserId
+                          select new
+                          {
+                              d_no = m.dairiten_code,
+                              d_name = m.dairiten_mei,
+                              bnin_no = t.employee_code
+                          };
+            nowData.ToList();
+            if (nowData != null)
+            {
+                foreach (var item in nowData)
+                {
+
+                    arr[0] = item.d_no;
+                    arr[1] = item.d_name;
+                    arr[2] = item.bnin_no;
+                }
+            }
+  
+            return arr;
+        }
+
+        //全角チェック    
+        public static bool IsFullWitdh1(string chkStr)
+        {
+            Encoding shiftjisEnc = Encoding.GetEncoding("Shift_JIS");
+            int chrByteNum = shiftjisEnc.GetByteCount(chkStr);
+            bool isAllFullWidth = (chrByteNum == chkStr.Length * 2);
+            return isAllFullWidth;
+        }
+    }
+}

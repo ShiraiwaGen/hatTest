@@ -4,12 +4,19 @@
     ViewData["Title"] = "物件情報取込";
 }
 
+@if (Model.error_msg != null)
+{
+    <SCRIPT LANGUAGE="JavaScript">
+        alert(Model.error_msg);
+    </SCRIPT>
+}
+
 <div class="container-fluid g-1">
     <div class="text-start">
         <h4 class="" style="background:#DCDCDC">物件情報取込</h4>
     </div>
 
-    <form method="post">        
+    <form method="post" enctype="multipart/form-data" name="form1">
         <div class="komoku1 text-white mb-1" style="margin-right: 11px;">　</div>
         <div class="atai1 mb-1">
             <label for="memo1" class="col-form-label col-form-label">取込対象の代理店コードと取り込むファイルを指定してください。</label>
@@ -23,10 +30,10 @@
         <div class="atai1 mb-1">
             <!--<input type="file" id="formfile" name="formfile" accept=".csv" />
             <input type="button" class="btn btn-primary form-control" value="参照" />-->
-
-            <input type="file" id="file" accept=".csv" asp-for="file_name" onchange="$('#fake_text_box').val($(this).val())">
+            @*<input type="file" id="file" accept=".csv" asp-for="formfile" onchange="$('#fake_text_box').val($(this).val())">*@
             <!--<input type="text" id="file_upload" value="参照" onClick="$('#file').click();">-->
             <!--<input type="text" id="fake_text_box" value="" size="35" readonly onClick="$('#file').click();">-->
+            <input type="file" id="formfile" name="formfile" accept=".csv" />
         </div>
         <div class="text-start">
             支店が複数存在する場合は、支店ごとに取込みをおこなってください。
@@ -34,9 +41,10 @@
         <br>
         <div class="text-end">
             <button type="button" class="btn btn-primary" style="width: 150px;" onclick="clearFormAll()">クリア</button>
-            <button type="input" class="btn btn-primary" style="width: 200px;">取込ファイル内容表示</button>
+            @*<button type="input" class="btn btn-primary" style="width: 200px;">取込ファイル内容表示</button>*@
+            <input type="submit" class="btn btn-primary" asp-page-handler="Handle1" value="取込ファイル内容表示" />
         </div>
-    </form>
+    
 
     <br />
 
@@ -49,17 +57,32 @@
 
     <p>取込物件一覧</p>
     <div class="text-center">        
-            <table id="mytable" class="table table-bordered">
+        <table id="mytable" class="table table-bordered">
             <thead>
                 <tr>
                     <th>
-                        Id
+                        項番
                     </th>
                     <th>
-                        Name
+                        建物名
                     </th>
                     <th>
-                        Age
+                        号室
+                    </th>
+                    <th>
+                        物件番号
+                    </th>
+                    <th>
+                        郵便番号
+                    </th>
+                    <th>
+                        住所
+                    </th>
+                    <th>
+                        戸建て
+                    </th>
+                    <th>
+                        代理店
                     </th>
                 </tr>
             </thead>
@@ -67,13 +90,28 @@
                 @foreach (var item in Model.mylist)
                 {
                     <tr>
-                        @Html.Raw(item.Id)
-                        @Html.Raw(item.Name)
-                        @Html.Raw(item.Age)
+                        <td rowspan=2>
+                            @Html.Raw(item.b_count)
+                        </td>
+                        @Html.Raw(item.b_address3)
+                        @Html.Raw(item.b_address5)
+                        @Html.Raw(item.bukken_no)
+                        @Html.Raw(item.b_zip)
+                        @Html.Raw(item.b_address1)                        
+                        @Html.Raw(item.b_kodate)
+                        @Html.Raw(item.d_code)
+                    </tr>
+                    <tr>
+                        @Html.Raw(item.b_address2)
                     </tr>
                 }
             </tbody>
         </table>       
     </div>
     }
+    @if (Model.eflg == false)
+    {
+        <input type="submit" class="btn btn-primary" asp-page-handler="Handle2" value="登録" />
+    }
+    </form>
 </div>

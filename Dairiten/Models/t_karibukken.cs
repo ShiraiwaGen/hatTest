@@ -9,7 +9,7 @@ namespace Dairiten.Models
     {
         [DisplayName("物件番号")]
         [RegularExpression(@"[0-9]+", ErrorMessage = "半角数字のみ入力できます")]
-        public int bukken_no { get; set; }
+        public string bukken_no { get; set; }
 
         [DisplayName("郵便番号")]
         [Required]
@@ -31,9 +31,13 @@ namespace Dairiten.Models
         [StringLength(50, ErrorMessage = "住所（建物名）は５０文字以内でお願いします")]
         public string? b_address3 { get; set; }
 
+        [DisplayName("住所（棟番号）")]
+        [StringLength(25, ErrorMessage = "棟番号は２５文字以内でお願いします")]
+        public string? b_address4 { get; set; }
+
         [DisplayName("住所（号室）")]
         [StringLength(25, ErrorMessage = "住所（号室）は２５文字以内でお願いします")]
-        public string? b_address4 { get; set; }
+        public string? b_address5 { get; set; }
 
         [DisplayName("戸建区分")]
         [RegularExpression(@"[0-9]+", ErrorMessage = "半角数字のみ入力できます")]

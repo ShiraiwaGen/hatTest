@@ -103,6 +103,11 @@ $("#mytable").DataTable({
     stateSave: true,//保持機能を有効にする
     searching: true, // falseにすると独自の検索も反映されない
     bProcessing: true,//ソート処理などの処理中を表すインジケータの表示有無
+    //scrollY: false,//Y方向（縦方向）スクロール
+    //ordering: false, //並び替え許可
+    //dom: "<'row'<'col-sm-6'l><'col-sm-6 right'i>>" +
+    //    "<'row'<'col-sm-12'tr>>" +
+    //    "<'row'<'col-sm-12'p>>",
 });
 
 /*全角→半角（カタカナ）*/
