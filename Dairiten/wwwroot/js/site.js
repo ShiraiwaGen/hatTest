@@ -1,11 +1,13 @@
 ﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
+const { event } = require("jquery");
+
 //import { Modal } from "../lib/bootstrap/dist/js/bootstrap.bundle";
 
 // Write your JavaScript code.
 
-/*商品選択ラジオボタン（申込入力画面）*/
+/*商品区分ラジオボタン（申込入力画面）*/
 function shohinKbnBtnClick() {
     let btnJutaku = document.getElementById("shohinKbnRadio1");
     let jutakuForm = document.getElementById("jutaku-form");
@@ -16,6 +18,46 @@ function shohinKbnBtnClick() {
     } else {
         jigyoForm.style.display = "";
         jutakuForm.style.display = "none";
+    }
+}
+
+/*契約者区分ラジオボタン（申込入力画面）*/
+function keiyakushaKbnBtnClick() {
+    let btnKojin = document.getElementById("keiyakushaKbnRadio1");
+    let btnHojin = document.getElementById("keiyakushaKbnRadio2");
+    let btnKojinJigyonushi = document.getElementById("keiyakushaKbnRadio3");
+    let ju_KojinForm = document.getElementById("jutaku_kojin");
+    let ju_HojinForm = document.getElementById("jutaku_hojin");
+    let ju_Hojin2Form = document.getElementById("jutaku_hojin2");
+    let ju_KojinJigyonushiForm = document.getElementById("jutaku_kojinjigyonushi");
+    if (btnKojin.checked) {
+        ju_KojinForm.style.display = "";
+        ju_HojinForm.style.display = "none";
+        ju_Hojin2Form.style.display = "none";
+        ju_KojinJigyonushiForm.style.display = "none";
+    }
+    if (btnHojin.checked) {
+        ju_KojinForm.style.display = "none";
+        ju_HojinForm.style.display = "";
+        ju_Hojin2Form.style.display = "";
+        ju_KojinJigyonushiForm.style.display = "none";
+    }
+    if (btnKojinJigyonushi.checked) {
+        ju_KojinForm.style.display = "none";
+        ju_HojinForm.style.display = "none";
+        ju_Hojin2Form.style.display = "none";
+        ju_KojinJigyonushiForm.style.display = "";
+    }
+}
+
+/*告知事項等ラジオボタン（申込入力画面）*/
+function other_hokenBtnClick() {
+    let btnNO = document.getElementById("other_hokenRadio1");
+    let otherHokenForm = document.getElementById("other_hoken-form");
+    if (btnNO.checked) {
+        otherHokenForm.style.display = "none";
+    } else {
+        otherHokenForm.style.display = "";
     }
 }
 
@@ -111,7 +153,7 @@ $("#mytable").DataTable({
 });
 
 /*全角→半角（カタカナ）*/
-function toFullZenkana(elm, id) {
+function toHankakuKana(elm, id) {
     var beforeStr = new Array('ァ', 'ィ', 'ゥ', 'ェ', 'ォ', 'ャ', 'ュ', 'ョ', 'ッ', 'ー', 'ヴ', 'ガ', 'ギ', 'グ', 'ゲ', 'ゴ', 'ザ', 'ジ', 'ズ', 'ゼ', 'ゾ', 'ダ', 'ヂ', 'ヅ', 'デ', 'ド', 'バ', 'ビ', 'ブ', 'ベ', 'ボ', 'パ', 'ピ', 'プ', 'ペ', 'ポ', 'ア', 'イ', 'ウ', 'エ', 'オ', 'カ', 'キ', 'ク', 'ケ', 'コ', 'サ', 'シ', 'ス', 'セ', 'ソ', 'タ', 'チ', 'ツ', 'テ', 'ト', 'ナ', 'ニ', 'ヌ', 'ネ', 'ノ', 'ハ', 'ヒ', 'フ', 'ヘ', 'ホ', 'マ', 'ミ', 'ム', 'メ', 'モ', 'ヤ', 'ユ', 'ヨ', 'ラ', 'リ', 'ル', 'レ', 'ロ', 'ワ', 'ヲ', 'ン');
     var afterStr = new Array('ｧ', 'ｨ', 'ｩ', 'ｪ', 'ｫ', 'ｬ', 'ｭ', 'ｮ', 'ｯ', 'ｰ', 'ｳﾞ', 'ｶﾞ', 'ｷﾞ', 'ｸﾞ', 'ｹﾞ', 'ｺﾞ', 'ｻﾞ', 'ｼﾞ', 'ｽﾞ', 'ｾﾞ', 'ｿﾞ', 'ﾀﾞ', 'ﾁﾞ', 'ﾂﾞ', 'ﾃﾞ', 'ﾄﾞ', 'ﾊﾞ', 'ﾋﾞ', 'ﾌﾞ', 'ﾍﾞ', 'ﾎﾞ', 'ﾊﾟ', 'ﾋﾟ', 'ﾌﾟ', 'ﾍﾟ', 'ﾎﾟ', 'ｱ', 'ｲ', 'ｳ', 'ｴ', 'ｵ', 'ｶ', 'ｷ', 'ｸ', 'ｹ', 'ｺ', 'ｻ', 'ｼ', 'ｽ', 'ｾ', 'ｿ', 'ﾀ', 'ﾁ', 'ﾂ', 'ﾃ', 'ﾄ', 'ﾅ', 'ﾆ', 'ﾇ', 'ﾈ', 'ﾉ', 'ﾊ', 'ﾋ', 'ﾌ', 'ﾍ', 'ﾎ', 'ﾏ', 'ﾐ', 'ﾑ', 'ﾒ', 'ﾓ', 'ﾔ', 'ﾕ', 'ﾖ', 'ﾗ', 'ﾘ', 'ﾙ', 'ﾚ', 'ﾛ', 'ﾜ', 'ｦ', 'ﾝ');
     var fullStr = elm.value;
@@ -120,3 +162,86 @@ function toFullZenkana(elm, id) {
     }
     document.getElementById(id).value = fullStr;
 } 
+
+/*保証人区分「その他」選択時（申込入力画面）*/
+function hoshonin_kbnChange() {
+    let txtHoshonin = document.getElementById("hoshonin_kbn_other");
+    var selected = $("#hoshonin_kbn").children("option:selected");
+    if (selected.text() == 'その他') {
+        txtHoshonin.disabled = false;
+    } else {
+        txtHoshonin.disabled = true;
+    }
+}
+
+/*法人形態プルダウン選択時（申込入力画面）*/
+function hojinkeitaiChange() {
+    let btnHojinkeitai_mae = document.getElementById("hojinkeitai_ichiRadio1");
+    let btnHojinkeitai_ushiro = document.getElementById("hojinkeitai_ichiRadio2");
+    let txtHojinkeitai_mae = document.getElementById("hojinkeitai_mae");
+    let txtHojinkeitai_ushiro = document.getElementById("hojinkeitai_ushiro");
+    let txtHojinkeitai_other = document.getElementById("hojinkeitai_other");
+    var selected = $("#hojinkeitai").children("option:selected");
+    if (selected.text() == '') {
+        txtHojinkeitai_mae.value = '';
+        txtHojinkeitai_ushiro.value = '';
+        txtHojinkeitai_other.disabled = false;
+    } else if (selected.text() == 'なし') {
+        txtHojinkeitai_mae.value = '';
+        txtHojinkeitai_ushiro.value = '';
+        txtHojinkeitai_other.value = '';
+        txtHojinkeitai_other.disabled = true;
+    } else if (selected.text() != '') {
+        txtHojinkeitai_other.value = '';
+        txtHojinkeitai_other.disabled = true;
+        if (btnHojinkeitai_mae.checked) {
+            txtHojinkeitai_mae.value = selected.text();
+        } else if (btnHojinkeitai_ushiro.checked) {
+            txtHojinkeitai_ushiro.value = selected.text();
+        }
+    }
+}
+
+/*法人形態その他入力時（申込入力画面）*/
+function hojinkeitai_otherChange() {
+    let btnHojinkeitai_mae = document.getElementById("hojinkeitai_ichiRadio1");
+    let btnHojinkeitai_ushiro = document.getElementById("hojinkeitai_ichiRadio2");
+    let txtHojinkeitai_mae = document.getElementById("hojinkeitai_mae");
+    let txtHojinkeitai_ushiro = document.getElementById("hojinkeitai_ushiro");
+    let txtHojinkeitai_other = document.getElementById("hojinkeitai_other");
+    if (btnHojinkeitai_mae.checked) {
+        txtHojinkeitai_mae.value = txtHojinkeitai_other.value;
+    } else if (btnHojinkeitai_ushiro.checked) {
+        txtHojinkeitai_ushiro.value = txtHojinkeitai_other.value;
+    }
+}
+
+/*法人形態位置ラジオボタン（申込入力画面）*/
+function hojinkeitai_ichiBtnClick() {
+    let btnHojinkeitai_mae = document.getElementById("hojinkeitai_ichiRadio1");
+    let btnHojinkeitai_ushiro = document.getElementById("hojinkeitai_ichiRadio2");
+    let txtHojinkeitai_mae = document.getElementById("hojinkeitai_mae");
+    let txtHojinkeitai_ushiro = document.getElementById("hojinkeitai_ushiro");
+    let txtHojinkeitai_other = document.getElementById("hojinkeitai_other");
+    var selected = $("#hojinkeitai").children("option:selected");
+    if (selected.text() == 'なし') {
+        txtHojinkeitai_mae.value = '';
+        txtHojinkeitai_ushiro.value = '';
+    } else if (selected.text() != '') {
+        if (btnHojinkeitai_mae.checked) {
+            txtHojinkeitai_mae.value = selected.text();
+            txtHojinkeitai_ushiro.value = '';
+        } if (btnHojinkeitai_ushiro.checked) {
+            txtHojinkeitai_mae.value = '';
+            txtHojinkeitai_ushiro.value = selected.text();
+        }
+    } else if (txtHojinkeitai_other.value != '') {
+        if (btnHojinkeitai_mae.checked) {
+            txtHojinkeitai_mae.value = txtHojinkeitai_other.value;
+            txtHojinkeitai_ushiro.value = '';
+        } if (btnHojinkeitai_ushiro.checked) {
+            txtHojinkeitai_mae.value = '';
+            txtHojinkeitai_ushiro.value = txtHojinkeitai_other.value;
+        }
+    }
+}

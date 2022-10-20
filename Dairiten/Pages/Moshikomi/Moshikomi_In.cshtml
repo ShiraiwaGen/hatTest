@@ -9,37 +9,38 @@
         <h4 class="" style="background:#DCDCDC">申込入力</h4>
     </div>
 </div>
-<p>★申込書を入力、もしくは修正できます。</p>
-<p>★基本情報</p>
-<div class="row g-0">
-    <div class="col-4">
-        <div class="komoku4 text-white mb-1">証券番号</div>
-            <div class="atai2 mb-1">
-                <label class="col-form-label"></label>
-            </div>
-    </div>
-    <div class="col-4">
-        <div class="komoku4 text-white mb-1">旧証券番号</div>
-            <div class="atai2 mb-1">
-                <label class="col-form-label"></label>
-            </div>
-    </div>
-    <div class="col-4">
-        <div class="komoku4 text-white mb-1">受付区分</div>
-            <div class="atai2 mb-1">
-                <label class="col-form-label"></label>
-            </div>
-    </div>
-</div>
+<p style="line-height: 0.5">★申込書を入力、もしくは修正できます。</p>
 <br>
+<p style="line-height: 0.5">★基本情報</p>
 <form>
     <div class="row g-0">
+        <div class="col-4">
+            <div class="komoku4 text-white mb-1">証券番号</div>
+                <div class="atai2 mb-1">
+                    <label class="col-form-label"></label>
+                </div>
+        </div>
+        <div class="col-4">
+            <div class="komoku4 text-white mb-1">旧証券番号</div>
+                <div class="atai2 mb-1">
+                    <label class="col-form-label"></label>
+                </div>
+        </div>
+        <div class="col-4">
+            <div class="komoku4 text-white mb-1">受付区分</div>
+                <div class="atai2 mb-1">
+                    <label class="col-form-label"></label>
+                </div>
+        </div>
+    </div>
+    <br>
+    <div class="row g-0">
         <div class="col-2">
-            <div class="komoku5 text-white mb-1">商品区分</div>
+            <div class="komoku9 text-white mb-1 w-100">商品区分</div>
         </div>
         <div class="col-5">
-            <div class="atai2 mb-1 py-1">
-                <div class="form-check form-check-inline" style="margin-left: 10px;">
+            <div class="atai2 mb-1 py-1 ps-2">
+                <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="shohinKbnRadio" id="shohinKbnRadio1" onclick="shohinKbnBtnClick()" checked>
                     <label class="form-check-label" for="shohinKbnRadio1">住宅用</label>
                 </div>
@@ -50,44 +51,18 @@
             </div>
         </div>
         <div class="col-5">
-            <div class="comment1 mb-1">
-                <label class="col-form-label" style="margin-left: 10px; line-height: 16px;"></label>
+            <div class="comment1 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;"></label>
             </div>
         </div>
     </div>
-</form>
-<form>
     <div class="row g-0">
         <div class="col-2">
-            <div class="komoku5 text-white mb-1">用法</div>
+            <div class="komoku9 text-white mb-1 w-100">契約者区分</div>
         </div>
         <div class="col-5">
-            <div class="atai2 mb-1 py-1">
-                <div class="form-check form-check-inline" style="margin-left: 10px;">
-                    <input class="form-check-input" type="radio" name="yohoRadio" id="yohoRadio1" onclick="yohoBtnClick()" checked>
-                    <label class="form-check-label" for="yohoRadio1">事務所・店舗</label>
-                </div>
+            <div class="atai2 mb-1 py-1 ps-2">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="yohoRadio" id="yohoRadio2" onclick="yohoBtnClick()">
-                    <label class="form-check-label" for="yohoRadio2">飲食店</label>
-                </div>
-            </div>
-        </div>
-        <div class="col-5">
-            <div class="comment1 mb-1">
-                <label class="col-form-label" style="margin-left: 10px; line-height: 16px;"></label>
-            </div>
-        </div>
-    </div>
-</form>
-<form>
-    <div class="row g-0">
-        <div class="col-2">
-            <div class="komoku5 text-white mb-1">契約者区分</div>
-        </div>
-        <div class="col-5">
-            <div class="atai2 mb-1 py-1">
-                <div class="form-check form-check-inline" style="margin-left: 10px;">
                     <input class="form-check-input" type="radio" name="keiyakushaKbnRadio" id="keiyakushaKbnRadio1" onclick="keiyakushaKbnBtnClick()" checked>
                     <label class="form-check-label" for="keiyakushaKbnRadio1">個人</label>
                 </div>
@@ -102,36 +77,1309 @@
             </div>
         </div>
         <div class="col-5">
-            <div class="comment1 mb-1">
-                <label class="col-form-label" style="margin-left: 10px; line-height: 16px;">契約者区分を選択してください</label>
+            <div class="comment1 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;">契約者区分を選択してください</label>
             </div>
         </div>
+    </div>
+    <div class="row g-0">
+        <div class="col-2">
+            <div class="komoku9 text-white mb-1 w-100">申込書作成日</div>
+        </div>
+        <div class="col-5">
+            <div class="atai2 mb-1 ps-2">
+                <input type="date" class="form-control form-control-sm w-50" id="moshikomisho_day" value="年/月/日">
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="comment1 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;"></label>
+            </div>
+        </div>
+    </div>
+    <br>
+    <p style="line-height: 0.5">★補償内容</p>
+    <div id="jutaku-form">
+        <label for="inputPassword5" class="form-label">住宅用</label>
+        <div class="row g-0">
+            <div class="col-2">
+                <div class="komoku9 text-white mb-1 w-100">保険始期</div>
+            </div>
+            <div class="col-5">
+                <div class="atai2 mb-1 ps-2">
+                    <input type="date" class="form-control form-control-sm w-50" id="hokenshiki" value="年/月/日">
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;"></label>
+                </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-2">
+                <div class="komoku9 text-white mb-1 w-100">保険期間</div>
+            </div>
+            <div class="col-5">
+                <div class="atai2 mb-1 py-1 ps-2">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="jutaku_hokenkikanRadio" id="jutaku_hokenkikanRadio1" onclick="hokenkikanBtnClick()" checked>
+                        <label class="form-check-label" for="jutaku_hokenkikanRadio1">１年</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="jutaku_hokenkikanRadio" id="jutaku_hokenkikanRadio2" onclick="hokenkikanBtnClick()">
+                        <label class="form-check-label" for="jutaku_hokenkikanRadio2">２年</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;"></label>
+                </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-2">
+                <div class="komoku6 text-white mb-1">契約タイプ</div>
+            </div>
+            <div class="col-5">
+                <div class="atai3 mb-1 pt-1 ps-2">
+                    <select class="form-select form-select-sm w-50" aria-label=".form-select-sm example" name="shohin">
+                        <option selected></option>
+                        @foreach (var item in Model.m_Shohin.Where(m => m.hokenkikan == 1)) //上で選択した保険期間で商品を絞る？
+                        {
+                            <option>@Html.DisplayFor(modelItem => item.shohin_name)</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment2 mb-1 ps-2"></div>
+            </div>
+        </div>
+        <br>
+        <p style="line-height: 0.5">★契約者情報</p>
+        <div class="row g-0">
+            <div class="col-2">
+                <div class="komoku7 text-white mb-1 w-100">契約者連絡先</div>
+            </div>
+            <div class="col-5">
+                <div class="atai4 mb-1 pt-1 ps-2">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-5">
+                            <input type="tel" class="form-control form-control-sm" id="k_tel" name="k_tel" pattern="\d{2,4}-\d{2,4}-\d{3,4}">
+                        </div>
+                        <label for="k_tel" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(半角)</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment3 mb-1 ps-2">
+                    <label class="col-form-label center-moji">ハイフンありで入力してください。<br>例)03-1234-5678</label>
+                </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-2">
+                <div class="komoku7 text-white mb-1 w-100">契約者携帯</div>
+            </div>
+            <div class="col-5">
+                <div class="atai4 mb-1 pt-1 ps-2">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-5">
+                            <input type="tel" class="form-control form-control-sm" id="k_mobile" name="k_mobile" pattern="\d{2,4}-\d{2,4}-\d{3,4}">
+                        </div>
+                        <label for="k_mobile" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(半角)</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment3 mb-1 ps-2">
+                    <label class="col-form-label center-moji">ハイフンありで入力してください。<br>例)090-1234-5678</label>
+                </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-1 pe-1" >
+                <div class="komoku8 text-white mb-1 w-100">契約者住所<br><br><br><span style="color: red; font-weight: bold;">保険始期日時点の住所を入力してください。</span></div>
+            </div>
+            <div class="col-1">
+                <div class="komoku9 text-white mb-1 w-100">戸建て</div>
+                <div class="komoku9 text-white mb-1 w-100">物件番号</div>
+                <div class="komoku9 text-white mb-1 w-100">郵便番号</div>
+                <div class="komoku9 text-white mb-1 w-100">住所</div>
+                <div class="komoku9 text-white mb-1 w-100">丁目・番地</div>
+                <div class="komoku9 text-white mb-1 w-100">建物名</div>
+                <div class="komoku9 text-white mb-1 w-100">号室</div>
+            </div>
+            <div class="col-5">
+                <div class="atai2 mb-1 ps-2">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-6">
+                            <div class="form-check">
+                                <input class="form-check-input mt-2" type="checkbox" value="" id="k_kodateCheck">
+                                <label class="form-check-label mt-1" for="k_kodateCheck">
+                                    戸建て
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="atai2 mb-1 ps-2">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-3">
+                            <input type="tel" class="form-control form-control-sm" id="k_bukken_no" name="k_bukken_no" pattern="^[0-9]+$" maxlength="15">
+                        </div>
+                        <label for="k_bukken_no" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(半角)</label>
+                        <a class="col-sm-3 btn btn-primary btn-sm" asp-area="" asp-page="/Bukken/Bukken_K">物件検索</a>
+                    </div>
+                </div>
+                <div class="atai2 mb-1 ps-2">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-3">
+                            <input type="tel" class="form-control form-control-sm" id="k_zip" name="k_zip" pattern="^[0-9]+$" maxlength="7">
+                        </div>
+                        <label for="k_zip" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(半角)</label>
+                        <a class="col-sm-4 btn btn-primary btn-sm" asp-area="" asp-page="/Bukken/Bukken_K">郵便番号検索</a>
+                    </div>
+                </div>
+                <div class="atai2 mb-1 ps-2">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control form-control-sm" id="k_address1" name="k_address1" maxlength="55">
+                        </div>
+                        <label for="k_address1" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
+                    </div>
+                </div>
+                <div class="atai2 mb-1 ps-2">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control form-control-sm" id="k_address2" name="k_address2" maxlength="25">
+                        </div>
+                        <label for="k_address2" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
+                    </div>
+                </div>
+                <div class="atai2 mb-1 ps-2">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control form-control-sm" id="k_address3" name="k_address3" maxlength="50">
+                        </div>
+                        <label for="k_address3" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
+                    </div>
+                </div>
+                <div class="atai2 mb-1 ps-2">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control form-control-sm" id="k_address4" name="k_address4" maxlength="25">
+                        </div>
+                        <label for="k_address4" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;">戸建ての場合、チェックをしてください。</label>
+                </div>
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;">システムに登録した物件を検索できます。</label>
+                </div>
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;">住所より郵便番号を検索することができます。</label>
+                </div>
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;">例)東京都千代田区九段北</label>
+                </div>
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;">例)１－１－１</label>
+                </div>
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;">例)第一マンション</label>
+                </div>
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;">例)１０１</label>
+                </div>
+            </div>
+        </div>
+        <div id="jutaku_kojin">
+            <div class="row g-0">
+                <div class="col-1 pe-1" >
+                    <div class="komoku10 text-white mb-1 w-100">契約者名</div>
+                </div>
+                <div class="col-1">
+                    <div class="komoku11 text-white mb-1 w-100">カナ</div>
+                    <div class="komoku11 text-white mb-1 w-100">漢字</div>
+                </div>
+                <div class="col-5">
+                    <div class="atai5 mb-1 pt-1">
+                        <div class="row mb-3 g-0">
+                            <div class="col-sm-10">
+                                <div class="row g-0">
+                                    <div class="col-2" style="text-align: center;">
+                                        <p>ｾｲ</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="text" class="form-control form-control-sm" id="k_sei_kana" name="k_sei_kana" pattern="[\uFF66-\uFF9F]*" maxlength="50" onchange="toHankakuKana(this, id)">
+                                    </div>
+                                    <div class="col-2" style="text-align: center;">
+                                        <p>ﾒｲ</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="text" class="form-control form-control-sm" id="k_mei_kana" name="k_mei_kana" pattern="[\uFF66-\uFF9F]*" maxlength="50" onchange="toHankakuKana(this, id)">
+                                    </div>
+                                </div>
+                            </div>
+                            <label for="k_mei_kana" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(半角カナ)</label>
+                        </div>
+                    </div>
+                    <div class="atai5 mb-1 pt-1">
+                        <div class="row mb-3 g-0">
+                            <div class="col-sm-10">
+                                <div class="row g-0">
+                                    <div class="col-2" style="text-align: center;">
+                                        <p>姓</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="text" class="form-control form-control-sm" id="k_sei" name="k_sei" maxlength="50">
+                                    </div>
+                                    <div class="col-2" style="text-align: center;">
+                                        <p>名</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="text" class="form-control form-control-sm" id="k_mei" name="k_mei" maxlength="50">
+                                    </div>
+                                </div>
+                            </div>
+                            <label for="k_mei" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="comment4 mb-1 ps-2">
+                        <div class="center-moji">
+                            例)ｹｲﾔｸ ﾀﾛｳ<br>
+                            <span style="color: red;">【ご注意】アルファベット、数字等は入力できません。<br>
+                                「カタカナ」で入力をお願いします。
+                            </span>
+                        </div>
+                    </div>
+                    <div class="comment4 mb-1 ps-2">
+                        <div class="center-moji">
+                            例)契約 太郎<br>
+                            <span style="color: red;">【ご注意】旧字体や常用漢字以外の漢字を入力されますとエラーと
+                                なる場合があります。エラーの場合は「カタカナ」で入力をお願いします。
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col-2">
+                    <div class="komoku9 text-white mb-1 w-100">生年月日</div>
+                </div>
+                <div class="col-5">
+                    <div class="atai2 mb-1 ps-2">
+                        <input type="date" class="form-control form-control-sm w-50" id="k_birth" value="年/月/日">
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="comment1 mb-1 ps-2">
+                        <label class="col-form-label" style="line-height: 16px;"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col-2">
+                    <div class="komoku9 text-white mb-1 w-100">契約者メールアドレス</div>
+                </div>
+                <div class="col-5">
+                    <div class="atai2 mb-1 ps-2">
+                        <div class="row mb-3 g-0">
+                            <div class="col-sm-8">
+                                <input type="email" class="form-control form-control-sm" id="k_mail" name="k_mail">
+                            </div>
+                            <label for="k_mail" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(半角)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="comment1 mb-1 ps-2">
+                        <label class="col-form-label" style="line-height: 16px;"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col-2">
+                    <div class="komoku7 text-white mb-1 w-100">保証人区分</div>
+                </div>
+                <div class="col-5">
+                    <div class="atai4 mb-1 pt-1 ps-2">
+                        <select class="form-select form-select-sm w-50" aria-label=".form-select-sm example" name="hoshonin_kbn" id="hoshonin_kbn" onchange="hoshonin_kbnChange()">
+                            <option selected></option>
+                            @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 10))
+                            {
+                                <option>@Html.DisplayFor(modelItem => item.item_name)</option>
+                            }
+                        </select>
+                        <input type="text" class="form-control form-control-sm w-75" id="hoshonin_kbn_other" name="hoshonin_kbn_other" maxlength="100" disabled="disabled">
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="comment3 mb-1 ps-2">
+                        <label class="col-form-label center-moji">契約者が未成年の場合、選択してください。<br>
+                            その他の場合、具体的に記入してください。
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="jutaku_hojin" style="display:none">
+            <div class="row g-0">
+                <div class="col-2">
+                    <div class="komoku11 text-white mb-1 w-100">法人形態</div>
+                </div>
+                <div class="col-5">
+                    <div class="atai5 mb-1 pt-1 ps-2">
+                        <select class="form-select form-select-sm w-50 mb-1" aria-label=".form-select-sm example" name="hojinkeitai" id="hojinkeitai" onchange="hojinkeitaiChange()">
+                            <option selected></option>
+                            @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 14))
+                            {
+                                <option>@Html.DisplayFor(modelItem => item.item_name)</option>
+                            }
+                        </select>
+                        <div class="row mb-3 g-0">
+                            <div class="col-sm-10">
+                                <div class="row g-0">
+                                    <div class="col-3">
+                                        <p>上記以外</p>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" class="form-control form-control-sm" id="hojinkeitai_other" name="hojinkeitai_other" maxlength="50" onchange="hojinkeitai_otherChange()">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="comment4 mb-1 ps-2">
+                        <label class="col-form-label center-moji" style="line-height: 16px;">
+                            プルダウンメニューから選択してください。<br>
+                            メニューにない場合は「上記以外」に入力して<br>
+                            ください。<br>
+                            自治体等の場合は「なし」を選択してください。
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col-2">
+                    <div class="komoku7 text-white mb-1 w-100">法人形態位置</div>
+                </div>
+                <div class="col-5">
+                    <div class="atai4 mb-1 pt-1 ps-2">
+                        <div class="row mb-3 g-0">
+                            <div class="col-sm-10">
+                                <div class="row g-0">
+                                    <div class="col-3">
+                                        <p>法人名の</p>
+                                    </div>
+                                    <div class="col-9">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="hojinkeitai_ichiRadio" id="hojinkeitai_ichiRadio1" onclick="hojinkeitai_ichiBtnClick()">
+                                            <label class="form-check-label" for="hojinkeitai_ichiRadio1">前</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="hojinkeitai_ichiRadio" id="hojinkeitai_ichiRadio2" onclick="hojinkeitai_ichiBtnClick()">
+                                            <label class="form-check-label" for="hojinkeitai_ichiRadio2">後</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="comment3 mb-1 ps-2">
+                        <label class="col-form-label center-moji">
+                            株式会社ABC商事の場合、<br>
+                            「法人名の前」を選択してください。
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col-1 pe-1" >
+                    <div class="komoku10 text-white mb-1 w-100">法人名</div>
+                </div>
+                <div class="col-1">
+                    <div class="komoku11 text-white mb-1 w-100">カナ</div>
+                    <div class="komoku11 text-white mb-1 w-100">漢字</div>
+                </div>
+                <div class="col-5">
+                    <div class="atai5 mb-1 pt-1 ps-2">
+                        <p>法人形態の「カナ」入力は不要です。</p>
+                        <div class="row mb-3 g-0">
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control form-control-sm" id="hojinmei_kana" name="hojinmei_kana" pattern="[\uFF66-\uFF9F]*" maxlength="100" onchange="toHankakuKana(this, id)">
+                            </div>
+                            <label for="hojinmei_kana" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(半角カナ)</label>
+                        </div>
+                    </div>
+                    <div class="atai5 mb-1 pt-1 ps-2">
+                        <div class="row g-0">
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control form-control-sm" id="hojinkeitai_mae" name="hojinkeitai_mae" disabled="disabled">
+                            </div>
+                        </div>
+                        <div class="row g-0">
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control form-control-sm" id="hojinmei_kanji" name="hojinmei_kanji" maxlength="100">
+                            </div>
+                            <label for="hojinmei_kanji" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
+                        </div>
+                        <div class="row g-0">
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control form-control-sm" id="hojinkeitai_ushiro" name="hojinkeitai_ushiro" disabled="disabled">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="comment4 mb-1 ps-2">
+                        <div class="center-moji">
+                            例)ｴｰﾋﾞｰｼｰｼｮｳｼﾞ<br>
+                            <span style="color: red;">【ご注意】アルファベット、数字等は入力できません。<br>
+                                「カタカナ」で入力をお願いします。
+                            </span>
+                        </div>
+                    </div>
+                    <div class="comment4 mb-1 ps-2">
+                        <div class="center-moji">
+                            例)ＡＢＣ商事<br>
+                            <span style="color: red;">【ご注意】旧字体や常用漢字以外の漢字を入力されますとエラーと
+                                なる場合があります。エラーの場合は「カタカナ」で入力をお願いします。
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col-1 pe-1" >
+                    <div class="komoku7 text-white mb-1 w-100">支店・支社・営業所等</div>
+                </div>
+                <div class="col-1">
+                    <div class="komoku7 text-white mb-1 w-100">漢字</div>
+                </div>
+                <div class="col-5">
+                    <div class="atai4 mb-1 pt-1 ps-2">
+                        <div class="row mb-3 g-0">
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control form-control-sm" id="shiten" name="shiten" maxlength="100">
+                            </div>
+                            <label for="shiten" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="comment3 mb-1 ps-2">
+                        <div class="center-moji">
+                            例)東京支店<br>
+                            本社・本店の場合は、入力不要です。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col-1 pe-1" >
+                    <div class="komoku2 text-white mb-1 w-100">代表者</div>
+                </div>
+                <div class="col-1">
+                    <div class="komoku9 text-white mb-1 w-100">役職</div>
+                    <div class="komoku9 text-white mb-1 w-100">氏名</div>
+                </div>
+                <div class="col-5">
+                    <div class="atai2 mb-1 ps-2">
+                        <div class="row mb-3 g-0">
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control form-control-sm" id="daihyosha_yakushoku" name="daihyosha_yakushoku" maxlength="100">
+                            </div>
+                            <label for="daihyosha_yakushoku" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
+                        </div>
+                    </div>
+                    <div class="atai2 mb-1 ps-2">
+                        <div class="row mb-3 g-0">
+                            <div class="col-sm-10">
+                                <div class="row g-0">
+                                    <div class="col-2 pt-1" style="text-align: center;">
+                                        <p>姓</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="text" class="form-control form-control-sm" id="daihyosha_sei" name="daihyosha_sei" maxlength="50">
+                                    </div>
+                                    <div class="col-2 pt-1" style="text-align: center;">
+                                        <p>名</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="text" class="form-control form-control-sm" id="daihyosha_mei" name="daihyosha_mei" maxlength="50">
+                                    </div>
+                                </div>
+                            </div>
+                            <label for="daihyosha_mei" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="comment1 mb-1 ps-2">
+                        <label class="col-form-label" style="line-height: 16px;">例)代表取締役</label>
+                    </div>
+                    <div class="comment1 mb-1 ps-2">
+                        <label class="col-form-label" style="line-height: 16px;">例)代表 一郎</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col-2">
+                    <div class="komoku9 text-white mb-1 w-100">契約者メールアドレス</div>
+                </div>
+                <div class="col-5">
+                    <div class="atai2 mb-1 ps-2">
+                        <div class="row mb-3 g-0">
+                            <div class="col-sm-8">
+                                <input type="email" class="form-control form-control-sm" id="k_mail" name="k_mail">
+                            </div>
+                            <label for="k_mail" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(半角)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="comment1 mb-1 ps-2">
+                        <label class="col-form-label" style="line-height: 16px;"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="jutaku_kojinjigyonushi" style="display:none">
+            <p>住宅用個人事業主</p>
+        </div>
+        <br>
+        <p style="line-height: 0.5">★被保険者情報</p>
+        <div class="row g-0">
+            <div class="col-2">
+                <div class="komoku9 text-white mb-1 w-100">複数契約特約</div>
+            </div>
+            <div class="col-5">
+                <div class="atai2 mb-1 ps-2">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-6">
+                            <div class="form-check">
+                                <input class="form-check-input mt-2" type="checkbox" value="" id="fukusu_tokuyaku" disabled="disabled">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;">
+                        チェックがあるとき複数契約特約を付帯。
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div id="jutaku_hojin2" style="display:none">
+            <div class="row g-0">
+                <div class="col-2">
+                    <div class="komoku9 text-white mb-1 w-100">法人特約</div>
+                </div>
+                <div class="col-5">
+                    <div class="atai2 mb-1 py-1 ps-2">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="hojin_tokuyakuRadio" id="hojin_tokuyakuRadio1" onclick="hojin_tokuyakuBtnClick()">
+                            <label class="form-check-label" for="hojin_tokuyakuRadio1">あり</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="hojin_tokuyakuRadio" id="hojin_tokuyakuRadio2" onclick="hojin_tokuyakuBtnClick()" checked>
+                            <label class="form-check-label" for="hojin_tokuyakuRadio2">なし</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="comment1 mb-1 ps-2">
+                        <label class="col-form-label" style="line-height: 16px;">
+                            法人特約のあり/なしを選択してください。
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="row g-0">
+            <div class="col-2">
+                <div class="komoku9 text-white mb-1 w-100">契約者と同じ</div>
+            </div>
+            <div class="col-5">
+                <div class="atai2 mb-1 ps-2">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-6">
+                            <div class="form-check">
+                                <input class="form-check-input mt-2" type="checkbox" value="" id="k_onaji">
+                                <label class="form-check-label mt-1" for="k_onaji">
+                                    同じ
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;">
+                        契約者と同じ場合、チェックしてください。
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-1 pe-1" >
+                <div class="komoku8 text-white mb-1 w-100">目的地住所</div>
+            </div>
+            <div class="col-1">
+                <div class="komoku9 text-white mb-1 w-100">戸建て</div>
+                <div class="komoku9 text-white mb-1 w-100">物件番号</div>
+                <div class="komoku9 text-white mb-1 w-100">郵便番号</div>
+                <div class="komoku9 text-white mb-1 w-100">住所</div>
+                <div class="komoku9 text-white mb-1 w-100">丁目・番地</div>
+                <div class="komoku9 text-white mb-1 w-100">建物名</div>
+                <div class="komoku9 text-white mb-1 w-100">号室</div>
+            </div>
+            <div class="col-5">
+                <div class="atai2 mb-1 ps-2">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-6">
+                            <div class="form-check">
+                                <input class="form-check-input mt-2" type="checkbox" value="" id="h_kodateCheck">
+                                <label class="form-check-label mt-1" for="h_kodateCheck">
+                                    戸建て
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="atai2 mb-1 ps-2">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-3">
+                            <input type="tel" class="form-control form-control-sm" id="h_bukken_no" name="h_bukken_no" pattern="^[0-9]+$" maxlength="15">
+                        </div>
+                        <label for="h_bukken_no" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(半角)</label>
+                        <a class="col-sm-3 btn btn-primary btn-sm" asp-area="" asp-page="/Bukken/Bukken_K">物件検索</a>
+                    </div>
+                </div>
+                <div class="atai2 mb-1 ps-2">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-3">
+                            <input type="tel" class="form-control form-control-sm" id="h_zip" name="h_zip" pattern="^[0-9]+$" maxlength="7">
+                        </div>
+                        <label for="h_zip" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(半角)</label>
+                        <a class="col-sm-4 btn btn-primary btn-sm" asp-area="" asp-page="/Bukken/Bukken_K">郵便番号検索</a>
+                    </div>
+                </div>
+                <div class="atai2 mb-1 ps-2">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control form-control-sm" id="h_address1" name="h_address1" maxlength="55">
+                        </div>
+                        <label for="h_address1" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
+                    </div>
+                </div>
+                <div class="atai2 mb-1 ps-2">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control form-control-sm" id="h_address2" name="h_address2" maxlength="25">
+                        </div>
+                        <label for="h_address2" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
+                    </div>
+                </div>
+                <div class="atai2 mb-1 ps-2">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control form-control-sm" id="h_address3" name="h_address3" maxlength="50">
+                        </div>
+                        <label for="h_address3" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
+                    </div>
+                </div>
+                <div class="atai2 mb-1 ps-2">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control form-control-sm" id="h_address4" name="h_address4" maxlength="25">
+                        </div>
+                        <label for="h_address4" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;">戸建ての場合、チェックをしてください。</label>
+                </div>
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;">システムに登録した物件を検索できます。</label>
+                </div>
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;">住所より郵便番号を検索することができます。</label>
+                </div>
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;">例)東京都千代田区九段北</label>
+                </div>
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;">例)１－１－１</label>
+                </div>
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;">例)第一マンション</label>
+                </div>
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;">例)１０１</label>
+                </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-2">
+                <div class="komoku9 text-white mb-1 w-100">被保険者区分</div>
+            </div>
+            <div class="col-5">
+                <div class="atai2 mb-1 py-1 ps-2">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="hihokensha_kbnRadio" id="hihokensha_kbnRadio1" onclick="hihokenshaBtnClick()" disabled="disabled" checked>
+                        <label class="form-check-label" for="hihokensha_kbnRadio1">個人</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="hihokensha_kbnRadio" id="hihokensha_kbnRadio2" onclick="hihokenshaBtnClick()" disabled="disabled">
+                        <label class="form-check-label" for="hihokensha_kbnRadio2">法人</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;"></label>
+                </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-1 pe-1" >
+                <div class="komoku10 text-white mb-1 w-100">被保険者名</div>
+            </div>
+            <div class="col-1">
+                <div class="komoku11 text-white mb-1 w-100">カナ</div>
+                <div class="komoku11 text-white mb-1 w-100">漢字</div>
+            </div>
+            <div class="col-5">
+                <div class="atai5 mb-1 pt-1">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-10">
+                            <div class="row g-0">
+                                <div class="col-2" style="text-align: center;">
+                                    <p>ｾｲ</p>
+                                </div>
+                                <div class="col-4">
+                                    <input type="text" class="form-control form-control-sm" id="h_sei_kana" name="h_sei_kana" pattern="[\uFF66-\uFF9F]*" maxlength="50" onchange="toHankakuKana(this, id)">
+                                </div>
+                                <div class="col-2" style="text-align: center;">
+                                    <p>ﾒｲ</p>
+                                </div>
+                                <div class="col-4">
+                                    <input type="text" class="form-control form-control-sm" id="h_mei_kana" name="h_mei_kana" pattern="[\uFF66-\uFF9F]*" maxlength="50" onchange="toHankakuKana(this, id)">
+                                </div>
+                            </div>
+                        </div>
+                        <label for="h_mei_kana" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(半角カナ)</label>
+                    </div>
+                </div>
+                <div class="atai5 mb-1 pt-1">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-10">
+                            <div class="row g-0">
+                                <div class="col-2" style="text-align: center;">
+                                    <p>姓</p>
+                                </div>
+                                <div class="col-4">
+                                    <input type="text" class="form-control form-control-sm" id="h_sei" name="h_sei" maxlength="50">
+                                </div>
+                                <div class="col-2" style="text-align: center;">
+                                    <p>名</p>
+                                </div>
+                                <div class="col-4">
+                                    <input type="text" class="form-control form-control-sm" id="h_mei" name="h_mei" maxlength="50">
+                                </div>
+                            </div>
+                        </div>
+                        <label for="h_mei" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment4 mb-1 ps-2">
+                    <div class="center-moji">
+                        例)ﾆｭｳｷｮ ﾊﾅｺ<br>
+                        <span style="color: red;">【ご注意】アルファベット、数字等は入力できません。<br>
+                            「カタカナ」で入力をお願いします。
+                        </span>
+                    </div>
+                </div>
+                <div class="comment4 mb-1 ps-2">
+                    <div class="center-moji">
+                        例)入居 花子<br>
+                        <span style="color: red;">【ご注意】旧字体や常用漢字以外の漢字を入力されますとエラーと
+                            なる場合があります。エラーの場合は「カタカナ」で入力をお願いします。
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-2">
+                <div class="komoku9 text-white mb-1 w-100">生年月日</div>
+            </div>
+            <div class="col-5">
+                <div class="atai2 mb-1 ps-2">
+                    <input type="date" class="form-control form-control-sm w-50" id="h_birth" value="年/月/日">
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;"></label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <p style="line-height: 0.5">★手続依頼書・集金方法</p>
+        <div class="row g-0">
+            <div class="col-2">
+                <div class="komoku9 text-white mb-1 w-100">手続依頼書発行</div>
+            </div>
+            <div class="col-5">
+                <div class="atai2 mb-1 ps-2">
+                    <select class="form-select form-select-sm w-50" aria-label=".form-select-sm example" name="tetsuzukiiraishohakko_kbn" id="tetsuzukiiraishohakko_kbn">
+                        @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 12))
+                        {
+                            <option>@Html.DisplayFor(modelItem => item.item_name)</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;"></label>
+                </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-2">
+                <div class="komoku9 text-white mb-1 w-100">集金方法</div>
+            </div>
+            <div class="col-5">
+                <div class="atai2 mb-1 ps-2">
+                    <select class="form-select form-select-sm w-50" aria-label=".form-select-sm example" name="shukinhoho" id="shukinhoho">
+                        @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 13))
+                        {
+                            <option>@Html.DisplayFor(modelItem => item.item_name)</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;"></label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <p style="line-height: 0.5">★告知事項等</p>
+        <div class="row g-0">
+            <div class="col-7">
+                <div class="komoku5 text-white w-100">① 被保険者(入居者本人)または被保険者(入居者本人)と同居する方が、<br>
+                    　 今回のご契約以外に、これと同一の損害を補償する他の保険にご加入されていますか？
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment3 ps-2">
+                    <label class="col-form-label center-moji"></label>
+                </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-2">
+                <div class="komoku14 text-white mb-1 w-100"></div>
+            </div>
+            <div class="col-5">
+                <div class="atai2 mb-1 py-1 mt-1 ps-2">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="other_hokenRadio" id="other_hokenRadio1" onclick="other_hokenBtnClick()" checked>
+                        <label class="form-check-label" for="other_hokenRadio1">いいえ</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="other_hokenRadio" id="other_hokenRadio2" onclick="other_hokenBtnClick()">
+                        <label class="form-check-label" for="other_hokenRadio2">はい</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment1 mb-1 mt-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;"></label>
+                </div>
+            </div>
+        </div>
+        <div id="other_hoken-form" style="display:none">
+            <div class="row g-0">
+                <div class="col-7">
+                    <div class="komoku5 text-white w-100">② ①で「はい」とお答えされた方のみご回答ください。<br>
+                    　     加入されている他の保険は当社の保険ですか？
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="comment3 ps-2">
+                        <label class="col-form-label center-moji"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col-2">
+                    <div class="komoku14 text-white mb-1 w-100"></div>
+                </div>
+                <div class="col-5">
+                    <div class="atai2 mb-1 py-1 mt-1 ps-2">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="other_hoken_umuRadio" id="other_hoken_umuRadio1" onclick="other_hoken_umuBtnClick()" checked>
+                            <label class="form-check-label" for="other_hoken_umuRadio1">いいえ</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="other_hoken_umuRadio" id="other_hoken_umuRadio2" onclick="other_hoken_umunBtnClick()">
+                            <label class="form-check-label" for="other_hoken_umuRadio2">はい</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="comment1 mb-1 mt-1 ps-2">
+                        <label class="col-form-label" style="line-height: 16px;">「はい」の場合には原則お引き受けできません。</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col-7">
+                    <div class="komoku12 text-white w-100">③ ①で「はい」とお答えの方は他にご加入の契約内容をご記入ください。</div>
+                </div>
+                <div class="col-5">
+                    <div class="comment1 ps-2">
+                        <label class="col-form-label center-moji"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col-1 pe-1">
+                    <div class="komoku13 text-white mb-1 w-100"></div>
+                </div>
+                <div class="col-1">
+                    <div class="komoku9 text-white mb-1 mt-1 w-100">保険会社名</div>
+                    <div class="komoku9 text-white mb-1 w-100">保険種類</div>
+                    <div class="komoku9 text-white mb-1 w-100">満期日</div>
+                    <div class="komoku9 text-white mb-1 w-100">保険金額</div>
+                </div>
+                <div class="col-5">
+                    <div class="atai2 mb-1 mt-1 ps-2">
+                        <div class="row mb-3 g-0">
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control form-control-sm" id="other_hoken_company" name="other_hoken_company" maxlength="50">
+                            </div>
+                            <label for="other_hoken_company" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
+                        </div>
+                    </div>
+                    <div class="atai2 mb-1 ps-2">
+                        <div class="row mb-3 g-0">
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control form-control-sm" id="other_hoken_shurui" name="other_hoken_shurui" maxlength="50">
+                            </div>
+                            <label for="other_hoken_shurui" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
+                        </div>
+                    </div>
+                    <div class="atai2 mb-1 ps-2">
+                        <input type="date" class="form-control form-control-sm w-50" id="other_hoken_manki" value="年/月/日">
+                    </div>
+                    <div class="atai2 mb-1 ps-2">
+                        <div class="row mb-3 g-0">
+                            <div class="col-sm-3">
+                            <input type="text" class="form-control form-control-sm" style="text-align: right;" id="other_hoken_money" name="other_hoken_money" pattern="^[0-9]+$" maxlength="10">
+                            </div>
+                            <label for="other_hoken_money" class="col-sm-1 col-form-label col-form-label-sm">円</label>
+                            <label for="other_hoken_money" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="comment1 mb-1 mt-1 ps-2">
+                        <label class="col-form-label" style="line-height: 16px;">例)〇△□損害保険株式会社</label>
+                    </div>
+                    <div class="comment1 mb-1 ps-2">
+                        <label class="col-form-label" style="line-height: 16px;">例)住宅総合保険</label>
+                    </div>
+                    <div class="comment1 mb-1 ps-2">
+                        <label class="col-form-label" style="line-height: 16px;"></label>
+                    </div>
+                    <div class="comment1 mb-1 ps-2">
+                        <label class="col-form-label" style="line-height: 16px;"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-2">
+                <div class="komoku9 text-white mb-1 w-100">保険契約証要</div>
+            </div>
+            <div class="col-5">
+                <div class="atai2 mb-1 ps-2">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-6">
+                            <div class="form-check">
+                                <input class="form-check-input mt-2" type="checkbox" value="" id="hokenkeiyakusho_kbn">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;"></label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <p style="line-height: 0.5">★その他</p>
+        <div class="row g-0">
+            <div class="col-2">
+                <div class="komoku15 text-white mb-1 w-100">コード</div>
+            </div>
+            <div class="col-5">
+                <div class="atai6 mb-1 pt-1 ps-2">
+                    <select class="form-select form-select-sm w-50 mb-1" aria-label=".form-select-sm example" name="other_code1" id="other_code1" disabled="disabled">
+                        <option selected></option>
+                        @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 33))
+                        {
+                            <option>@Html.DisplayFor(modelItem => item.item_name)</option>
+                        }
+                    </select>
+                    <select class="form-select form-select-sm w-50 mb-1" aria-label=".form-select-sm example" name="other_code2" id="other_code2" disabled="disabled">
+                        <option selected></option>
+                        @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 33))
+                        {
+                            <option>@Html.DisplayFor(modelItem => item.item_name)</option>
+                        }
+                    </select>
+                    <select class="form-select form-select-sm w-50" aria-label=".form-select-sm example" name="other_code3" id="other_code3" disabled="disabled">
+                        <option selected></option>
+                        @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 33))
+                        {
+                            <option>@Html.DisplayFor(modelItem => item.item_name)</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment5 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;"></label>
+                </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-2">
+                <div class="komoku9 text-white mb-1 w-100">特記事項</div>
+            </div>
+            <div class="col-5">
+                <div class="atai2 mb-1 ps-2">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control form-control-sm" id="other_tokkijiko" name="other_tokkijiko" disabled="disabled">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;"></label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <p style="line-height: 0.5">★代理店情報</p>
+        <div class="row g-0">
+            <div class="col-2">
+                <div class="komoku9 text-white mb-1 w-100">代理店コード</div>
+            </div>
+            <div class="col-5">
+                <div class="atai2 mb-1 ps-2">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-10">
+                            <label class="col-form-label" style="line-height: 16px; margin-right: 20px;">代理店コード</label>
+                            <label class="col-form-label" style="line-height: 16px;">代理店名</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;"></label>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+    @***************************************************************************************************************@
+    @****************************************事業用*****************************************************************@
+    @***************************************************************************************************************@
+    <div id="jigyo-form" style="display:none">
+        <label for="inputPassword5" class="form-label">事業用</label>
+        <div class="row g-0">
+            <div class="col-2">
+                <div class="komoku9 text-white mb-1 w-100">保険始期</div>
+            </div>
+            <div class="col-5">
+                <div class="atai2 mb-1 ps-2">
+                    <input type="date" class="form-control form-control-sm w-50" id="hokenshiki" value="年/月/日">
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;"></label>
+                </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-2">
+                <div class="komoku9 text-white mb-1 w-100">保険期間</div>
+            </div>
+            <div class="col-5">
+                <div class="atai2 mb-1 py-1 ps-2">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="jigyo_hokenkikanRadio" id="jigyo_hokenkikanRadio1" onclick="hokenkikanBtnClick()" checked>
+                        <label class="form-check-label" for="jigyo_hokenkikanRadio1">１年</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="jigyo_hokenkikanRadio" id="jigyo_hokenkikanRadio2" onclick="hokenkikanBtnClick()">
+                        <label class="form-check-label" for="jigyo_hokenkikanRadio2">２年</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;"></label>
+                </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-2">
+                <div class="komoku9 text-white mb-1 w-100">用法</div>
+            </div>
+            <div class="col-5">
+                <div class="atai2 mb-1 py-1 ps-2">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="yohoRadio" id="yohoRadio1" onclick="yohoBtnClick()" checked>
+                        <label class="form-check-label" for="yohoRadio1">事務所・店舗</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="yohoRadio" id="yohoRadio2" onclick="yohoBtnClick()">
+                        <label class="form-check-label" for="yohoRadio2">飲食店</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;"></label>
+                </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-2">
+                <div class="komoku6 text-white mb-1">契約タイプ</div>
+            </div>
+            <div class="col-5">
+                <div class="atai3 mb-1 pt-1 ps-2">
+                    <select class="form-select form-select-sm w-50" aria-label=".form-select-sm example" name="shohin">
+                        <option selected></option>
+                        @foreach (var item in Model.m_Shohin.Where(m => m.hokenkikan == 1)) //上で選択した保険期間で商品を絞る？
+                        {
+                            <option>@Html.DisplayFor(modelItem => item.shohin_name)</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment2 mb-1 ps-2">
+                </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-2">
+                <div class="komoku6 text-white mb-1">業種</div>
+            </div>
+            <div class="col-5">
+                <div class="atai3 mb-1 pt-2 ps-2">
+                    <input type="text" class="form-control form-control-sm w-50" id="gyoshu" name="gyoshu" maxlength="100">
+                    <div class="form-check">
+                        <input class="form-check-input mt-2" type="checkbox" value="" id="gyoshuCheck">
+                        <label class="form-check-label mt-1" for="gyoshuCheck">
+                            業種確認済み
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment2 mb-1 ps-2">
+                    <label class="col-form-label center-moji">例)中華料理店<br>具体的に記入してください。</label>
+                </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-2">
+                <div class="komoku9 text-white mb-1 w-100">専有面積</div>
+            </div>
+            <div class="col-5">
+                <div class="atai2 mb-1 ps-2 ">
+                    <div class="row mb-3 g-0">
+                        <div class="col-sm-3">
+                        <input type="text" class="form-control form-control-sm" style="text-align: right;" id="senyumenseki" name="senyumenseki" pattern="^[0-9]+$" maxlength="20">
+                        </div>
+                        <label for="senyumenseki" class="col-sm-1 col-form-label col-form-label-sm">㎡</label>
+                        <label for="senyumenseki" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角)</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="comment1 mb-1 ps-2">
+                    <label class="col-form-label" style="line-height: 16px;">整数のみ入力可能(小数点不可)</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fixed-bottom bg-white" style="margin-left: 17%; opacity: 0.8;">
+        <hr>
+        <div class="row">
+            <div class="text-start col-9">
+                <button type="button" class="btn btn-primary" style="width: 150px;" id="return_Btn">戻る</button>
+                <button type="submit" class="btn btn-primary" style="width: 150px;" id="check_Btn">入力内容確認</button>
+            </div>
+            <div class="text-end col-3">
+                <button type="button" class="btn btn-primary" style="width: 150px;" id="tochu_hozon_Btn">途中保存</button>
+            </div>
+        </div>
+        <br>
     </div>
 </form>
-<div class="row g-0">
-        <div class="col-2">
-            <div class="komoku5 text-white mb-1">申込書作成日</div>
-        </div>
-        <div class="col-5">
-            <div class="atai2 mb-1">
-                <input type="date" class="form-control form-control-sm w-50" style="margin-left: 10px;" id="moshikomisho_day" value="年/月/日">
-            </div>
-        </div>
-        <div class="col-5">
-            <div class="comment1 mb-1">
-                <label class="col-form-label" style="margin-left: 10px; line-height: 16px;"></label>
-            </div>
-        </div>
-    </div>
-<br>
-<br>
-
-<div id="jutaku-form">
-  <label for="inputPassword5" class="form-label">住宅用</label>
-  <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-</div>
-
-<div id="jigyo-form" style="display:none">
-  <label for="inputPassword5" class="form-label">事業用</label>
-  <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-</div>
