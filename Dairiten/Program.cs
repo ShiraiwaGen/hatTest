@@ -3,6 +3,7 @@ using Dairiten.Data;
 using Dairiten.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,24 +1,28 @@
 using Dairiten.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
-namespace Dairiten.Pages
+namespace Dairiten.Pages.Moshikomi
 {
-    public class Moshikomi_InModel : PageModel
+    public class Moshikomi_ChModel : PageModel
     {
         private readonly Dairiten.Data.ApplicationDbContext _context;
 
-        public Moshikomi_InModel(Dairiten.Data.ApplicationDbContext context)
+        public Moshikomi_ChModel(Dairiten.Data.ApplicationDbContext context)
         {
             _context = context;
         }
+
         [BindProperty]
         public InputModel Input { get; set; }
-        public IList<m_shohin> m_Shohin { get; set; }
-        public IList<m_master> m_Master { get; set; }
-       
+
+        [BindProperty]
+        public t_keiyaku keiyaku { get; set; } 
+
+        [BindProperty]
+        public KeiyakuKakunin k_kakunin { get; set; }
+
         public class InputModel
         {
             [Display(Name = "Œ_–ñƒL[")]
@@ -587,32 +591,165 @@ namespace Dairiten.Pages
             public DateTime torokubi { get; set; }                  //“o˜^“ú
         }
 
-
-
-
-
-        public async Task OnGetAsync()
+        public class KeiyakuKakunin
         {
-            m_Shohin = await _context.m_shohin.ToListAsync();
-            m_Master = await _context.m_master.ToListAsync();
+            public string shohin_name { get; set; }
         }
+
+        public void OnGet()
+        {
+        }
+
         public void OnPost()
         {
-            int hojinkeitai_num = -1;      //–@lŒ`‘Ô
+            
 
-            //–@lŒ`‘Ô‚ðŽæ“¾
-            string hojinkeitai_selected = (string)Request.Form["hojinkeitai"];
-            if (!string.IsNullOrEmpty(hojinkeitai_selected))
+
+
+
+            string shohin_selected = (string)Request.Form["shohin"];
+            int shohin_num = -1;
+            if (!string.IsNullOrEmpty(shohin_selected))
             {
-                foreach (var master in _context.m_master.Where(m => m.m_master_kbn_id == 14))
+                foreach (var shohin in _context.m_shohin)
                 {
-                    if (hojinkeitai_selected.Equals(master.item_name))
+                    if (shohin_selected.Equals(shohin.shohin_name))
                     {
-                        hojinkeitai_num = master.item_no;
+                        shohin_num = shohin.id;
                         break;
                     }
                 }
             }
+            keiyaku = new t_keiyaku
+            {
+                m_dairiten_id = Input.m_dairiten_id,
+                employee_key = Input.employee_key,
+                shoken_no = Input.shoken_no,
+                old_shoken_no = Input.old_shoken_no,
+                rireki_no = Input.rireki_no,
+                keijozuki = Input.keijozuki,
+                uketsuke_kbn = Input.uketsuke_kbn,
+                shohin_kbn = Input.shohin_kbn,
+                keiyakusha_kbn = Input.keiyakusha_kbn,
+                moshikomisho_day = Input.moshikomisho_day,
+                yoho = Input.yoho,
+                hokenshiki = Input.hokenshiki,
+                hokenshuki = Input.hokenshuki,
+                hokenkikan = Input.hokenkikan,
+                tokuyaku1 = Input.tokuyaku1,
+                m_shohin_id = shohin_num,
+                k_tel = Input.k_tel,
+                k_mobile = Input.k_mobile,
+                k_kodate = Input.k_kodate,
+                k_bukken_no = Input.k_bukken_no,
+                k_zip = Input.k_zip,
+                k_address1 = Input.k_address1,
+                k_address2 = Input.k_address2,
+                k_address3 = Input.k_address3,
+                k_address4 = Input.k_address4,
+                k_sei_kana = Input.k_sei_kana,
+                k_mei_kana = Input.k_mei_kana,
+                k_sei = Input.k_sei,
+                k_mei = Input.k_mei,
+                k_birth = Input.k_birth,
+                k_mail = Input.k_mail,
+                hoshonin_kbn = Input.hoshonin_kbn,
+                hoshonin_kbn_other = Input.hoshonin_kbn_other,
+                fukusu_tokuyaku = Input.fukusu_tokuyaku,
+                k_onaji = Input.k_onaji,
+                h_kodate = Input.h_kodate,
+                h_bukken_no = Input.h_bukken_no,
+                h_zip = Input.h_zip,
+                h_address1 = Input.h_address1,
+                h_address2 = Input.h_address2,
+                h_address3 = Input.h_address3,
+                h_address4 = Input.h_address4,
+                hihokensha_kbn = Input.hihokensha_kbn,
+                h_sei_kana = Input.h_sei_kana,
+                h_mei_kana = Input.h_mei_kana,
+                h_sei = Input.h_sei,
+                h_mei = Input.h_mei,
+                h_birth = Input.h_birth,
+                tetsuzukiiraishohakko_kbn = Input.tetsuzukiiraishohakko_kbn,
+                shukinhoho = Input.shukinhoho,
+                other_hoken = Input.other_hoken,
+                other_hoken_umu = Input.other_hoken_umu,
+                other_hoken_company = Input.other_hoken_company,
+                other_hoken_shurui = Input.other_hoken_shurui,
+                other_hoken_manki = Input.other_hoken_manki,
+                other_hoken_money = Input.other_hoken_money,
+                hokenkeiyakusho_kbn = Input.hokenkeiyakusho_kbn,
+                other_code1 = Input.other_code1,
+                other_code2 = Input.other_code2,
+                other_code3 = Input.other_code3,
+                other_tokkijiko = Input.other_tokkijiko,
+                k_hojinkeitai = Input.k_hojinkeitai,
+                k_hojinkeitai_other = Input.k_hojinkeitai_other,
+                k_hojinkeitai_ichi = Input.k_hojinkeitai_ichi,
+                k_hojinmei_kana = Input.k_hojinmei_kana,
+                k_hojinmei_kanji = Input.k_hojinmei_kanji,
+                shiten = Input.shiten,
+                daihyosha_yakushoku = Input.daihyosha_yakushoku,
+                daihyosha_sei = Input.daihyosha_sei,
+                daihyosha_mei = Input.daihyosha_mei,
+                hojin_tokuyaku = Input.hojin_tokuyaku,
+                h_hojinkeitai = Input.h_hojinkeitai,
+                h_hojinkeitai_other = Input.h_hojinkeitai_other,
+                h_hojinkeitai_ichi = Input.h_hojinkeitai_ichi,
+                h_hojinmei_kana = Input.h_hojinmei_kana,
+                h_hojinmei_kanji = Input.h_hojinmei_kanji,
+                gyoshu = Input.gyoshu,
+                gyoshu_sumi = Input.gyoshu_sumi,
+                senyumenseki = Input.senyumenseki,
+                k_floor = Input.k_floor,
+                h_floor = Input.h_floor,
+                k_yago = Input.k_yago,
+                k_katagaki = Input.k_katagaki,
+                h_yago = Input.h_yago,
+                h_katagaki = Input.h_katagaki,
+                shomei = Input.shomei,
+                ikokakunin = Input.ikokakunin,
+                hokenryo_ryoshubi = Input.hokenryo_ryoshubi,
+                hokenryo_ryoshugaku = Input.hokenryo_ryoshugaku,
+                yukojotai = Input.yukojotai,
+                moshikomijokyo = Input.moshikomijokyo,
+                customer_page = Input.customer_page,
+                customer_id = Input.customer_id,
+                customer_pass = Input.customer_pass,
+                customer_pass_day = Input.customer_pass_day,
+                inputter_kbn = Input.inputter_kbn,
+                keiyakusho_hakkobi = Input.keiyakusho_hakkobi,
+                hakkenshoken = Input.hakkenshoken,
+                hokenryotorihiki_kbn = Input.hokenryotorihiki_kbn,
+                idojiyu = Input.idojiyu,
+                keiyakujokyo = Input.keiyakujokyo,
+                keiyakubi = Input.keiyakubi,
+                kaishubi = Input.kaishubi,
+                old_keiyaku_key = Input.old_keiyaku_key,
+                saishin_flg = Input.saishin_flg,
+                manki_nengetsu = Input.manki_nengetsu,
+                haraikomihyo_kbn = Input.haraikomihyo_kbn,
+                modoribin = Input.modoribin,
+                ichijihozon = Input.ichijihozon,
+                kakuteibi = Input.kakuteibi,
+                seiritsubi = Input.seiritsubi,
+                kanrigaiido = Input.kanrigaiido,
+                t_moshikomisho_id = Input.t_moshikomisho_id,
+                update_kbn = Input.update_kbn,
+                update_day = Input.update_day,
+                hokenryo = Input.hokenryo,
+                dairiten_ritsu = Input.dairiten_ritsu,
+                seiritsujokyo = Input.seiritsujokyo,
+                t_nyukin_id = Input.t_nyukin_id,
+
+                //‚Ü‚¾“r’†
+            };
+
+            k_kakunin = new KeiyakuKakunin
+            {
+                shohin_name = (string)Request.Form["shohin"]
+            };
+            
         }
     }
 }
