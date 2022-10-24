@@ -111,7 +111,7 @@ namespace Dairiten
                     arr[2] = item.bnin_no;
                 }
             }
-  
+
             return arr;
         }
 

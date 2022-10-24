@@ -133,7 +133,7 @@ namespace Dairiten.Pages.Bukken
             // クラスにマッピング (Shift-JIS)
             using (var sr = new StreamReader(ms, System.Text.Encoding.GetEncoding("shift_jis")))
             {
-                List<t_karibukken> mylist1 = new List<t_karibukken>();                
+                List<t_karibukken> mylist1 = new List<t_karibukken>();
 
                 // 1行目(項目名)読み捨てる
                 sr.ReadLine();
