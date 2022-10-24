@@ -7,6 +7,8 @@ namespace Dairiten.Models
     [Keyless]
     public class t_karibukken
     {
+        public int id { get; set; }
+
         [DisplayName("物件番号")]
         [RegularExpression(@"[0-9]+", ErrorMessage = "半角数字のみ入力できます")]
         public string bukken_no { get; set; }

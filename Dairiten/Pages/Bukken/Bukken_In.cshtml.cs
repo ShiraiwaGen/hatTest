@@ -66,7 +66,7 @@ namespace Dairiten.Pages.Bukken
         public IFormFile? formfile { get; set; }
         public Boolean eflg { get; set; } = true;
         public String error_msg { get; set; } = "";
-        public string d_no, d_name, bnin_key;
+        public string d_no,d_name, bnin_key;
         ////代理店名、コード、募集人キー取得
         //public void id_get()
         //{
