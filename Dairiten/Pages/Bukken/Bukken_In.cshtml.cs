@@ -66,41 +66,8 @@ namespace Dairiten.Pages.Bukken
         public IFormFile? formfile { get; set; }
         public Boolean eflg { get; set; } = true;
         public String error_msg { get; set; } = "";
+
         public string d_no,d_name, bnin_key;
-        ////代理店名、コード、募集人キー取得
-        //public void id_get()
-        //{
-        //    string currentUserId = User.Identity.GetUserId();
-
-        //    d_name = "";
-
-        //    var nowData = from m in _context.m_dairiten
-        //            join t in _context.appUsers
-        //            on m.id equals t.m_dairiten_id
-        //            where t.Id == currentUserId
-        //            select new
-        //            {
-        //                d_no = m.dairiten_code,
-        //                d_name = m.dairiten_mei,
-        //                b_no = t.employee_code
-        //            };
-        //    nowData.ToList();
-        //    if (nowData != null)
-        //    {
-        //        //d_no = nowData.d_no;
-        //        //d_name = nowData.d_name;
-        //        //bnin_no = nowData.bnin_no;
-        //    }
-        //}
-        //全角チェック
-        static Encoding shiftjisEnc = Encoding.GetEncoding("Shift_JIS");
-        public static bool isFullWitdh(string chkStr)
-        {
-            int chrByteNum = shiftjisEnc.GetByteCount(chkStr);
-            bool isAllFullWidth = (chrByteNum == chkStr.Length * 2);
-            return isAllFullWidth;
-        }
-
         public void OnGet()
         {
             //string[] arr = Index1Model_Model.Dairiten_Get();
@@ -143,7 +110,6 @@ namespace Dairiten.Pages.Bukken
                 return;
             }
 
-            bnin_key = "1";   //後で削除する
             //募集人キーが一致する列全削除
             if (bnin_key == null || bnin_key == "")
             {
@@ -186,7 +152,7 @@ namespace Dairiten.Pages.Bukken
                     if (values.Length != 9)
                     {
                         // throw new Exception("CSV format error");
-                        err_kensu++;
+                        //err_kensu++;  カンマの失敗は件数に含めない？
                     }
                     else
                     {
@@ -289,7 +255,7 @@ namespace Dairiten.Pages.Bukken
                                     }
                                     else
                                     {
-                                        if (isFullWitdh(b_address1) != true)
+                                        if (Program.IsFullWitdh(b_address1) != true)
                                         {
                                             emsg = "全角で入力してください。";
                                         }
@@ -320,7 +286,7 @@ namespace Dairiten.Pages.Bukken
                                     }
                                     else
                                     {
-                                        if (isFullWitdh(b_address2) != true)
+                                        if (Program.IsFullWitdh(b_address2) != true)
                                         {
                                             emsg = "全角で入力してください。";
                                         }
@@ -351,7 +317,7 @@ namespace Dairiten.Pages.Bukken
                                     }
                                     else
                                     {
-                                        if (isFullWitdh(b_address3) != true)
+                                        if (Program.IsFullWitdh(b_address3) != true)
                                         {
                                             emsg = "全角で入力してください。";
                                         }
@@ -382,7 +348,7 @@ namespace Dairiten.Pages.Bukken
                                     }
                                     else
                                     {
-                                        if (isFullWitdh(b_address4) != true)
+                                        if (Program.IsFullWitdh(b_address4) != true)
                                         {
                                             emsg = "全角で入力してください。";
                                         }
@@ -413,7 +379,7 @@ namespace Dairiten.Pages.Bukken
                                     }
                                     else
                                     {
-                                        if (isFullWitdh(b_address5) != true)
+                                        if (Program.IsFullWitdh(b_address5) != true)
                                         {
                                             emsg = "全角で入力してください。";
                                         }
@@ -527,11 +493,29 @@ namespace Dairiten.Pages.Bukken
                 }
                 if (eflg == false)
                 {
+                    //foreach (var item in mylist1)
+                    //{
+                    //    _context.t_karibukken.Add(item);
+                    //}
+                    //_context.SaveChanges();
                     foreach (var item in mylist1)
                     {
-                        _context.t_karibukken.Add(item);
+                        Dairiten.Models.t_karibukken k_bukken = new Dairiten.Models.t_karibukken();
+
+                        k_bukken.bukken_no = item.bukken_no;
+                        k_bukken.b_zip = item.b_zip;
+                        k_bukken.b_address1 = item.b_address1;
+                        k_bukken.b_address2 = item.b_address2;
+                        k_bukken.b_address3 = item.b_address3;
+                        k_bukken.b_address4 = item.b_address4;
+                        k_bukken.b_address5 = item.b_address5;
+                        k_bukken.b_kodate = item.b_kodate;
+                        k_bukken.m_dairiten_id = item.m_dairiten_id;
+                        k_bukken.employee_key = item.employee_key;
+
+                        _context.t_karibukken.Add(k_bukken);
+                        _context.SaveChanges();
                     }
-                    _context.SaveChanges();
                 }
             }
         }
