@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Dairiten.Pages.Bukken
 {
@@ -26,6 +27,7 @@ namespace Dairiten.Pages.Bukken
             _context = context;
         }
 
+        //画面表示用(htmlタグあり)
         public class Bukken1
         {
             public int b_count { get; set; }
@@ -41,19 +43,21 @@ namespace Dairiten.Pages.Bukken
         }
         public List<Bukken1> mylist = new List<Bukken1>();
 
-        public class t_karibukken
-        {
-            public string bukken_no { get; set; }
-            public int b_zip { get; set; }
-            public string b_address1 { get; set; }
-            public string b_address2 { get; set; }
-            public string? b_address3 { get; set; }
-            public string? b_address4 { get; set; }
-            public string? b_address5 { get; set; }
-            public int b_kodate { get; set; }
-            public int m_dairiten_id { get; set; }
-            public int employee_key { get; set; }
-        }
+        //仮テーブル登録用
+        //public class t_karibukken
+        //{
+        //    public string bukken_no { get; set; }
+        //    public int b_zip { get; set; }
+        //    public string b_address1 { get; set; }
+        //    public string b_address2 { get; set; }
+        //    public string? b_address3 { get; set; }
+        //    public string? b_address4 { get; set; }
+        //    public string? b_address5 { get; set; }
+        //    public int b_kodate { get; set; }
+        //    public int m_dairiten_id { get; set; }
+        //    public int employee_key { get; set; }
+        //}
+        public t_karibukken t_karibukken;
 
         public int so_kensu = 0;
         public int err_kensu = 0;
@@ -62,8 +66,7 @@ namespace Dairiten.Pages.Bukken
         public IFormFile? formfile { get; set; }
         public Boolean eflg { get; set; } = true;
         public String error_msg { get; set; } = "";
-
-        public string d_no,d_name, bnin_key;
+        public string d_no, d_name, bnin_key;
         ////代理店名、コード、募集人キー取得
         //public void id_get()
         //{
@@ -101,19 +104,20 @@ namespace Dairiten.Pages.Bukken
         public void OnGet()
         {
             //string[] arr = Index1Model_Model.Dairiten_Get();
-            string[] arr = Program_Model.Dairiten_Get();
-            Console.Write("0:"+arr[0]);
-            Console.Write("1:" + arr[1]);
-            Console.Write("2:" + arr[2]);
+            var pm = new Program(_context);
+            string[] arr = pm.Dairiten_Get(User.Identity.GetUserId());
+            d_no = arr[0];
+            d_name = arr[1];
+            bnin_key = arr[2];
 
-            if ( Program_Model.IsFullWitdh1("あいうeお") == true)
-            {
-                Console.Write("true");
-            }
-            else
-            {
-                Console.Write("false");
-            }
+            //if ( Program_Model.IsFullWitdh1("あいうeお") == true)
+            //{
+            //    Console.Write("true");
+            //}
+            //else
+            //{
+            //    Console.Write("false");
+            //}
         }
 
         //public async Task OnGetAsync()
@@ -139,18 +143,19 @@ namespace Dairiten.Pages.Bukken
                 return;
             }
 
-            ////募集人キーが一致する列全削除
-            //if(bnin_key == null || bnin_key == "")
-            //{
-            //    error_msg = "募集人キーの取得に失敗しました。";
-            //    return;
-            //}            
-            ////var del_person = _context.Person.Find(p => p.d_key == in_d_key, p => p.b_key == in_b_key);
-            //var del_karibukken = from p in _context.t_karibukken
-            //                 where p.employee_key == Int32.Parse(bnin_key)
-            //                 select p;
-            //_context.t_karibukken.RemoveRange(del_karibukken);
-            //_context.SaveChanges();
+            bnin_key = "1";   //後で削除する
+            //募集人キーが一致する列全削除
+            if (bnin_key == null || bnin_key == "")
+            {
+                error_msg = "募集人キーの取得に失敗しました。";
+                return;
+            }
+            //var del_person = _context.Person.Find(p => p.d_key == in_d_key, p => p.b_key == in_b_key);
+            var del_karibukken = from p in _context.t_karibukken
+                                 where p.employee_key == Int32.Parse(bnin_key)
+                                 select p;
+            _context.t_karibukken.RemoveRange(del_karibukken);
+            _context.SaveChanges();
 
             // 初期化
             string line;
@@ -162,7 +167,7 @@ namespace Dairiten.Pages.Bukken
             // クラスにマッピング (Shift-JIS)
             using (var sr = new StreamReader(ms, System.Text.Encoding.GetEncoding("shift_jis")))
             {
-                List<t_karibukken> mylist1 = new List<t_karibukken>();                
+                List<t_karibukken> mylist1 = new List<t_karibukken>();
 
                 // 1行目(項目名)読み捨てる
                 sr.ReadLine();
@@ -519,6 +524,14 @@ namespace Dairiten.Pages.Bukken
                             //              throw new Exception("CSV format error");
                         }
                     }
+                }
+                if (eflg == false)
+                {
+                    foreach (var item in mylist1)
+                    {
+                        _context.t_karibukken.Add(item);
+                    }
+                    _context.SaveChanges();
                 }
             }
         }

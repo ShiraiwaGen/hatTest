@@ -77,16 +77,20 @@ app.Run();
 
 namespace Dairiten
 {
-    public static class Program_Model
+    public class Program
     {
-        private static readonly Dairiten.Data.ApplicationDbContext _context;
+        private readonly Dairiten.Data.ApplicationDbContext _context;
+        public Program(Dairiten.Data.ApplicationDbContext context)
+        {
+            _context = context;
+        }
 
         //代理店名、コード、募集人キー取得
-        public static string[] Dairiten_Get()
+        public string[] Dairiten_Get(string currentUserId)
         {
             //string currentUserId = User.Identity.GetUserId();
-            string currentUserId = "ad97ccd7 - 77ad - 4130 - 95fe - b18f6a201239";
-            string[] arr = new string[2];
+            //string currentUserId = "ad97ccd7-77ad-4130-95fe-b18f6a201239";
+            string[] arr = new string[3];
 
             var nowData = from m in _context.m_dairiten
                           join t in _context.appUsers
@@ -103,13 +107,12 @@ namespace Dairiten
             {
                 foreach (var item in nowData)
                 {
-
                     arr[0] = item.d_no;
                     arr[1] = item.d_name;
                     arr[2] = item.bnin_no;
                 }
             }
-  
+
             return arr;
         }
 
