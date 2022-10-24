@@ -12,16 +12,22 @@ function shohinKbnBtnClick() {
     let btnJutaku = document.getElementById("shohinKbnRadio1");
     let jutakuForm = document.getElementById("jutaku-form");
     let jigyoForm = document.getElementById("jigyo-form");
+    let jutakuForm2 = document.getElementById("jutaku-form2");
+    let jigyoForm2 = document.getElementById("jigyo-form2");
     if (btnJutaku.checked) {
         jigyoForm.style.display = "none";
+        jigyoForm2.style.display = "none";
         jutakuForm.style.display = "";
+        jutakuForm2.style.display = "";
     } else {
         jigyoForm.style.display = "";
+        jigyoForm2.style.display = "";
         jutakuForm.style.display = "none";
+        jutakuForm2.style.display = "none";
     }
 }
 
-/*契約者区分ラジオボタン（申込入力画面）*/
+/*(住宅用)契約者区分ラジオボタン（申込入力画面）*/
 function keiyakushaKbnBtnClick() {
     let btnKojin = document.getElementById("keiyakushaKbnRadio1");
     let btnHojin = document.getElementById("keiyakushaKbnRadio2");
@@ -45,15 +51,42 @@ function keiyakushaKbnBtnClick() {
     if (btnKojinJigyonushi.checked) {
         ju_KojinForm.style.display = "none";
         ju_HojinForm.style.display = "none";
-        ju_Hojin2Form.style.display = "none";
+        ju_Hojin2Form.style.display = "";
         ju_KojinJigyonushiForm.style.display = "";
     }
 }
 
-/*告知事項等ラジオボタン（申込入力画面）*/
+/*(事業用)契約者区分ラジオボタン（申込入力画面）*/
+function ji_keiyakushaKbnBtnClick() {
+    let btnHojin = document.getElementById("ji_keiyakushaKbnRadio2");
+    let btnKojinJigyonushi = document.getElementById("ji_keiyakushaKbnRadio3");
+    let ji_HojinForm = document.getElementById("jigyo_hojin");
+    let ji_KojinJigyonushiForm = document.getElementById("jigyo_kojinjigyonushi");
+    if (btnHojin.checked) {
+        ji_HojinForm.style.display = "";
+        ji_KojinJigyonushiForm.style.display = "none";
+    }
+    if (btnKojinJigyonushi.checked) {
+        ji_HojinForm.style.display = "none";
+        ji_KojinJigyonushiForm.style.display = "";
+    }
+}
+
+/*(住宅用)告知事項等ラジオボタン（申込入力画面）*/
 function other_hokenBtnClick() {
     let btnNO = document.getElementById("other_hokenRadio1");
     let otherHokenForm = document.getElementById("other_hoken-form");
+    if (btnNO.checked) {
+        otherHokenForm.style.display = "none";
+    } else {
+        otherHokenForm.style.display = "";
+    }
+}
+
+/*(事業用)告知事項等ラジオボタン（申込入力画面）*/
+function ji_other_hokenBtnClick() {
+    let btnNO = document.getElementById("ji_other_hokenRadio1");
+    let otherHokenForm = document.getElementById("ji_other_hoken-form");
     if (btnNO.checked) {
         otherHokenForm.style.display = "none";
     } else {
@@ -174,7 +207,7 @@ function hoshonin_kbnChange() {
     }
 }
 
-/*法人形態プルダウン選択時（申込入力画面）*/
+/*(住宅用契約者)法人形態プルダウン選択時（申込入力画面）*/
 function hojinkeitaiChange() {
     let btnHojinkeitai_mae = document.getElementById("hojinkeitai_ichiRadio1");
     let btnHojinkeitai_ushiro = document.getElementById("hojinkeitai_ichiRadio2");
@@ -202,7 +235,7 @@ function hojinkeitaiChange() {
     }
 }
 
-/*法人形態その他入力時（申込入力画面）*/
+/*(住宅用契約者)法人形態その他入力時（申込入力画面）*/
 function hojinkeitai_otherChange() {
     let btnHojinkeitai_mae = document.getElementById("hojinkeitai_ichiRadio1");
     let btnHojinkeitai_ushiro = document.getElementById("hojinkeitai_ichiRadio2");
@@ -216,7 +249,7 @@ function hojinkeitai_otherChange() {
     }
 }
 
-/*法人形態位置ラジオボタン（申込入力画面）*/
+/*(住宅用契約者)法人形態位置ラジオボタン（申込入力画面）*/
 function hojinkeitai_ichiBtnClick() {
     let btnHojinkeitai_mae = document.getElementById("hojinkeitai_ichiRadio1");
     let btnHojinkeitai_ushiro = document.getElementById("hojinkeitai_ichiRadio2");
@@ -244,4 +277,178 @@ function hojinkeitai_ichiBtnClick() {
             txtHojinkeitai_ushiro.value = txtHojinkeitai_other.value;
         }
     }
+}
+
+/*(事業用契約者)法人形態プルダウン選択時（申込入力画面）*/
+function ji_k_hojinkeitaiChange() {
+    let btnHojinkeitai_mae = document.getElementById("ji_k_hojinkeitai_ichiRadio1");
+    let btnHojinkeitai_ushiro = document.getElementById("ji_k_hojinkeitai_ichiRadio2");
+    let txtHojinkeitai_mae = document.getElementById("ji_k_hojinkeitai_mae");
+    let txtHojinkeitai_ushiro = document.getElementById("ji_k_hojinkeitai_ushiro");
+    let txtHojinkeitai_other = document.getElementById("ji_k_hojinkeitai_other");
+    var selected = $("#ji_k_hojinkeitai").children("option:selected");
+    if (selected.text() == '') {
+        txtHojinkeitai_mae.value = '';
+        txtHojinkeitai_ushiro.value = '';
+        txtHojinkeitai_other.disabled = false;
+    } else if (selected.text() == 'なし') {
+        txtHojinkeitai_mae.value = '';
+        txtHojinkeitai_ushiro.value = '';
+        txtHojinkeitai_other.value = '';
+        txtHojinkeitai_other.disabled = true;
+    } else if (selected.text() != '') {
+        txtHojinkeitai_other.value = '';
+        txtHojinkeitai_other.disabled = true;
+        if (btnHojinkeitai_mae.checked) {
+            txtHojinkeitai_mae.value = selected.text();
+        } else if (btnHojinkeitai_ushiro.checked) {
+            txtHojinkeitai_ushiro.value = selected.text();
+        }
+    }
+}
+
+/*(事業用契約者)法人形態その他入力時（申込入力画面）*/
+function ji_k_hojinkeitai_otherChange() {
+    let btnHojinkeitai_mae = document.getElementById("ji_k_hojinkeitai_ichiRadio1");
+    let btnHojinkeitai_ushiro = document.getElementById("ji_k_hojinkeitai_ichiRadio2");
+    let txtHojinkeitai_mae = document.getElementById("ji_k_hojinkeitai_mae");
+    let txtHojinkeitai_ushiro = document.getElementById("ji_k_hojinkeitai_ushiro");
+    let txtHojinkeitai_other = document.getElementById("ji_k_hojinkeitai_other");
+    if (btnHojinkeitai_mae.checked) {
+        txtHojinkeitai_mae.value = txtHojinkeitai_other.value;
+    } else if (btnHojinkeitai_ushiro.checked) {
+        txtHojinkeitai_ushiro.value = txtHojinkeitai_other.value;
+    }
+}
+
+/*(事業用契約者)法人形態位置ラジオボタン（申込入力画面）*/
+function ji_k_hojinkeitai_ichiBtnClick() {
+    let btnHojinkeitai_mae = document.getElementById("ji_k_hojinkeitai_ichiRadio1");
+    let btnHojinkeitai_ushiro = document.getElementById("ji_k_hojinkeitai_ichiRadio2");
+    let txtHojinkeitai_mae = document.getElementById("ji_k_hojinkeitai_mae");
+    let txtHojinkeitai_ushiro = document.getElementById("ji_k_hojinkeitai_ushiro");
+    let txtHojinkeitai_other = document.getElementById("ji_k_hojinkeitai_other");
+    var selected = $("#ji_k_hojinkeitai").children("option:selected");
+    if (selected.text() == 'なし') {
+        txtHojinkeitai_mae.value = '';
+        txtHojinkeitai_ushiro.value = '';
+    } else if (selected.text() != '') {
+        if (btnHojinkeitai_mae.checked) {
+            txtHojinkeitai_mae.value = selected.text();
+            txtHojinkeitai_ushiro.value = '';
+        } if (btnHojinkeitai_ushiro.checked) {
+            txtHojinkeitai_mae.value = '';
+            txtHojinkeitai_ushiro.value = selected.text();
+        }
+    } else if (txtHojinkeitai_other.value != '') {
+        if (btnHojinkeitai_mae.checked) {
+            txtHojinkeitai_mae.value = txtHojinkeitai_other.value;
+            txtHojinkeitai_ushiro.value = '';
+        } if (btnHojinkeitai_ushiro.checked) {
+            txtHojinkeitai_mae.value = '';
+            txtHojinkeitai_ushiro.value = txtHojinkeitai_other.value;
+        }
+    }
+}
+
+/*(事業用被保険者)法人形態プルダウン選択時（申込入力画面）*/
+function ji_h_hojinkeitaiChange() {
+    let btnHojinkeitai_mae = document.getElementById("ji_h_hojinkeitai_ichiRadio1");
+    let btnHojinkeitai_ushiro = document.getElementById("ji_h_hojinkeitai_ichiRadio2");
+    let txtHojinkeitai_mae = document.getElementById("ji_h_hojinkeitai_mae");
+    let txtHojinkeitai_ushiro = document.getElementById("ji_h_hojinkeitai_ushiro");
+    let txtHojinkeitai_other = document.getElementById("ji_h_hojinkeitai_other");
+    var selected = $("#ji_h_hojinkeitai").children("option:selected");
+    if (selected.text() == '') {
+        txtHojinkeitai_mae.value = '';
+        txtHojinkeitai_ushiro.value = '';
+        txtHojinkeitai_other.disabled = false;
+    } else if (selected.text() == 'なし') {
+        txtHojinkeitai_mae.value = '';
+        txtHojinkeitai_ushiro.value = '';
+        txtHojinkeitai_other.value = '';
+        txtHojinkeitai_other.disabled = true;
+    } else if (selected.text() != '') {
+        txtHojinkeitai_other.value = '';
+        txtHojinkeitai_other.disabled = true;
+        if (btnHojinkeitai_mae.checked) {
+            txtHojinkeitai_mae.value = selected.text();
+        } else if (btnHojinkeitai_ushiro.checked) {
+            txtHojinkeitai_ushiro.value = selected.text();
+        }
+    }
+}
+
+/*(事業用被保険者)法人形態その他入力時（申込入力画面）*/
+function ji_h_hojinkeitai_otherChange() {
+    let btnHojinkeitai_mae = document.getElementById("ji_h_hojinkeitai_ichiRadio1");
+    let btnHojinkeitai_ushiro = document.getElementById("ji_h_hojinkeitai_ichiRadio2");
+    let txtHojinkeitai_mae = document.getElementById("ji_h_hojinkeitai_mae");
+    let txtHojinkeitai_ushiro = document.getElementById("ji_h_hojinkeitai_ushiro");
+    let txtHojinkeitai_other = document.getElementById("ji_h_hojinkeitai_other");
+    if (btnHojinkeitai_mae.checked) {
+        txtHojinkeitai_mae.value = txtHojinkeitai_other.value;
+    } else if (btnHojinkeitai_ushiro.checked) {
+        txtHojinkeitai_ushiro.value = txtHojinkeitai_other.value;
+    }
+}
+
+/*(事業用被保険者)法人形態位置ラジオボタン（申込入力画面）*/
+function ji_h_hojinkeitai_ichiBtnClick() {
+    let btnHojinkeitai_mae = document.getElementById("ji_h_hojinkeitai_ichiRadio1");
+    let btnHojinkeitai_ushiro = document.getElementById("ji_h_hojinkeitai_ichiRadio2");
+    let txtHojinkeitai_mae = document.getElementById("ji_h_hojinkeitai_mae");
+    let txtHojinkeitai_ushiro = document.getElementById("ji_h_hojinkeitai_ushiro");
+    let txtHojinkeitai_other = document.getElementById("ji_h_hojinkeitai_other");
+    var selected = $("#ji_h_hojinkeitai").children("option:selected");
+    if (selected.text() == 'なし') {
+        txtHojinkeitai_mae.value = '';
+        txtHojinkeitai_ushiro.value = '';
+    } else if (selected.text() != '') {
+        if (btnHojinkeitai_mae.checked) {
+            txtHojinkeitai_mae.value = selected.text();
+            txtHojinkeitai_ushiro.value = '';
+        } if (btnHojinkeitai_ushiro.checked) {
+            txtHojinkeitai_mae.value = '';
+            txtHojinkeitai_ushiro.value = selected.text();
+        }
+    } else if (txtHojinkeitai_other.value != '') {
+        if (btnHojinkeitai_mae.checked) {
+            txtHojinkeitai_mae.value = txtHojinkeitai_other.value;
+            txtHojinkeitai_ushiro.value = '';
+        } if (btnHojinkeitai_ushiro.checked) {
+            txtHojinkeitai_mae.value = '';
+            txtHojinkeitai_ushiro.value = txtHojinkeitai_other.value;
+        }
+    }
+}
+
+/*(事業用)被保険者区分ラジオボタン（申込入力画面）*/
+function ji_hihokenshaBtnClick() {
+    let btnHojin = document.getElementById("ji_hihokensha_kbnRadio1");
+    let btnKojinJigyonushi = document.getElementById("ji_hihokensha_kbnRadio2");
+    let ji_h_HojinForm = document.getElementById("ji_h_hojin");
+    let ji_h_KojinjigyonushiForm = document.getElementById("ji_h_kojinjigyonushi");
+    if (btnHojin.checked) {
+        ji_h_HojinForm.style.display = "";
+        ji_h_KojinjigyonushiForm.style.display = "none";
+    }
+    if (btnKojinJigyonushi.checked) {
+        ji_h_HojinForm.style.display = "none";
+        ji_h_KojinjigyonushiForm.style.display = "";
+    }
+}
+
+/*テストで作成。申込入力画面戻るボタン押下で商品区分ラジオボタンで選択したvalueが証券番号のlabelに表示される。*/
+/*実現したい事。入力内容確認ボタン押下で商品区分ラジオボタンで選択したvalueが申込入力(内容確認)画面のlabelに表示させたい*/
+function return_BtnClick() {
+    let str = "";
+    const shohinKbn = document.moshikomi_form.shohinKbnRadio;
+    for (let i = 0; i < shohinKbn.length; i++) {
+        if (shohinKbn[i].checked) {
+            str = shohinKbn[i].value;
+            break;
+        }
+    }
+    document.getElementById("shoken_no").innerText = str;
 }

@@ -32,7 +32,7 @@ body {
 .komoku2 {
     float: left;
     height: 68px;
-    width: 100px;
+    width: auto;
     background-color: #4169E1;
     margin: 0 1px 1px; /* 箱と箱の間のスペース設定 左から　上 左右 下　の幅を設定しています */
     padding: 1px 3px; /* 箱の中の文字と箱の幅のスペース設定　左から　上下 左右 */
@@ -71,7 +71,7 @@ body {
 .komoku6 {
     float: left;
     height: 80px;
-    width: 300px;
+    width: auto;
     line-height: 32px;
     background-color: #4169E1;
     margin: 0 0 1px; /* 箱と箱の間のスペース設定 左から　上 左右 下　の幅を設定しています */
@@ -166,6 +166,24 @@ body {
     padding: 1px 3px; /* 箱の中の文字と箱の幅のスペース設定　左から　上下 左右 */
 }
 
+.komoku16 {
+    float: left;
+    height: 352px;
+    width: auto;
+    background-color: #4169E1;
+    margin: 0 1px 1px; /* 箱と箱の間のスペース設定 左から　上 左右 下　の幅を設定しています */
+    padding: 1px 3px; /* 箱の中の文字と箱の幅のスペース設定　左から　上下 左右 */
+}
+
+.komoku17 {
+    float: left;
+    height: 284px;
+    width: auto;
+    background-color: #4169E1;
+    margin: 0 1px 1px; /* 箱と箱の間のスペース設定 左から　上 左右 下　の幅を設定しています */
+    padding: 1px 3px; /* 箱の中の文字と箱の幅のスペース設定　左から　上下 左右 */
+}
+
 .atai1 {
     height: 32px;
     width: auto;
@@ -238,6 +256,10 @@ body {
 
 .text-red {
     color: red;
+}
+
+.text-orangered {
+    color: orangered;
 }
 
 .center-moji {
