@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dairiten.Models
 {
-    [Keyless]
     public class t_karibukken
     {
         public int id { get; set; }

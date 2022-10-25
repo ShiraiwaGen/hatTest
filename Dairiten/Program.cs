@@ -89,7 +89,6 @@ namespace Dairiten
         public string[] Dairiten_Get(string currentUserId)
         {
             //string currentUserId = User.Identity.GetUserId();
-            //string currentUserId = "ad97ccd7-77ad-4130-95fe-b18f6a201239";
             string[] arr = new string[3];
 
             var nowData = from m in _context.m_dairiten
@@ -117,7 +116,7 @@ namespace Dairiten
         }
 
         //全角チェック    
-        public static bool IsFullWitdh1(string chkStr)
+        public static bool IsFullWitdh(string chkStr)
         {
             Encoding shiftjisEnc = Encoding.GetEncoding("Shift_JIS");
             int chrByteNum = shiftjisEnc.GetByteCount(chkStr);
