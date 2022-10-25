@@ -287,8 +287,273 @@
         </div>
         <div class="col-10">
             <div class="atai2 mb-1 ps-2">
-                <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.hoshonin_kbn</label>
+                <label class="col-form-label" style="line-height: 16px;">
+                    @if (@Model.k_kakunin.hoshonin_kbn != "その他")
+                    {
+                        @Model.k_kakunin.hoshonin_kbn
+                    }else
+                    {
+                        @(@Model.k_kakunin.hoshonin_kbn + "　" + @Model.keiyaku.hoshonin_kbn_other)
+                    }
+                </label>
             </div>
         </div>
     </div>
+    <br>
+    <p style="line-height: 0.5">★被保険者情報</p>
+    <div class="row g-0">
+        <div class="col-2">
+            <div class="komoku9 text-white mb-1 w-100">複数契約特約</div>
+        </div>
+        <div class="col-10">
+            <div class="atai2 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;"></label>
+            </div>
+        </div>
+    </div>
+    <div class="row g-0">
+        <div class="col-2">
+            <div class="komoku9 text-white mb-1 w-100">契約者と同じ</div>
+        </div>
+        <div class="col-10">
+            <div class="atai2 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;"></label>
+            </div>
+        </div>
+    </div>
+    <div class="row g-0">
+        <div class="col-1 pe-1">
+            <div class="komoku8 text-white mb-1 w-100">目的地住所</div>
+        </div>
+        <div class="col-1">
+            <div class="komoku9 text-white mb-1 w-100">戸建て</div>
+            <div class="komoku9 text-white mb-1 w-100">物件番号</div>
+            <div class="komoku9 text-white mb-1 w-100">郵便番号</div>
+            <div class="komoku9 text-white mb-1 w-100">住所</div>
+            <div class="komoku9 text-white mb-1 w-100">丁目・番地</div>
+            <div class="komoku9 text-white mb-1 w-100">建物名</div>
+            <div class="komoku9 text-white mb-1 w-100">号室</div>
+        </div>
+        <div class="col-10">
+            <div class="atai2 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;"></label>
+            </div>
+            <div class="atai2 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.h_bukken_no</label>
+            </div>
+            <div class="atai2 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.h_zip</label>
+            </div>
+            <div class="atai2 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.h_address1</label>
+            </div>
+            <div class="atai2 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.h_address2</label>
+            </div>
+            <div class="atai2 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.h_address3</label>
+            </div>
+            <div class="atai2 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.h_address4</label>
+            </div>
+        </div>
+    </div>
+    <div class="row g-0">
+        <div class="col-2">
+            <div class="komoku9 text-white mb-1 w-100">被保険者区分</div>
+        </div>
+        <div class="col-10">
+            <div class="atai2 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;"></label>
+            </div>
+        </div>
+    </div>
+    <div class="row g-0">
+        <div class="col-1 pe-1" >
+            <div class="komoku2 text-white mb-1 w-100">被保険者名</div>
+        </div>
+        <div class="col-1">
+            <div class="komoku9 text-white mb-1 w-100">カナ</div>
+            <div class="komoku9 text-white mb-1 w-100">漢字</div>
+        </div>
+        <div class="col-10">
+            <div class="atai2 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.h_sei_kana @Model.keiyaku.h_mei_kana</label>
+            </div>
+            <div class="atai2 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.h_sei　@Model.keiyaku.h_mei</label>
+            </div>
+        </div>
+    </div>
+    <div class="row g-0">
+        <div class="col-2">
+            <div class="komoku9 text-white mb-1 w-100">生年月日</div>
+        </div>
+        <div class="col-10">
+            <div class="atai2 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;">
+                    @if (@Model.keiyaku.h_birth != DateTime.Parse("0001/01/01 00:00:00"))
+                    {
+                        @Model.keiyaku.h_birth.ToString("yyyy年MM月dd日")
+                    }
+                    else
+                    {
+                                
+                    }
+                </label>
+            </div>
+        </div>
+    </div>
+    <br>
+    <p style="line-height: 0.5">★手続依頼書・集金方法</p>
+    <div class="row g-0">
+        <div class="col-2">
+            <div class="komoku9 text-white mb-1 w-100">手続依頼書発行</div>
+        </div>
+        <div class="col-10">
+            <div class="atai2 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;">@Model.k_kakunin.tetsuzukiiraishohakko_kbn</label>
+            </div>
+        </div>
+    </div>
+    <div class="row g-0">
+        <div class="col-2">
+            <div class="komoku9 text-white mb-1 w-100">集金方法</div>
+        </div>
+        <div class="col-10">
+            <div class="atai2 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;">@Model.k_kakunin.shukinhoho</label>
+            </div>
+        </div>
+    </div>
+    <br>
+    <p style="line-height: 0.5">★告知事項等</p>
+    <div class="row g-0">
+        <div class="col-12">
+            <div class="komoku5 text-white w-100">① 被保険者(入居者本人)または被保険者(入居者本人)と同居する方が、<br>
+                    　今回のご契約以外に、これと同一の損害を補償する他の保険にご加入されていますか？
+            </div>
+        </div>
+    </div>
+    <div class="row g-0">
+        <div class="col-2">
+            <div class="komoku14 text-white mb-1 w-100"></div>
+        </div>
+        <div class="col-10">
+            <div class="atai2 mb-1 py-1 mt-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;"></label>
+            </div>
+        </div>
+    </div>
+    <div class="row g-0">
+        <div class="col-12">
+            <div class="komoku5 text-white w-100">② ①で「はい」とお答えされた方のみご回答ください。<br>
+                    　加入されている他の保険は当社の保険ですか？
+            </div>
+        </div>
+    </div>
+    <div class="row g-0">
+        <div class="col-2">
+            <div class="komoku14 text-white mb-1 w-100"></div>
+        </div>
+        <div class="col-10">
+            <div class="atai2 mb-1 py-1 mt-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;"></label>
+            </div>
+        </div>
+    </div>
+    <div class="row g-0">
+        <div class="col-12">
+            <div class="komoku12 text-white w-100">③ ①で「はい」とお答えの方は他にご加入の契約内容をご記入ください。</div>
+        </div>
+    </div>
+    <div class="row g-0">
+        <div class="col-1 pe-1">
+            <div class="komoku13 text-white mb-1 w-100"></div>
+        </div>
+        <div class="col-1">
+            <div class="komoku9 text-white mb-1 mt-1 w-100">保険会社名</div>
+            <div class="komoku9 text-white mb-1 w-100">保険種類</div>
+            <div class="komoku9 text-white mb-1 w-100">満期日</div>
+            <div class="komoku9 text-white mb-1 w-100">保険金額</div>
+        </div>
+        <div class="col-10">
+            <div class="atai2 mb-1 mt-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.other_hoken_company</label>
+            </div>
+            <div class="atai2 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.other_hoken_shurui</label>
+            </div>
+            <div class="atai2 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;">
+                    @if (@Model.keiyaku.other_hoken_manki != DateTime.Parse("0001/01/01 00:00:00"))
+                    {
+                        @Model.keiyaku.other_hoken_manki.ToString("yyyy年MM月dd日")
+                    }
+                    else
+                    {
+                                
+                    }
+                </label>
+            </div>
+            <div class="atai2 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;">
+                    @if (@Model.keiyaku.other_hoken_money != 0)
+                    {
+                        @Model.keiyaku.other_hoken_money.ToString("#,0 円")
+                    }else{
+
+                    }
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row g-0">
+        <div class="col-2">
+            <div class="komoku9 text-white mb-1 w-100">保険契約証要</div>
+        </div>
+        <div class="col-10">
+            <div class="atai2 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;"></label>
+            </div>
+        </div>
+    </div>
+    <br>
+    <p style="line-height: 0.5">★その他</p>
+    <div class="row g-0">
+        <div class="col-2">
+            <div class="komoku9 text-white mb-1 w-100">コード</div>
+        </div>
+        <div class="col-10">
+            <div class="atai2 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;"></label>
+            </div>
+        </div>
+    </div>
+    <div class="row g-0">
+        <div class="col-2">
+            <div class="komoku9 text-white mb-1 w-100">特記事項</div>
+        </div>
+        <div class="col-10">
+            <div class="atai2 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px;"></label>
+            </div>
+        </div>
+    </div>
+    <br>
+    <p style="line-height: 0.5">★代理店情報</p>
+    <div class="row g-0">
+        <div class="col-2">
+            <div class="komoku9 text-white mb-1 w-100">代理店コード</div>
+        </div>
+        <div class="col-10">
+            <div class="atai2 mb-1 ps-2">
+                <label class="col-form-label" style="line-height: 16px; margin-right: 20px;">@Model.d_no</label>
+                <label class="col-form-label" style="line-height: 16px;">@Model.d_name</label>
+            </div>
+        </div>
+    </div>
+
+
+
 </form>

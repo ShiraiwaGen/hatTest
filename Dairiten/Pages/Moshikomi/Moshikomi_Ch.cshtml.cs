@@ -1,4 +1,5 @@
 using Dairiten.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
@@ -22,6 +23,8 @@ namespace Dairiten.Pages.Moshikomi
 
         [BindProperty]
         public KeiyakuKakunin k_kakunin { get; set; }
+
+        public string d_no, d_name, bnin_key;
 
         public class InputModel
         {
@@ -594,19 +597,31 @@ namespace Dairiten.Pages.Moshikomi
         public class KeiyakuKakunin
         {
             public string shohin_name { get; set; }
+            public string hoshonin_kbn { get; set; }
+
+            public string hoshonin_kbn_other { get; set; }
+
+            public string tetsuzukiiraishohakko_kbn { get; set; }
+
+            public string shukinhoho { get; set; }
         }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
         }
 
         public void OnPost()
         {
-            
+
+            var pm = new Program(_context);
+            string[] arr = pm.Dairiten_Get(User.Identity.GetUserId());
+            d_no = arr[0];
+            d_name = arr[1];
+            bnin_key = arr[2];
 
 
 
-
+            // 契約タイプのプルダウンで選択した商品のIDを取得
             string shohin_selected = (string)Request.Form["shohin"];
             int shohin_num = -1;
             if (!string.IsNullOrEmpty(shohin_selected))
@@ -620,6 +635,52 @@ namespace Dairiten.Pages.Moshikomi
                     }
                 }
             }
+
+            // 保証人区分のプルダウンで選択のitem_noを取得
+            string hoshonin_selected = (string)Request.Form["hoshonin_kbn"];
+            int hoshonin_num = -1;
+            if (!string.IsNullOrEmpty(hoshonin_selected))
+            {
+                foreach (var master in _context.m_master.Where(m => m.m_master_kbn_id == 10))
+                {
+                    if (hoshonin_selected.Equals(master.item_name))
+                    {
+                        hoshonin_num = master.item_no;
+                        break;
+                    }
+                }
+            }
+
+            // 手続依頼書発行のプルダウンで選択のitem_noを取得
+            string tetsuzukiiraishohakko_selected = (string)Request.Form["tetsuzukiiraishohakko_kbn"];
+            int tetsuzukiiraishohakko_num = -1;
+            if (!string.IsNullOrEmpty(tetsuzukiiraishohakko_selected))
+            {
+                foreach (var master in _context.m_master.Where(m => m.m_master_kbn_id == 12))
+                {
+                    if (tetsuzukiiraishohakko_selected.Equals(master.item_name))
+                    {
+                        tetsuzukiiraishohakko_num = master.item_no;
+                        break;
+                    }
+                }
+            }
+
+            // 集金方法のプルダウンで選択のitem_noを取得
+            string shukinhoho_selected = (string)Request.Form["shukinhoho"];
+            int shukinhoho_num = -1;
+            if (!string.IsNullOrEmpty(shukinhoho_selected))
+            {
+                foreach (var master in _context.m_master.Where(m => m.m_master_kbn_id == 13))
+                {
+                    if (shukinhoho_selected.Equals(master.item_name))
+                    {
+                        shukinhoho_num = master.item_no;
+                        break;
+                    }
+                }
+            }
+
             keiyaku = new t_keiyaku
             {
                 m_dairiten_id = Input.m_dairiten_id,
@@ -653,7 +714,7 @@ namespace Dairiten.Pages.Moshikomi
                 k_mei = Input.k_mei,
                 k_birth = Input.k_birth,
                 k_mail = Input.k_mail,
-                hoshonin_kbn = Input.hoshonin_kbn,
+                hoshonin_kbn = hoshonin_num,
                 hoshonin_kbn_other = Input.hoshonin_kbn_other,
                 fukusu_tokuyaku = Input.fukusu_tokuyaku,
                 k_onaji = Input.k_onaji,
@@ -670,8 +731,8 @@ namespace Dairiten.Pages.Moshikomi
                 h_sei = Input.h_sei,
                 h_mei = Input.h_mei,
                 h_birth = Input.h_birth,
-                tetsuzukiiraishohakko_kbn = Input.tetsuzukiiraishohakko_kbn,
-                shukinhoho = Input.shukinhoho,
+                tetsuzukiiraishohakko_kbn = tetsuzukiiraishohakko_num,
+                shukinhoho = shukinhoho_num,
                 other_hoken = Input.other_hoken,
                 other_hoken_umu = Input.other_hoken_umu,
                 other_hoken_company = Input.other_hoken_company,
@@ -741,13 +802,35 @@ namespace Dairiten.Pages.Moshikomi
                 dairiten_ritsu = Input.dairiten_ritsu,
                 seiritsujokyo = Input.seiritsujokyo,
                 t_nyukin_id = Input.t_nyukin_id,
-
-                //まだ途中
+                moshikomibi = Input.moshikomibi,
+                tokuyaku2 = Input.tokuyaku2,
+                fubiriyu = Input.fubiriyu,
+                del_flg = Input.del_flg,
+                shiharaisaki = Input.shiharaisaki,
+                bank = Input.bank,
+                bank_shiten = Input.bank_shiten,
+                bank_account_type = Input.bank_account_type,
+                passbook_symbol = Input.passbook_symbol,
+                bank_account_no = Input.bank_account_no,
+                bank_account_holder = Input.bank_account_holder,
+                bank_account_holder_kana = Input.bank_account_holder_kana,
+                henreikin = Input.henreikin,
+                henreikin_day = Input.henreikin_day,
+                koshin_nengetsu = Input.koshin_nengetsu,
+                sofuyoteizuki = Input.sofuyoteizuki,
+                dairiten_tesuryo = Input.dairiten_tesuryo,
+                shomihokenryo = Input.shomihokenryo,
+                t_seikyu_id = Input.t_seikyu_id,
+                yayoi_flg = Input.yayoi_flg,
+                torokubi = Input.torokubi,
             };
 
             k_kakunin = new KeiyakuKakunin
             {
-                shohin_name = (string)Request.Form["shohin"]
+                shohin_name = (string)Request.Form["shohin"],
+                hoshonin_kbn = (string)Request.Form["hoshonin_kbn"],
+                tetsuzukiiraishohakko_kbn = (string)Request.Form["tetsuzukiiraishohakko_kbn"],
+                shukinhoho = (string)Request.Form["shukinhoho"],
             };
             
         }

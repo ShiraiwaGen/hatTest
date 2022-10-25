@@ -1,4 +1,5 @@
 using Dairiten.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +19,9 @@ namespace Dairiten.Pages
         public InputModel Input { get; set; }
         public IList<m_shohin> m_Shohin { get; set; }
         public IList<m_master> m_Master { get; set; }
-       
+
+        public string d_no, d_name, bnin_key;
+
         public class InputModel
         {
             [Display(Name = "å_ñÒÉLÅ[")]
@@ -595,6 +598,12 @@ namespace Dairiten.Pages
         {
             m_Shohin = await _context.m_shohin.ToListAsync();
             m_Master = await _context.m_master.ToListAsync();
+
+            var pm = new Program(_context);
+            string[] arr = pm.Dairiten_Get(User.Identity.GetUserId());
+            d_no = arr[0];
+            d_name = arr[1];
+            bnin_key = arr[2];
         }
         public void OnPost()
         {
