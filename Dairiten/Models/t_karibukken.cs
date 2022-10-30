@@ -16,7 +16,7 @@ namespace Dairiten.Models
         [Required]
         [StringLength(7, ErrorMessage = "郵便番号はハイフン（－）なしの数字７桁でお願いします")]
         [RegularExpression(@"[0-9]+", ErrorMessage = "半角数字のみ入力できます")]
-        public int b_zip { get; set; }
+        public string b_zip { get; set; }
 
         [DisplayName("住所（都道府県市区町村）")]
         [Required]

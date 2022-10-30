@@ -16,6 +16,9 @@ using System.Web.Http;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.CodeAnalysis.Scripting;
+using System.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace Dairiten.Pages.Bukken
 {
@@ -30,7 +33,7 @@ namespace Dairiten.Pages.Bukken
         //画面表示用(htmlタグあり)
         public class Bukken1
         {
-            public int b_count { get; set; }
+            public string? b_count2 { get; set; }
             public string? bukken_no { get; set; }
             public string? b_zip { get; set; }
             public string? b_address1 { get; set; }
@@ -66,16 +69,25 @@ namespace Dairiten.Pages.Bukken
         public IFormFile? formfile { get; set; }
         public Boolean eflg { get; set; } = true;
         public String error_msg { get; set; } = "";
+        public String kanryo_msg { get; set; } = "";
 
-        public string d_no,d_name, bnin_key;
-        public void OnGet()
+        public string d_no, d_name;
+        public int d_id, bnin_id;
+        public void main_data()
         {
-            //string[] arr = Index1Model_Model.Dairiten_Get();
             var pm = new Program(_context);
             string[] arr = pm.Dairiten_Get(User.Identity.GetUserId());
             d_no = arr[0];
             d_name = arr[1];
-            bnin_key = arr[2];
+            //bnin_no = arr[2];
+            d_id = Int32.Parse(arr[3]);
+            bnin_id = Int32.Parse(arr[4]);
+        }
+
+        public void OnGet()
+        {
+            //string[] arr = Index1Model_Model.Dairiten_Get();
+            main_data();
 
             //if ( Program_Model.IsFullWitdh1("あいうeお") == true)
             //{
@@ -92,8 +104,15 @@ namespace Dairiten.Pages.Bukken
         //    m_Dairiten = await _context.m_dairiten.ToListAsync();
         //}
 
+        public void OnPostClearBtn()
+        {
+            main_data();
+        }
+
         public void OnPostHandle1()
         {
+            main_data();
+
             //ファイルチェック
             //if (File.Exists(filePath))
             //{
@@ -111,14 +130,14 @@ namespace Dairiten.Pages.Bukken
             }
 
             //募集人キーが一致する列全削除
-            if (bnin_key == null || bnin_key == "")
+            if (bnin_id == null || bnin_id == 0)
             {
                 error_msg = "募集人キーの取得に失敗しました。";
                 return;
             }
             //var del_person = _context.Person.Find(p => p.d_key == in_d_key, p => p.b_key == in_b_key);
             var del_karibukken = from p in _context.t_karibukken
-                                 where p.employee_key == Int32.Parse(bnin_key)
+                                 where p.employee_key == bnin_id
                                  select p;
             _context.t_karibukken.RemoveRange(del_karibukken);
             _context.SaveChanges();
@@ -158,7 +177,8 @@ namespace Dairiten.Pages.Bukken
                     {
                         try
                         {
-                            // オブジェクト作成                            
+                            // オブジェクト作成
+                            string? b_count2;
                             string? bukken_no;
                             string? b_zip;
                             string? b_address1;
@@ -455,8 +475,15 @@ namespace Dairiten.Pages.Bukken
                                     }
                                     else
                                     {
-                                        d_code = nowData.dairiten_code + " " + nowData.dairiten_mei;
-                                        d_key = nowData.id;
+                                        if (d_no != d_code)
+                                        {
+                                            emsg = "ログインしている代理店と違うコードです。";
+                                        }
+                                        else
+                                        {
+                                            d_code = nowData.dairiten_code + " " + nowData.dairiten_mei;
+                                            d_key = nowData.id;
+                                        }
                                     }
                                 }
                                 if (emsg != "")
@@ -469,6 +496,32 @@ namespace Dairiten.Pages.Bukken
                                     d_code = "<td rowspan=2>" + d_code + "</td>";
                                 }
 
+                                //重複チェック
+                                emsg = "";
+                                var work_bukken = _context.t_bukken                                    
+                                    .Where(x => x.b_zip == values[1])
+                                    .Where(x => x.b_address1 == values[2])
+                                    .Where(x => x.b_address2 == values[3])
+                                    .Where(x => x.b_address3 == values[4])
+                                    .Where(x => x.b_address4 == values[5])
+                                    .Where(x => x.b_address5 == values[6])
+                                    .Where(x => x.m_dairiten_id == d_id)
+                                    .Select(x => x.id)
+                                    .Count();                                 
+                                if (work_bukken != 0)
+                                {
+                                    emsg = "既に登録済みの住所です。";
+                                }
+                                if (emsg != "")
+                                {
+                                    b_count2 = "<td rowspan=2" + e_color + " title='" + emsg + "' >" + b_count + "</td>";
+                                    e_rowflg = true;
+                                }
+                                else
+                                {
+                                    b_count2 = "<td rowspan=2>" + b_count + "</td>";
+                                }
+
                                 //列チェック
                                 if (e_rowflg == true)
                                 {
@@ -476,18 +529,19 @@ namespace Dairiten.Pages.Bukken
                                     err_kensu++;
                                 }
 
-                                mylist.Add(new Bukken1 { b_count = b_count, bukken_no = bukken_no, b_zip = b_zip, b_address1 = b_address1, b_address2 = b_address2, b_address3 = b_address3, b_address4 = b_address4, b_address5 = b_address5, b_kodate = b_kodate, d_code = d_code });
+                                mylist.Add(new Bukken1 { b_count2 = b_count2, bukken_no = bukken_no, b_zip = b_zip, b_address1 = b_address1, b_address2 = b_address2, b_address3 = b_address3, b_address4 = b_address4, b_address5 = b_address5, b_kodate = b_kodate, d_code = d_code });
                                 b_count++;
 
                                 if (eflg == false)
                                 {
-                                    mylist1.Add(new t_karibukken { bukken_no = values[0], b_zip = Int32.Parse(values[1]), b_address1 = values[2], b_address2 = values[3], b_address3 = values[4], b_address4 = values[5], b_address5 = values[6], b_kodate = Int32.Parse(values[7]), m_dairiten_id = d_key, employee_key = Int32.Parse(bnin_key) });
+                                    mylist1.Add(new t_karibukken { bukken_no = values[0], b_zip = values[1], b_address1 = values[2], b_address2 = values[3], b_address3 = values[4], b_address4 = values[5], b_address5 = values[6], b_kodate = Int32.Parse(values[7]), m_dairiten_id = d_key, employee_key = bnin_id });
                                 }
                             }
                         }
                         catch (Exception)
                         {
                             //              throw new Exception("CSV format error");
+                            eflg = true;
                         }
                     }
                 }
@@ -522,33 +576,47 @@ namespace Dairiten.Pages.Bukken
 
         public void OnPostHandle2()
         {
-            //if (b_no == null)
-            //{
-            //    error_msg = "募集人コードがありません。";
-            //    return;
-            //}
+            main_data();
+            if (bnin_id == null)
+            {
+                error_msg = "募集人コードがありません。";
+                return;
+            }
 
-            //var t_karibukken = _context.t_karibukken
-            //  .Where(x => x.employee_key == Int32.Parse(b_no))
-            //  .ToArray();
+            try
+            {
+                var t_karibukken = _context.t_karibukken
+                    .Where(x => x.employee_key == bnin_id)
+                    .ToArray();
 
-            //foreach (var item in t_karibukken)
-            //{
-            //    Dairiten.Models.t_bukken person1 = new Dairiten.Models.t_bukken();
+                foreach (var item in t_karibukken)
+                {
+                    Dairiten.Models.t_bukken person1 = new Dairiten.Models.t_bukken();
 
-            //    person1.bukken_no = item.bukken_no;
-            //    person1.b_zip = item.b_zip;
-            //    person1.b_address1 = item.b_address1;
-            //    person1.b_address2 = item.b_address2;
-            //    person1.b_address3 = item.b_address3;
-            //    person1.b_address4 = item.b_address4;
-            //    person1.b_address5 = item.b_address5;
-            //    person1.b_kodate = item.b_kodate;
-            //    person1.m_dairiten_id = item.m_dairiten_id;
+                    person1.bukken_no = item.bukken_no;
+                    person1.b_zip = item.b_zip;
+                    person1.b_address1 = item.b_address1;
+                    person1.b_address2 = item.b_address2;
+                    person1.b_address3 = item.b_address3;
+                    person1.b_address4 = item.b_address4;
+                    person1.b_address5 = item.b_address5;
+                    person1.b_kodate = item.b_kodate;
+                    person1.m_dairiten_id = item.m_dairiten_id;
 
-            //    _context.t_bukken.Add(person1);
-            //    _context.SaveChanges();
-            //}
+                    _context.t_bukken.Add(person1);
+                    _context.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                //              throw new Exception("CSV format error");
+                return;
+            }
+
+            //Response.Write("<script language=JavaScript> alert('クライアント') </script>");
+            //Response.WriteAsync("<script> alert('取込みました。') </script>");
+            kanryo_msg = "取込みが完了しました。";
+
         }
     }
 }

@@ -9,6 +9,10 @@ namespace Dairiten.Models
         [Required]
         public int m_dairiten_id { get; set; }
 
+        [Display(Name = "募集人キー")]
+        [Required]
+        public int employee_id { get; set; }
+
         [Display(Name = "募集人コード")]
         [Required]
         [RegularExpression(@"[a-zA-Z0-9]+", ErrorMessage = "半角英数字のみ入力できます")]

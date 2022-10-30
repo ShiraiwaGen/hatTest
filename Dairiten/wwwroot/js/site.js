@@ -452,3 +452,12 @@ function return_BtnClick() {
     }
     document.getElementById("shoken_no").innerText = str;
 }
+
+//ローディング表示
+function show_loading() {
+    $('#loading').removeClass('d-none');
+}
+//ローディング非表示
+function hide_loading() {
+    $('#loading').addClass('d-none');
+}

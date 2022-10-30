@@ -18,7 +18,7 @@
                     <div class="atai2 mb-1">
                         <div class="row mb-3">
                             <div class="col-sm-9">
-                                <input type="text" class="form-control form-control-sm" id="bukken_no">
+                                <input type="text" class="form-control form-control-sm" id="bukken_no" asp-for="Input.bukken_no">
                             </div>
                             <label for="bukken_no" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角)</label>
                         </div>
@@ -30,7 +30,7 @@
                 <div class="atai2 mb-1">
                     <div class="row mb-3">
                         <div class="col-sm-9">
-                            <input type="text" class="form-control form-control-sm" id="zipcode">
+                            <input type="text" class="form-control form-control-sm" id="b_zip" asp-for="Input.b_zip">
                         </div>
                         <label for="zipcode" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角)</label>
                     </div>
@@ -41,7 +41,7 @@
                 <div class="atai2 mb-1">
                     <div class="row mb-3">
                         <div class="col-sm-10">
-                            <input type="text" class="form-control form-control-sm" id="jusho">
+                            <input type="text" class="form-control form-control-sm" id="b_address1" asp-for="Input.b_address1">
                         </div>
                         <label for="jusho" class="col-sm-2 col-form-label col-form-label-sm text-red">(全角)</label>
                     </div>
@@ -50,7 +50,7 @@
                     <div class="atai2 mb-1">
                         <div class="row mb-3">
                             <div class="col-sm-10">
-                                <input type="text" class="form-control form-control-sm" id="chome">
+                            <input type="text" class="form-control form-control-sm" id="b_address2" asp-for="Input.b_address2">
                             </div>
                             <label for="chome" class="col-sm-2 col-form-label col-form-label-sm text-red">(全角)</label>
                         </div>
@@ -59,7 +59,7 @@
                 <div class="atai2 mb-1">
                     <div class="row mb-3">
                         <div class="col-sm-10">
-                            <input type="text" class="form-control form-control-sm" id="tatemono">
+                            <input type="text" class="form-control form-control-sm" id="b_address3" asp-for="Input.b_address3">
                         </div>
                         <label for="tatemono" class="col-sm-2 col-form-label col-form-label-sm text-red">(全角)</label>
                     </div>
@@ -67,13 +67,82 @@
             </div>
         </div>
         <div class="text-end">
-            <button type="button" class="btn btn-primary" style="width: 150px;" onclick="clearFormAll()">クリア</button>
-            <button type="button" class="btn btn-primary" style="width: 150px;">検索</button>
+            <button type="submit" class="btn btn-primary" style="width: 150px;" onclick="clearFormAll()">クリア</button>
+            @*<button type="submit" class="btn btn-primary" style="width: 150px;" asp-page-handler="Handle1" onclick="show_loading()">検索</button>*@
+            <input type="submit" class="btn btn-primary" style="width: 150px;" asp-page-handler="Handle10" value="検索" onclick="show_loading()" />
         </div>
     </form>
 
-    <p>物件一覧</p>
-    <div class="text-center">
-        <p>物件表示</p>
-    </div>
+    @if (Model.mylist.Count > 0)
+        {
+        <p>物件一覧</p>
+        <div class="text-center">
+            <table id="mytable" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            建物名
+                        </th>
+                        <th>
+                            号室
+                        </th>
+                        <th>
+                            物件番号
+                        </th>
+                        <th>
+                            郵便番号
+                        </th>
+                        <th>
+                            住所
+                        </th>
+                        <th>
+                            戸建て
+                        </th>
+                        <th>
+                            代理店
+                        </th>
+                        <th>
+                            申込
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.mylist)
+                    {
+                        <tr>
+                            <td rowspan=2>
+                                @Html.Raw(item.b_address3)
+                            </td>
+                            <td rowspan=2>
+                                @Html.Raw(item.b_address5)
+                            </td>
+                            <td rowspan=2>
+                                @Html.Raw(item.bukken_no)
+                            </td>
+                            <td rowspan=2>
+                                @Html.Raw(item.b_zip)
+                            </td>
+                            <td>
+                                @Html.Raw(item.b_address1)
+                            </td>
+                            <td rowspan=2>
+                                @Html.Raw(item.b_kodate)
+                            </td>
+                            <td rowspan=2>
+                                @Html.Raw(item.m_dairiten_id)
+                            </td>
+                            <td rowspan=2>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.Raw(item.b_address2)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
 </div>
