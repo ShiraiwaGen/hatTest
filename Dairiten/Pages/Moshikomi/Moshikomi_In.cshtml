@@ -546,14 +546,14 @@
                 </div>
                 <div class="col-5">
                     <div class="atai4 mb-1 pt-1 ps-2">
-                        <select class="form-select form-select-sm w-50" aria-label=".form-select-sm example" id="hoshonin_kbn" onchange="hoshonin_kbnChange()">
+                        <select class="form-select form-select-sm w-50" aria-label=".form-select-sm example" id="hoshonin_kbn" name="hoshonin_kbn" onchange="hoshonin_kbnChange()">
                             <option selected></option>
                             @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 10))
                             {
                                 <option>@Html.DisplayFor(modelItem => item.item_name)</option>
                             }
                         </select>
-                        <input type="text" class="form-control form-control-sm w-75" id="hoshonin_kbn_other" name="hoshonin_kbn_other" maxlength="100" disabled="disabled">
+                        <input type="text" asp-for="Input.hoshonin_kbn_other" class="form-control form-control-sm w-75" id="hoshonin_kbn_other" maxlength="100" disabled="disabled">
                     </div>
                 </div>
                 <div class="col-5">
@@ -1098,7 +1098,7 @@
                 <div class="atai2 mb-1 ps-2">
                     <div class="row mb-3 g-0">
                         <div class="col-sm-3">
-                            <input type="tel" class="form-control form-control-sm" id="h_bukken_no" name="h_bukken_no" pattern="^[0-9]+$" maxlength="15">
+                            <input type="tel" asp-for="Input.h_bukken_no" class="form-control form-control-sm" id="h_bukken_no" pattern="^[0-9]+$" maxlength="15">
                         </div>
                         <label for="h_bukken_no" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(半角)</label>
                         <a class="col-sm-3 btn btn-primary btn-sm" asp-area="" asp-page="/Bukken/Bukken_K">物件検索</a>
@@ -1107,7 +1107,7 @@
                 <div class="atai2 mb-1 ps-2">
                     <div class="row mb-3 g-0">
                         <div class="col-sm-3">
-                            <input type="tel" class="form-control form-control-sm" id="h_zip" name="h_zip" pattern="^[0-9]+$" maxlength="7">
+                            <input type="tel" asp-for="Input.h_zip" class="form-control form-control-sm" id="h_zip" pattern="^[0-9]+$" maxlength="7">
                         </div>
                         <label for="h_zip" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(半角)</label>
                         <a class="col-sm-4 btn btn-primary btn-sm" asp-area="" asp-page="/Bukken/Bukken_K">郵便番号検索</a>
@@ -1116,7 +1116,7 @@
                 <div class="atai2 mb-1 ps-2">
                     <div class="row mb-3 g-0">
                         <div class="col-sm-8">
-                            <input type="text" class="form-control form-control-sm" id="h_address1" name="h_address1" maxlength="55">
+                            <input type="text" asp-for="Input.h_address1" class="form-control form-control-sm" id="h_address1" maxlength="55">
                         </div>
                         <label for="h_address1" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
                     </div>
@@ -1124,7 +1124,7 @@
                 <div class="atai2 mb-1 ps-2">
                     <div class="row mb-3 g-0">
                         <div class="col-sm-8">
-                            <input type="text" class="form-control form-control-sm" id="h_address2" name="h_address2" maxlength="25">
+                            <input type="text" asp-for="Input.h_address2" class="form-control form-control-sm" id="h_address2" maxlength="25">
                         </div>
                         <label for="h_address2" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
                     </div>
@@ -1132,7 +1132,7 @@
                 <div class="atai2 mb-1 ps-2">
                     <div class="row mb-3 g-0">
                         <div class="col-sm-8">
-                            <input type="text" class="form-control form-control-sm" id="h_address3" name="h_address3" maxlength="50">
+                            <input type="text" asp-for="Input.h_address3" class="form-control form-control-sm" id="h_address3" maxlength="50">
                         </div>
                         <label for="h_address3" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
                     </div>
@@ -1140,7 +1140,7 @@
                 <div class="atai2 mb-1 ps-2">
                     <div class="row mb-3 g-0">
                         <div class="col-sm-8">
-                            <input type="text" class="form-control form-control-sm" id="h_address4" name="h_address4" maxlength="25">
+                            <input type="text" asp-for="Input.h_address4" class="form-control form-control-sm" id="h_address4" maxlength="25">
                         </div>
                         <label for="h_address4" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
                     </div>
@@ -1236,13 +1236,13 @@
                                     <p>ｾｲ</p>
                                 </div>
                                 <div class="col-4">
-                                    <input type="text" class="form-control form-control-sm" id="h_sei_kana" name="h_sei_kana" pattern="[\uFF66-\uFF9F]*" maxlength="50" onchange="toHankakuKana(this, id)">
+                                    <input type="text" asp-for="Input.h_sei_kana" class="form-control form-control-sm" id="h_sei_kana" pattern="[\uFF66-\uFF9F]*" maxlength="50" onchange="toHankakuKana(this, id)">
                                 </div>
                                 <div class="col-2" style="text-align: center;">
                                     <p>ﾒｲ</p>
                                 </div>
                                 <div class="col-4">
-                                    <input type="text" class="form-control form-control-sm" id="h_mei_kana" name="h_mei_kana" pattern="[\uFF66-\uFF9F]*" maxlength="50" onchange="toHankakuKana(this, id)">
+                                    <input type="text" asp-for="Input.h_mei_kana" class="form-control form-control-sm" id="h_mei_kana" pattern="[\uFF66-\uFF9F]*" maxlength="50" onchange="toHankakuKana(this, id)">
                                 </div>
                             </div>
                         </div>
@@ -1257,13 +1257,13 @@
                                     <p>姓</p>
                                 </div>
                                 <div class="col-4">
-                                    <input type="text" class="form-control form-control-sm" id="h_sei" name="h_sei" maxlength="50">
+                                    <input type="text" asp-for="Input.h_sei" class="form-control form-control-sm" id="h_sei" maxlength="50">
                                 </div>
                                 <div class="col-2" style="text-align: center;">
                                     <p>名</p>
                                 </div>
                                 <div class="col-4">
-                                    <input type="text" class="form-control form-control-sm" id="h_mei" name="h_mei" maxlength="50">
+                                    <input type="text" asp-for="Input.h_mei" class="form-control form-control-sm" id="h_mei" maxlength="50">
                                 </div>
                             </div>
                         </div>
@@ -1305,7 +1305,7 @@
             </div>
             <div class="col-5">
                 <div class="atai2 mb-1 ps-2">
-                    <input type="date" class="form-control form-control-sm w-50" id="h_birth" value="年/月/日">
+                    <input type="date" asp-for="Input.h_birth" class="form-control form-control-sm w-50" id="h_birth" value="年/月/日">
                 </div>
             </div>
             <div class="col-5">
@@ -1478,7 +1478,7 @@
                     <div class="atai2 mb-1 mt-1 ps-2">
                         <div class="row mb-3 g-0">
                             <div class="col-sm-8">
-                                <input type="text" class="form-control form-control-sm" id="other_hoken_company" name="other_hoken_company" maxlength="50">
+                                <input type="text" asp-for="Input.other_hoken_company" class="form-control form-control-sm" id="other_hoken_company" maxlength="50">
                             </div>
                             <label for="other_hoken_company" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
                         </div>
@@ -1486,18 +1486,18 @@
                     <div class="atai2 mb-1 ps-2">
                         <div class="row mb-3 g-0">
                             <div class="col-sm-8">
-                                <input type="text" class="form-control form-control-sm" id="other_hoken_shurui" name="other_hoken_shurui" maxlength="50">
+                                <input type="text" asp-for="Input.other_hoken_shurui" class="form-control form-control-sm" id="other_hoken_shurui" maxlength="50">
                             </div>
                             <label for="other_hoken_shurui" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
                         </div>
                     </div>
                     <div class="atai2 mb-1 ps-2">
-                        <input type="date" class="form-control form-control-sm w-50" id="other_hoken_manki" value="年/月/日">
+                        <input type="date" asp-for="Input.other_hoken_manki" class="form-control form-control-sm w-50" id="other_hoken_manki" value="年/月/日">
                     </div>
                     <div class="atai2 mb-1 ps-2">
                         <div class="row mb-3 g-0">
                             <div class="col-sm-3">
-                            <input type="text" class="form-control form-control-sm" style="text-align: right;" id="other_hoken_money" name="other_hoken_money" pattern="^[0-9]+$" maxlength="10">
+                            <input type="text" asp-for="Input.other_hoken_money" class="form-control form-control-sm" style="text-align: right;" id="other_hoken_money" pattern="^[0-9]+$" maxlength="10">
                             </div>
                             <label for="other_hoken_money" class="col-sm-1 col-form-label col-form-label-sm">円</label>
                             <label for="other_hoken_money" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角)</label>
@@ -1616,8 +1616,8 @@
                 <div class="atai2 mb-1 ps-2">
                     <div class="row mb-3 g-0">
                         <div class="col-sm-10">
-                            <label class="col-form-label" style="line-height: 16px; margin-right: 20px;">代理店コード</label>
-                            <label class="col-form-label" style="line-height: 16px;">代理店名</label>
+                            <label class="col-form-label" style="line-height: 16px; margin-right: 20px;">@Model.d_no</label>
+                            <label class="col-form-label" style="line-height: 16px;">@Model.d_name</label>
                         </div>
                     </div>
                 </div>
@@ -3208,8 +3208,8 @@
                 <div class="atai2 mb-1 ps-2">
                     <div class="row mb-3 g-0">
                         <div class="col-sm-10">
-                            <label class="col-form-label" style="line-height: 16px; margin-right: 20px;">代理店コード</label>
-                            <label class="col-form-label" style="line-height: 16px;">代理店名</label>
+                            <label class="col-form-label" style="line-height: 16px; margin-right: 20px;">@Model.d_no</label>
+                            <label class="col-form-label" style="line-height: 16px;">@Model.d_name</label>
                         </div>
                     </div>
                 </div>

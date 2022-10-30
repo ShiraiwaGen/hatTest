@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authorization;
 using Dairiten.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNet.Identity;
 
 namespace Dairiten.Pages
 {
@@ -17,8 +18,6 @@ namespace Dairiten.Pages
         }
 
         public IList<m_master> m_Master { get; set; }
-
-        public IList<m_dairiten> m_Dairiten { get; set; }
 
         public IList<t_keiyaku> Keiyakus { get; set; }
 
@@ -37,10 +36,17 @@ namespace Dairiten.Pages
         [BindProperty(SupportsGet = true)]
         public DateTime hokenshiki_To { get; set; }
 
+        public string d_no, d_name, bnin_key;
+
         public async Task OnGetAsync()
         {
             m_Master = await _context.m_master.ToListAsync();
-            m_Dairiten = await _context.m_dairiten.ToListAsync();//代理店情報表示用に使用予定
+
+            var pm = new Program(_context);
+            string[] arr = pm.Dairiten_Get(User.Identity.GetUserId());
+            d_no = arr[0];
+            d_name = arr[1];
+            bnin_key = arr[2];
         }
 
         public void OnPost()
