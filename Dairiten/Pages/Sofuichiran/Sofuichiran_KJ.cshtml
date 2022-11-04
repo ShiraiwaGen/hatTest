@@ -1,0 +1,129 @@
+﻿@page
+@model Dairiten.Pages.Sofuichiran_Kj.Sofuichiran_KjModel
+@{
+    ViewData["Title"] = "申込書送付一覧";
+}
+<form method="post">
+    <div class="container-fluid g-1">
+        <div class="text-start">
+            <h4 class="" style="background:#DCDCDC">申込書送付一覧</h4>
+        </div>
+
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+                <a class="nav-link active" aria-current="page" asp-area="" asp-page="/Sofuichiran/Sofuichiran_Kj">検索条件</a>
+          </li>
+          <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-page="/Sofuichiran/Sofuichiran_Kk">検索結果</a>
+          </li>
+        </ul>
+        <br>
+        <div class="row g-0">
+            <div class="col-md-12">
+                <div class="komoku1 text-white mb-1" style="margin-right: 11px;">代理店コード</div>           
+                <div class="atai2 mb-1">
+                    <div class="row mb-3">
+                        <div class="col-sm-10">
+                            <label class="col-form-label" style="line-height: 16px; margin-right: 20px;">@Model.d_no</label>
+                            <label class="col-form-label" style="line-height: 16px;">@Model.d_name</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="komoku1 text-white mb-1" style="margin-right: 11px;">送付予定月</div>
+                <div class="form-group">
+                    <div class="atai2 mb-1">
+                        <div class="row mb-3">
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control form-control-sm" id="sofuyoteizuki" asp-for="Input.sofuyoteizuki" onchange="zenkana2Hankana(this)" onInput="text_suchiCheck(this)" onfocus="jpoff(this)">
+                            </div>
+                            <label for="sofuyoteizuki" class="col-sm-3 col-form-label col-form-label-sm text-red">(YYYY/MM)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>          
+            <div class="col-md-6">
+                <div class="komoku1 text-white mb-1" style="margin-right: 11px;">送付状印刷日</div>
+                <div class="form-group">
+                    <div class="atai2 mb-1">
+                        <div class="row mb-3">
+                            <div class="col-sm-9" style="display: inline-block; _display: inline;">
+                                <input type="date" class="form-control form-control-sm" id="sofu_start" asp-for="Input.sofu_start" value="年/月/日" onChange="onChange1()">                            
+                                <label for="sofubi" class="col-sm-1 col-form-label col-form-label-sm">～</label>
+                                <input type="date" class="form-control form-control-sm" id="sofu_end" asp-for="Input.sofu_end" value="年/月/日" onChange="onChange1()">
+                            </div>
+                            <label for="sofubi" class="col-sm-3 col-form-label col-form-label-sm text-red">(YYYY/MM/DD)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="komoku1 text-white mb-1" style="margin-right: 11px;">送付区分</div>
+                <div class="form-group">
+                    <div class="atai2 mb-1">
+                        <div class="row mb-3">
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control form-control-sm" id="sofu_kbn" asp-for="Input.sofu_kbn" onchange="zenkana2Hankana(this)" onInput="text_suchiCheck(this)" onfocus="jpoff(this)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="komoku1 text-white mb-1" style="margin-right: 11px;">回収日</div>
+                <div class="col-8">
+                    <div class="atai1 mb-1 ps-2">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <input type="date" class="form-control form-control-sm" id="kaishubi_start" asp-for="Input.kaishubi_start" value="年/月/日" onChange="onChange1()">
+                            </div>
+                            <label for="date1_From" class="col-sm-1 col-form-label col-form-label-sm">～</label>
+                            <div class="col-sm-5">
+                                <input type="date" class="form-control form-control-sm" id="kaishubi_end" asp-for="Input.kaishubi_end" value="年/月/日" onChange="onChange1()">
+                            </div>
+                            <label for="kaishubi" class="col-sm-3 col-form-label col-form-label-sm text-red">(YYYY/MM/DD)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="komoku1 text-white mb-1" style="margin-right: 11px;">証券番号</div>
+                <div class="form-group">
+                    <div class="atai2 mb-1">
+                        <div class="row mb-3">
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control form-control-sm" id="shoken_no" asp-for="Input.shoken_no" onchange="zenkana2Hankana(this)" onInput="text_suchiCheck(this)" onfocus="jpoff(this)">
+                            </div>
+                            <label for="shoken_no" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="komoku1 text-white mb-1" style="margin-right: 11px;">証券発行日</div>
+                <div class="col-8">
+                    <div class="atai1 mb-1 ps-2">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <input type="date" class="form-control form-control-sm" id="keiyakusho_hakkobi_start" asp-for="Input.keiyakusho_hakkobi_start" value="年/月/日" onChange="onChange1()">
+                            </div>
+                            <label for="date1_From" class="col-sm-1 col-form-label col-form-label-sm">～</label>
+                            <div class="col-sm-5">
+                                <input type="date" class="form-control form-control-sm" id="keiyakusho_hakkobi_end" asp-for="Input.keiyakusho_hakkobi_end" value="年/月/日" onChange="onChange1()">
+                            </div>
+                            <label for="keiyakusho_hakkobi_end" class="col-sm-3 col-form-label col-form-label-sm text-red">(YYYY/MM/DD)</label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="text-end">
+            <input type="submit" class="btn btn-primary" style="width: 150px;" asp-page-handler="Handle10" value="検索" onclick="show_loading()" />
+            <button type="submit" class="btn btn-primary" style="width: 150px;" onclick="clearFormAll()" asp-page-handler="Handle11">クリア</button>
+        </div>
+    </div>
+</form>

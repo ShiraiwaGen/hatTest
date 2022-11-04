@@ -22,6 +22,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Dairiten.Pages.Bukken
 {
+    [Microsoft.AspNetCore.Authorization.Authorize]
     public class Bukken_InModel : PageModel
     {
         private readonly Dairiten.Data.ApplicationDbContext _context;
@@ -130,7 +131,7 @@ namespace Dairiten.Pages.Bukken
             }
 
             //募集人キーが一致する列全削除
-            if (bnin_id == null || bnin_id == 0)
+            if (bnin_id == 0)
             {
                 error_msg = "募集人キーの取得に失敗しました。";
                 return;
@@ -187,7 +188,6 @@ namespace Dairiten.Pages.Bukken
                             string? b_address4;
                             string? b_address5;
                             string? b_kodate;
-                            string? bukkenmei;
                             string? d_code;
                             int d_key = 0;
 
@@ -577,7 +577,7 @@ namespace Dairiten.Pages.Bukken
         public void OnPostHandle2()
         {
             main_data();
-            if (bnin_id == null)
+            if (bnin_id == 0)
             {
                 error_msg = "募集人コードがありません。";
                 return;

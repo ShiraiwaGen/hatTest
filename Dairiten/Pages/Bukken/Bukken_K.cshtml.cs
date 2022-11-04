@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNet.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Dairiten.Pages
 {
@@ -21,6 +22,10 @@ namespace Dairiten.Pages
 
         [BindProperty]
         public InputModel Input { get; set; }
+        [BindProperty]
+        public string pageFlg { get; set; }
+
+        private int clear_flg = 0;
 
         //ŒŸõ—p
         public class InputModel
@@ -65,8 +70,9 @@ namespace Dairiten.Pages
             public string? b_address3 { get; set; }
             public string? b_address4 { get; set; }
             public string? b_address5 { get; set; }
-            public int b_kodate { get; set; }
+            public string? b_kodate { get; set; }
             public int m_dairiten_id { get; set; }
+            public string? dairiten_code { get; set; }
             public string? d_mei { get; set; }
         }
         //public List<t_bukken> mylist = new List<t_bukken>();
@@ -85,9 +91,19 @@ namespace Dairiten.Pages
             //bnin_id = Int32.Parse(arr[4]);
         }
 
+        public void OnGet(string pflg)
+        {
+            pageFlg = pflg;
+        }
+
         public void OnPostHandle10()
         {
             main_data();
+
+            if(clear_flg == 1)
+            {
+                return;
+            }
 
             //var mylist = _context.t_bukken
             //        .Where(x => x.m_dairiten_id == d_id)
@@ -134,7 +150,7 @@ namespace Dairiten.Pages
             //                m_dairiten_id = t.m_dairiten_id,
             //                d_mei = m.dairiten_mei
             //             });
-            
+
             var mylist2 = from t in _context.t_bukken
                           join m in _context.m_dairiten
                           on t.m_dairiten_id equals m.id
@@ -152,6 +168,7 @@ namespace Dairiten.Pages
                               b_address5 = t.b_address5,
                               b_kodate = t.b_kodate,
                               m_dairiten_id = t.m_dairiten_id,
+                              dairiten_code = m.dairiten_code,
                               d_mei = m.dairiten_mei
                           };
 
@@ -165,22 +182,60 @@ namespace Dairiten.Pages
             }
             if (Input.b_address1 != null)
             {
-                mylist2 = mylist2.Where(t => t.b_address1 == Input.b_address1);
+                mylist2 = mylist2.Where(t => t.b_address1.Contains(Input.b_address1));
             }
             if (Input.b_address2 != null)
             {
-                mylist2 = mylist2.Where(t => t.b_address2 == Input.b_address2);
+                mylist2 = mylist2.Where(t => t.b_address2.Contains(Input.b_address2));
             }
             if (Input.b_address3 != null)
             {
-                mylist2 = mylist2.Where(t => t.b_address3 == Input.b_address3);
+                mylist2 = mylist2.Where(t => t.b_address3.Contains(Input.b_address3));
             }
             //mylist.ToArray();
 
-            //mylist = mylist2.ToList();
+            //mylist = mylist2.ToList();       
+            mylist2.ToList();
+            if (mylist2 != null)
+            {
+                var kodateArray = from m in _context.m_master
+                                  where m.m_master_kbn_id == 35
+                                  select new { name = m.item_name };
+                kodateArray.ToList();
+                int i = 0;
+                string[] kodate = new string[2];
+                foreach (var item in kodateArray)
+                {
+                    kodate[i] = item.name;
+                    i++;
+                }
+
+                foreach (var item in mylist2)
+                {
+                    mylist.Add(new Bukken1
+                    {
+                        id = item.id,
+                        bukken_no = item.bukken_no,
+                        b_zip = item.b_zip,
+                        b_address1 = item.b_address1,
+                        b_address2 = item.b_address2,
+                        b_address3 = item.b_address3,
+                        b_address4 = item.b_address4,
+                        b_address5 = item.b_address5,
+                        b_kodate = kodate[item.b_kodate],
+                        m_dairiten_id = item.m_dairiten_id,
+                        dairiten_code = item.dairiten_code,
+                        d_mei = item.d_mei
+                    });
+                }
+            }
 
         }
 
-
+        public void OnPostHandle11()
+        {
+            clear_flg = 1;
+            OnPostHandle10();
+        }
     }
 }
