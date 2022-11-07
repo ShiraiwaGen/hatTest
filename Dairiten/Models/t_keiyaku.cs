@@ -568,5 +568,9 @@ namespace Dairiten.Models
         [DataType(DataType.Date)]
         [Display(Name = "登録日")]
         public DateTime torokubi { get; set; }                  //登録日
+
+        [Required]
+        [Display(Name = "送付区分")]
+        public int sofu_kbn { get; set; }                      //申込書送付区分
     }
 }
