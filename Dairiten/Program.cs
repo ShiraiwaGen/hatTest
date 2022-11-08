@@ -89,7 +89,7 @@ namespace Dairiten
         public string[] Dairiten_Get(string currentUserId)
         {
             //string currentUserId = User.Identity.GetUserId();
-            string[] arr = new string[3];
+            string[] arr = new string[5];
 
             var nowData = from m in _context.m_dairiten
                           join t in _context.appUsers
@@ -99,7 +99,9 @@ namespace Dairiten
                           {
                               d_no = m.dairiten_code,
                               d_name = m.dairiten_mei,
-                              bnin_no = t.employee_code
+                              bnin_no = t.employee_code,
+                              d_id = t.m_dairiten_id,
+                              bnin_id = t.employee_id
                           };
             nowData.ToList();
             if (nowData != null)
@@ -109,6 +111,8 @@ namespace Dairiten
                     arr[0] = item.d_no;
                     arr[1] = item.d_name;
                     arr[2] = item.bnin_no;
+                    arr[3] = item.d_id.ToString(); 
+                    arr[4] = item.bnin_id.ToString();
                 }
             }
 

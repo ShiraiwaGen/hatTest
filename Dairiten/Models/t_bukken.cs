@@ -10,13 +10,15 @@ namespace Dairiten.Models
 
         [DisplayName("物件番号")]
         [Required]
+        [StringLength(10, ErrorMessage = "10文字以内でお願いします")]
+        [RegularExpression(@"[0-9]+", ErrorMessage = "半角数字のみ入力できます")]
         public string bukken_no { get; set; }
 
         [DisplayName("郵便番号")]
         [Required]
         [StringLength(7, ErrorMessage = "郵便番号はハイフン（－）なしの数字７桁でお願いします")]
         [RegularExpression(@"[0-9]+", ErrorMessage = "半角数字のみ入力できます")]
-        public int b_zip { get; set; }
+        public string b_zip { get; set; }
 
         [DisplayName("住所（都道府県市区町村）")]
         [Required]

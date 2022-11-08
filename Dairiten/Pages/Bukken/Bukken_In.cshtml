@@ -10,6 +10,12 @@
         alert(Model.error_msg);
     </SCRIPT>
 }
+@if (Model.kanryo_msg != null)
+{
+    <SCRIPT LANGUAGE="JavaScript">
+        alert(Model.kanryo_msg);
+    </SCRIPT>
+}
 
 <div class="container-fluid g-1">
     <div class="text-start">
@@ -40,78 +46,91 @@
         </div>
         <br>
         <div class="text-end">
-            <button type="button" class="btn btn-primary" style="width: 150px;" onclick="clearFormAll()">クリア</button>
+            <input type="button" value="物件検索" onClick="window.open('Bukken_K?pflg=2','_blank' ,'menubar=0')">
+            <input type="submit" class="btn btn-primary" style="width: 150px;" asp-page-handler="ClearBtn" value="クリア" onclick="clearFormAll()" />
             @*<button type="input" class="btn btn-primary" style="width: 200px;">取込ファイル内容表示</button>*@
-            <input type="submit" class="btn btn-primary" asp-page-handler="Handle1" value="取込ファイル内容表示" />
+            <input type="submit" class="btn btn-primary" asp-page-handler="Handle1" value="取込ファイル内容表示" onclick="show_loading()" />
         </div>
     
+        <br />
 
-    <br />
+        <div id="loading" class="position-absolute top-0 start-0 w-100 h-100 d-none">
+            <div class="text-center position-absolute top-50 start-50 w-100 translate-middle">
+                <div class="spinner-border text-light" role="status">
+                    <span class="sr-only"></span>
+                </div>
+            </div>
+        </div>
 
-    @if (Model.mylist.Count > 0)
+        @if (Model.kanryo_msg != null)
         {
-    <div class="text-end">
-        <label for="so_kensu" class="text-red">取込件数　@Model.so_kensu　件</label><br />
-        <label for="so_kensu" class="text-red">エラー件数　@Model.err_kensu　件</label>    
-    </div>
+            <div class="text-start">
+                <h5>@Model.kanryo_msg</h5><br />
+            </div>
+        }
 
-    <p>取込物件一覧</p>
-    <div class="text-center">        
-        <table id="mytable" class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>
-                        項番
-                    </th>
-                    <th>
-                        建物名
-                    </th>
-                    <th>
-                        号室
-                    </th>
-                    <th>
-                        物件番号
-                    </th>
-                    <th>
-                        郵便番号
-                    </th>
-                    <th>
-                        住所
-                    </th>
-                    <th>
-                        戸建て
-                    </th>
-                    <th>
-                        代理店
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.mylist)
-                {
-                    <tr>
-                        <td rowspan=2>
-                            @Html.Raw(item.b_count)
-                        </td>
-                        @Html.Raw(item.b_address3)
-                        @Html.Raw(item.b_address5)
-                        @Html.Raw(item.bukken_no)
-                        @Html.Raw(item.b_zip)
-                        @Html.Raw(item.b_address1)                        
-                        @Html.Raw(item.b_kodate)
-                        @Html.Raw(item.d_code)
-                    </tr>
-                    <tr>
-                        @Html.Raw(item.b_address2)
-                    </tr>
-                }
-            </tbody>
-        </table>       
-    </div>
-    }
-    @if (Model.eflg == false)
-    {
-        <input type="submit" class="btn btn-primary" asp-page-handler="Handle2" value="登録" />
-    }
+        @if (Model.mylist.Count > 0)
+        {
+            <div class="text-end">
+                <label for="so_kensu" class="text-red">取込件数　@Model.so_kensu　件</label><br />
+                <label for="so_kensu" class="text-red">エラー件数　@Model.err_kensu　件</label>    
+            </div>
+
+            <p>取込物件一覧</p>
+            <div class="text-center">        
+                <table id="mytable" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                項番
+                            </th>
+                            <th>
+                                建物名
+                            </th>
+                            <th>
+                                号室
+                            </th>
+                            <th>
+                                物件番号
+                            </th>
+                            <th>
+                                郵便番号
+                            </th>
+                            <th>
+                                住所
+                            </th>
+                            <th>
+                                戸建て
+                            </th>
+                            <th>
+                                代理店
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.mylist)
+                        {
+                            <tr>
+                                @Html.Raw(item.b_count2)
+                                @Html.Raw(item.b_address3)
+                                @Html.Raw(item.b_address5)
+                                @Html.Raw(item.bukken_no)
+                                @Html.Raw(item.b_zip)
+                                @Html.Raw(item.b_address1)                        
+                                @Html.Raw(item.b_kodate)
+                                @Html.Raw(item.d_code)
+                            </tr>
+                            <tr>
+                                @Html.Raw(item.b_address2)
+                            </tr>
+                        }
+                    </tbody>
+                </table>       
+            </div>
+        }
+        @if (Model.eflg == false)
+        {
+            <input type="submit" class="btn btn-primary" asp-page-handler="Handle2" value="登録" onclick="show_loading()" />
+        }
     </form>
 </div>

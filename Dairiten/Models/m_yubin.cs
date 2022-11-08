@@ -7,8 +7,16 @@ namespace Dairiten.Models
     [Keyless]
     public class m_yubin
     {
+        public int id { get; set; }
+
+        [DisplayName("全国地方公共団体コード")]
+        public string kokyodantai_code { get; set; }
+
+        [DisplayName("旧郵便番号")]
+        public string old_zipcode { get; set; }
+
         [DisplayName("郵便番号")]
-        public int zipcode { get; set; }
+        public string zipcode { get; set; }
 
         [DisplayName("都道府県カナ")]
         public string prefectures_kana { get; set; }
@@ -27,5 +35,12 @@ namespace Dairiten.Models
 
         [DisplayName("町域名")]
         public string? town { get; set; }
+
+        public int data1 { get; set; }
+        public int data2 { get; set; }
+        public int data3 { get; set; }
+        public int data4 { get; set; }
+        public int data5 { get; set; }
+        public int data6 { get; set; }
     }
 }

@@ -143,46 +143,48 @@ function clearElement(element) {
 //        url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Japanese.json"
 //    }
 //});
-$("#mytable").DataTable({    
-    lengthMenu: [10, 20, 30, 40, 50, 100],    // 件数切替の値を10～50の10刻みにする
-    displayLength: 20,  // 件数のデフォルトの値を20にする
-    //scrollX: true,
-    //scrollY: 200,
-    //columnDefs: [
-    //    { targets: 0, visible: false },
-    //    { targets: 1, width: 100 }
-    //]);
-    processing: true,
-    language: {
-        "processing": "処理中...",
-        "lengthMenu": "_MENU_ 件表示",
-        "zeroRecords": "データはありません。",
-        "info": " _TOTAL_ 件中 _START_ - _END_ 件目",
-        "infoEmpty": " 0 件中 0 - 0 件目",
-        "infoFiltered": "（全 _MAX_ 件より抽出）",
-        "infoPostFix": "",
-        "search": "検索:",
-        "url": "",
-        "paginate": {
-            "first": "<<",
-            "previous": "前",
-            "next": "次",
-            "last": ">>"
-        }
-    },
-    //"columns": [//列の幅を変更する
-    //    { "width": "10%" },//1列目
-    //    { "width": "70%" },//2列目
-    //],
-    fixedHeader: true,//テーブルヘッダーを固定
-    stateSave: true,//保持機能を有効にする
-    searching: true, // falseにすると独自の検索も反映されない
-    bProcessing: true,//ソート処理などの処理中を表すインジケータの表示有無
-    //scrollY: false,//Y方向（縦方向）スクロール
-    //ordering: false, //並び替え許可
-    //dom: "<'row'<'col-sm-6'l><'col-sm-6 right'i>>" +
-    //    "<'row'<'col-sm-12'tr>>" +
-    //    "<'row'<'col-sm-12'p>>",
+$(document).ready(function () {
+    $("#mytable").DataTable({    
+        lengthMenu: [10, 20, 30, 40, 50, 100],    // 件数切替の値を10～50の10刻みにする
+        displayLength: 20,  // 件数のデフォルトの値を20にする
+        //scrollX: true,
+        //scrollY: 200,
+        //columnDefs: [
+        //    { targets: 0, visible: false },
+        //    { targets: 1, width: 100 }
+        //]);
+        processing: true,
+        language: {
+            "processing": "処理中...",
+            "lengthMenu": "_MENU_ 件表示",
+            "zeroRecords": "データはありません。",
+            "info": " _TOTAL_ 件中 _START_ - _END_ 件目",
+            "infoEmpty": " 0 件中 0 - 0 件目",
+            "infoFiltered": "（全 _MAX_ 件より抽出）",
+            "infoPostFix": "",
+            "search": "検索:",
+            "url": "",
+            "paginate": {
+                "first": "<<",
+                "previous": "前",
+                "next": "次",
+                "last": ">>"
+            }
+        },
+        //"columns": [//列の幅を変更する
+        //    { "width": "10%" },//1列目
+        //    { "width": "70%" },//2列目
+        //],
+        fixedHeader: true,//テーブルヘッダーを固定
+        stateSave: true,//保持機能を有効にする
+        searching: false, // falseにすると独自の検索も反映されない
+        bProcessing: true,//ソート処理などの処理中を表すインジケータの表示有無
+        //scrollY: false,//Y方向（縦方向）スクロール
+        //ordering: false, //並び替え許可
+        //dom: "<'row'<'col-sm-6'l><'col-sm-6 right'i>>" +
+        //    "<'row'<'col-sm-12'tr>>" +
+        //    "<'row'<'col-sm-12'p>>",
+    });
 });
 
 /*全角→半角（カタカナ）*/
@@ -195,6 +197,89 @@ function toHankakuKana(elm, id) {
     }
     document.getElementById(id).value = fullStr;
 } 
+
+/*全角 → 半角２（カタカナ）*/
+function zenkana2Hankana($this) {
+    var str = $this.value;
+
+    str = hankaku2Zenkaku(str);
+
+    var kanaMap = {
+        "ガ": "ｶﾞ", "ギ": "ｷﾞ", "グ": "ｸﾞ", "ゲ": "ｹﾞ", "ゴ": "ｺﾞ",
+        "ザ": "ｻﾞ", "ジ": "ｼﾞ", "ズ": "ｽﾞ", "ゼ": "ｾﾞ", "ゾ": "ｿﾞ",
+        "ダ": "ﾀﾞ", "ヂ": "ﾁﾞ", "ヅ": "ﾂﾞ", "デ": "ﾃﾞ", "ド": "ﾄﾞ",
+        "バ": "ﾊﾞ", "ビ": "ﾋﾞ", "ブ": "ﾌﾞ", "ベ": "ﾍﾞ", "ボ": "ﾎﾞ",
+        "パ": "ﾊﾟ", "ピ": "ﾋﾟ", "プ": "ﾌﾟ", "ペ": "ﾍﾟ", "ポ": "ﾎﾟ",
+        "ヴ": "ｳﾞ", "ヷ": "ﾜﾞ", "ヺ": "ｦﾞ",
+        "ア": "ｱ", "イ": "ｲ", "ウ": "ｳ", "エ": "ｴ", "オ": "ｵ",
+        "カ": "ｶ", "キ": "ｷ", "ク": "ｸ", "ケ": "ｹ", "コ": "ｺ",
+        "サ": "ｻ", "シ": "ｼ", "ス": "ｽ", "セ": "ｾ", "ソ": "ｿ",
+        "タ": "ﾀ", "チ": "ﾁ", "ツ": "ﾂ", "テ": "ﾃ", "ト": "ﾄ",
+        "ナ": "ﾅ", "ニ": "ﾆ", "ヌ": "ﾇ", "ネ": "ﾈ", "ノ": "ﾉ",
+        "ハ": "ﾊ", "ヒ": "ﾋ", "フ": "ﾌ", "ヘ": "ﾍ", "ホ": "ﾎ",
+        "マ": "ﾏ", "ミ": "ﾐ", "ム": "ﾑ", "メ": "ﾒ", "モ": "ﾓ",
+        "ヤ": "ﾔ", "ユ": "ﾕ", "ヨ": "ﾖ",
+        "ラ": "ﾗ", "リ": "ﾘ", "ル": "ﾙ", "レ": "ﾚ", "ロ": "ﾛ",
+        "ワ": "ﾜ", "ヲ": "ｦ", "ン": "ﾝ",
+        "ァ": "ｧ", "ィ": "ｨ", "ゥ": "ｩ", "ェ": "ｪ", "ォ": "ｫ",
+        "ッ": "ｯ", "ャ": "ｬ", "ュ": "ｭ", "ョ": "ｮ",
+        "。": "｡", "、": "､", "ー": "ｰ", "「": "｢", "」": "｣", "・": "･"
+    }
+    var reg = new RegExp('(' + Object.keys(kanaMap).join('|') + ')', 'g');
+    str = str
+        .replace(reg, function (match) {
+            return kanaMap[match];
+        })
+        .replace(/゛/g, 'ﾞ')
+        .replace(/゜/g, 'ﾟ');
+
+    $this.value = str;
+};
+
+/*全角 → 半角（英数字）*/
+function hankaku2Zenkaku(str) {
+    return str.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function (s) {
+        return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+    });
+}
+
+/*半角数値のみ入力可能*/
+function text_suchiCheck($this) {
+    const nthReplace = (str1, n, after) => {
+        return str1.substr(0, n - 1) + after + str1.substr(n);
+    };
+
+    let str = $this.value;
+    // 文頭から文末まで全て0-9かチェック
+    //if (!str.match(/^[0-9]+$/)) {
+    //    // そうでなければ入力文字を空白に変換
+    //    str = "";
+    //}
+    for (let i = 0; i < str.length; i++) {
+        if (!str[i].match(/^[0-9]+$/)) {
+            // そうでなければ入力文字を空白に変換
+            str = nthReplace(str, i+1, "")
+        }
+    }
+    $this.value = str;
+}
+
+/*入力モード【ひらがな】*/
+function jpn(tbox) {
+    tbox.style.imeMode = "active";
+}
+/*入力モード【OFF】*/
+function jpoff(tbox) {
+    tbox.style.imeMode = "disabled";
+}
+/*入力モード【半角英数】*/
+function eng(tbox) {
+    tbox.style.imeMode = "inactive";
+}
+/*入力モード【指定なし】*/
+function aut(tbox) {
+    tbox.style.imeMode = "auto";
+}
 
 /*保証人区分「その他」選択時（申込入力画面）*/
 function hoshonin_kbnChange() {
@@ -439,3 +524,25 @@ function ji_hihokenshaBtnClick() {
     }
 }
 
+/*テストで作成。申込入力画面戻るボタン押下で商品区分ラジオボタンで選択したvalueが証券番号のlabelに表示される。*/
+/*実現したい事。入力内容確認ボタン押下で商品区分ラジオボタンで選択したvalueが申込入力(内容確認)画面のlabelに表示させたい*/
+function return_BtnClick() {
+    let str = "";
+    const shohinKbn = document.moshikomi_form.shohinKbnRadio;
+    for (let i = 0; i < shohinKbn.length; i++) {
+        if (shohinKbn[i].checked) {
+            str = shohinKbn[i].value;
+            break;
+        }
+    }
+    document.getElementById("shoken_no").innerText = str;
+}
+
+//ローディング表示
+function show_loading() {
+    $('#loading').removeClass('d-none');
+}
+//ローディング非表示
+function hide_loading() {
+    $('#loading').addClass('d-none');
+}
