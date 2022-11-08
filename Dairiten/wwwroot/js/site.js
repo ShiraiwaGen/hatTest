@@ -439,16 +439,3 @@ function ji_hihokenshaBtnClick() {
     }
 }
 
-/*テストで作成。申込入力画面戻るボタン押下で商品区分ラジオボタンで選択したvalueが証券番号のlabelに表示される。*/
-/*実現したい事。入力内容確認ボタン押下で商品区分ラジオボタンで選択したvalueが申込入力(内容確認)画面のlabelに表示させたい*/
-function return_BtnClick() {
-    let str = "";
-    const shohinKbn = document.moshikomi_form.shohinKbnRadio;
-    for (let i = 0; i < shohinKbn.length; i++) {
-        if (shohinKbn[i].checked) {
-            str = shohinKbn[i].value;
-            break;
-        }
-    }
-    document.getElementById("shoken_no").innerText = str;
-}

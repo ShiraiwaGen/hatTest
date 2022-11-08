@@ -9,7 +9,7 @@ namespace Dairiten.Models
         [Required]
         public int m_dairiten_id { get; set; }
 
-        [Display(Name = "募集人コード")]
+        [Display(Name = "担当者コード")]
         [Required]
         [RegularExpression(@"[a-zA-Z0-9]+", ErrorMessage = "半角英数字のみ入力できます")]
         [StringLength(50, ErrorMessage = "募集人コードは５０文字以内でお願いします")]
