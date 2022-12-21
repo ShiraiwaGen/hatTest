@@ -93,10 +93,6 @@ namespace Dairiten.Models
         [Display(Name = "契約者_戸建て")]
         public bool k_kodate { get; set; }                      //契約者_戸建て
 
-        [RegularExpression(@"[0-9]+", ErrorMessage = "半角数字のみ入力できます")]
-        [Display(Name = "契約者_物件番号")]
-        public string? k_bukken_no { get; set; }                //契約者_物件番号
-
         [Required]
         [StringLength(7, ErrorMessage = "郵便番号はハイフン（－）なしの数字７桁でお願いします")]
         [RegularExpression(@"[0-9]+", ErrorMessage = "半角数字のみ入力できます")]
@@ -121,24 +117,14 @@ namespace Dairiten.Models
         public string? k_address4 { get; set; }                 //契約者_住所（号室）
 
         [Required]
-        [StringLength(50, ErrorMessage = "契約者名_セイは５０文字以内でお願いします")]
-        [Display(Name = "契約者名_セイ")]
-        public string k_sei_kana { get; set; }                 //契約者名_セイ
+        [StringLength(50, ErrorMessage = "契約者名カナは５０文字以内でお願いします")]
+        [Display(Name = "契約者名カナ")]
+        public string k_kana { get; set; }                      //契約者名カナ
 
         [Required]
-        [StringLength(50, ErrorMessage = "契約者名_メイは５０文字以内でお願いします")]
-        [Display(Name = "契約者名_メイ")]
-        public string k_mei_kana { get; set; }                 //契約者名_メイ
-
-        [Required]
-        [StringLength(50, ErrorMessage = "契約者名_姓は５０文字以内でお願いします")]
-        [Display(Name = "契約者名_姓")]
-        public string k_sei { get; set; }                      //契約者名_姓
-
-        [Required]
-        [StringLength(50, ErrorMessage = "契約者名_名は５０文字以内でお願いします")]
-        [Display(Name = "契約者名_名")]
-        public string k_mei { get; set; }                      //契約者名_名
+        [StringLength(50, ErrorMessage = "契約者名は５０文字以内でお願いします")]
+        [Display(Name = "契約者名")]
+        public string k_name { get; set; }                      //契約者名
 
         [Required]
         [DataType(DataType.Date)]
@@ -164,10 +150,6 @@ namespace Dairiten.Models
 
         [Display(Name = "目的地_戸建て")]
         public bool h_kodate { get; set; }                      //目的地_戸建て
-
-        [RegularExpression(@"[0-9]+", ErrorMessage = "半角数字のみ入力できます")]
-        [Display(Name = "目的地_物件番号")]
-        public string? h_bukken_no { get; set; }                //目的地_物件番号
 
         [Required]
         [StringLength(7, ErrorMessage = "郵便番号はハイフン（－）なしの数字７桁でお願いします")]
@@ -197,24 +179,14 @@ namespace Dairiten.Models
         public int hihokensha_kbn { get; set; }                 //被保険者区分
 
         [Required]
-        [StringLength(50, ErrorMessage = "被保険者名_セイは５０文字以内でお願いします")]
-        [Display(Name = "被保険者名_セイ")]
-        public string h_sei_kana { get; set; }                 //被保険者名_セイ
+        [StringLength(50, ErrorMessage = "被保険者名カナは５０文字以内でお願いします")]
+        [Display(Name = "被保険者名カナ")]
+        public string h_kana { get; set; }                      //被保険者名カナ
 
         [Required]
-        [StringLength(50, ErrorMessage = "被保険者名_メイは５０文字以内でお願いします")]
-        [Display(Name = "被保険者名_メイ")]
-        public string h_mei_kana { get; set; }                 //被保険者名_メイ
-
-        [Required]
-        [StringLength(50, ErrorMessage = "被保険者名_姓は５０文字以内でお願いします")]
-        [Display(Name = "被保険者名_姓")]
-        public string h_sei { get; set; }                      //被保険者名_姓
-
-        [Required]
-        [StringLength(50, ErrorMessage = "被保険者名_名は５０文字以内でお願いします")]
-        [Display(Name = "被保険者名_名")]
-        public string h_mei { get; set; }                      //被保険者名_名
+        [StringLength(50, ErrorMessage = "被保険者名は５０文字以内でお願いします")]
+        [Display(Name = "被保険者名")]
+        public string h_name { get; set; }                      //被保険者名
 
         [Required]
         [DataType(DataType.Date)]
@@ -298,14 +270,9 @@ namespace Dairiten.Models
         public string daihyosha_yakushoku { get; set; }         //代表者_役職
 
         [Required]
-        [StringLength(50, ErrorMessage = "代表者_姓は５０文字以内でお願いします")]
-        [Display(Name = "代表者_姓")]
-        public string daihyosha_sei { get; set; }               //代表者_姓
-
-        [Required]
-        [StringLength(50, ErrorMessage = "代表者_名は５０文字以内でお願いします")]
-        [Display(Name = "代表者_名")]
-        public string daihyosha_mei { get; set; }               //代表者_名
+        [StringLength(50, ErrorMessage = "代表者名は５０文字以内でお願いします")]
+        [Display(Name = "代表者名")]
+        public string daihyosha_name { get; set; }               //代表者名
 
         [Display(Name = "法人特約")]
         public bool hojin_tokuyaku { get; set; }                //法人特約
@@ -571,6 +538,6 @@ namespace Dairiten.Models
 
         [Required]
         [Display(Name = "送付区分")]
-        public int sofu_kbn { get; set; }                      //申込書送付区分
+        public int sofu_kbn { get; set; }                      //送付区分
     }
 }

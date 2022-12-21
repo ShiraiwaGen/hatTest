@@ -19,10 +19,9 @@ namespace Dairiten.Pages.Moshikomi
         public InputModel Input { get; set; }
 
         [BindProperty]
-        public t_keiyaku keiyaku { get; set; } 
+        public t_keiyaku keiyaku { get; set; }
 
-        [BindProperty]
-        public KeiyakuKakunin k_kakunin { get; set; }
+        public string kodate = "ŒËŒš‚Ä";
 
         public string d_no, d_name, bnin_key;
 
@@ -68,11 +67,11 @@ namespace Dairiten.Pages.Moshikomi
 
             [Required]
             [Display(Name = "¤•i‹æ•ª")]
-            public int shohin_kbn { get; set; }                     //¤•i‹æ•ª
+            public string shohin_kbn { get; set; }                  //¤•i‹æ•ª
 
             [Required]
             [Display(Name = "Œ_–ñŽÒ‹æ•ª")]
-            public int keiyakusha_kbn { get; set; }                 //Œ_–ñŽÒ‹æ•ª
+            public string keiyakusha_kbn { get; set; }              //Œ_–ñŽÒ‹æ•ª
 
             [Required]
             [DataType(DataType.Date)]
@@ -95,14 +94,14 @@ namespace Dairiten.Pages.Moshikomi
 
             [Required]
             [Display(Name = "•ÛŒ¯ŠúŠÔ")]
-            public int hokenkikan { get; set; }                     //•ÛŒ¯ŠúŠÔ
+            public string hokenkikan { get; set; }                  //•ÛŒ¯ŠúŠÔ
 
             [Display(Name = "Z‘î“à“ü‹ŽÒŽ€–S”ï—p“Á–ñ")]
             public bool tokuyaku1 { get; set; }                     //Z‘î“à“ü‹ŽÒŽ€–S”ï—p“Á–ñ
 
             [Required]
             [Display(Name = "¤•iƒL[")]
-            public int m_shohin_id { get; set; }                    //¤•iƒL[
+            public string m_shohin_id { get; set; }                    //¤•iƒL[
 
             [Phone]
             [StringLength(50, ErrorMessage = "Œ_–ñŽÒ˜A—æ‚Í‚T‚O•¶ŽšˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
@@ -115,7 +114,7 @@ namespace Dairiten.Pages.Moshikomi
             public string? k_mobile { get; set; }                   //Œ_–ñŽÒŒg‘Ñ
 
             [Display(Name = "Œ_–ñŽÒ_ŒËŒš‚Ä")]
-            public bool k_kodate { get; set; }                      //Œ_–ñŽÒ_ŒËŒš‚Ä
+            public string k_kodate { get; set; }                    //Œ_–ñŽÒ_ŒËŒš‚Ä
 
             [RegularExpression(@"[0-9]+", ErrorMessage = "”¼Šp”Žš‚Ì‚Ý“ü—Í‚Å‚«‚Ü‚·")]
             [Display(Name = "Œ_–ñŽÒ_•¨Œ”Ô†")]
@@ -145,24 +144,14 @@ namespace Dairiten.Pages.Moshikomi
             public string? k_address4 { get; set; }                 //Œ_–ñŽÒ_ZŠi†Žºj
 
             [Required]
-            [StringLength(50, ErrorMessage = "Œ_–ñŽÒ–¼_ƒZƒC‚Í‚T‚O•¶ŽšˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            [Display(Name = "Œ_–ñŽÒ–¼_ƒZƒC")]
-            public string k_sei_kana { get; set; }                 //Œ_–ñŽÒ–¼_ƒZƒC
+            [StringLength(50, ErrorMessage = "Œ_–ñŽÒ–¼ƒJƒi‚Í‚T‚O•¶ŽšˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
+            [Display(Name = "Œ_–ñŽÒ–¼ƒJƒi")]
+            public string k_kana { get; set; }                      //Œ_–ñŽÒ–¼ƒJƒi
 
             [Required]
-            [StringLength(50, ErrorMessage = "Œ_–ñŽÒ–¼_ƒƒC‚Í‚T‚O•¶ŽšˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            [Display(Name = "Œ_–ñŽÒ–¼_ƒƒC")]
-            public string k_mei_kana { get; set; }                 //Œ_–ñŽÒ–¼_ƒƒC
-
-            [Required]
-            [StringLength(50, ErrorMessage = "Œ_–ñŽÒ–¼_©‚Í‚T‚O•¶ŽšˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            [Display(Name = "Œ_–ñŽÒ–¼_©")]
-            public string k_sei { get; set; }                      //Œ_–ñŽÒ–¼_©
-
-            [Required]
-            [StringLength(50, ErrorMessage = "Œ_–ñŽÒ–¼_–¼‚Í‚T‚O•¶ŽšˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            [Display(Name = "Œ_–ñŽÒ–¼_–¼")]
-            public string k_mei { get; set; }                      //Œ_–ñŽÒ–¼_–¼
+            [StringLength(50, ErrorMessage = "Œ_–ñŽÒ–¼‚Í‚T‚O•¶ŽšˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
+            [Display(Name = "Œ_–ñŽÒ–¼")]
+            public string k_name { get; set; }                      //Œ_–ñŽÒ–¼
 
             [Required]
             [DataType(DataType.Date)]
@@ -174,7 +163,7 @@ namespace Dairiten.Pages.Moshikomi
             public string? k_mail { get; set; }                     //Œ_–ñŽÒ_ƒ[ƒ‹ƒAƒhƒŒƒX
 
             [Display(Name = "•ÛØl‹æ•ª")]
-            public int hoshonin_kbn { get; set; }                   //•ÛØl‹æ•ª
+            public string hoshonin_kbn { get; set; }                //•ÛØl‹æ•ª
 
             [StringLength(100, ErrorMessage = "•ÛØl‹æ•ª‚»‚Ì‘¼‚Í‚P‚O‚O•¶ŽšˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [Display(Name = "•ÛØl‹æ•ª‚»‚Ì‘¼")]
@@ -187,7 +176,7 @@ namespace Dairiten.Pages.Moshikomi
             public bool k_onaji { get; set; }                       //Œ_–ñŽÒ‚Æ“¯‚¶
 
             [Display(Name = "–Ú“I’n_ŒËŒš‚Ä")]
-            public bool h_kodate { get; set; }                      //–Ú“I’n_ŒËŒš‚Ä
+            public string h_kodate { get; set; }                      //–Ú“I’n_ŒËŒš‚Ä
 
             [RegularExpression(@"[0-9]+", ErrorMessage = "”¼Šp”Žš‚Ì‚Ý“ü—Í‚Å‚«‚Ü‚·")]
             [Display(Name = "–Ú“I’n_•¨Œ”Ô†")]
@@ -221,24 +210,14 @@ namespace Dairiten.Pages.Moshikomi
             public int hihokensha_kbn { get; set; }                 //”í•ÛŒ¯ŽÒ‹æ•ª
 
             [Required]
-            [StringLength(50, ErrorMessage = "”í•ÛŒ¯ŽÒ–¼_ƒZƒC‚Í‚T‚O•¶ŽšˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            [Display(Name = "”í•ÛŒ¯ŽÒ–¼_ƒZƒC")]
-            public string h_sei_kana { get; set; }                 //”í•ÛŒ¯ŽÒ–¼_ƒZƒC
+            [StringLength(50, ErrorMessage = "”í•ÛŒ¯ŽÒ–¼ƒJƒi‚Í‚T‚O•¶ŽšˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
+            [Display(Name = "”í•ÛŒ¯ŽÒ–¼ƒJƒi")]
+            public string h_kana { get; set; }                      //”í•ÛŒ¯ŽÒ–¼ƒJƒi
 
             [Required]
-            [StringLength(50, ErrorMessage = "”í•ÛŒ¯ŽÒ–¼_ƒƒC‚Í‚T‚O•¶ŽšˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            [Display(Name = "”í•ÛŒ¯ŽÒ–¼_ƒƒC")]
-            public string h_mei_kana { get; set; }                 //”í•ÛŒ¯ŽÒ–¼_ƒƒC
-
-            [Required]
-            [StringLength(50, ErrorMessage = "”í•ÛŒ¯ŽÒ–¼_©‚Í‚T‚O•¶ŽšˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            [Display(Name = "”í•ÛŒ¯ŽÒ–¼_©")]
-            public string h_sei { get; set; }                      //”í•ÛŒ¯ŽÒ–¼_©
-
-            [Required]
-            [StringLength(50, ErrorMessage = "”í•ÛŒ¯ŽÒ–¼_–¼‚Í‚T‚O•¶ŽšˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            [Display(Name = "”í•ÛŒ¯ŽÒ–¼_–¼")]
-            public string h_mei { get; set; }                      //”í•ÛŒ¯ŽÒ–¼_–¼
+            [StringLength(50, ErrorMessage = "”í•ÛŒ¯ŽÒ–¼‚Í‚T‚O•¶ŽšˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
+            [Display(Name = "”í•ÛŒ¯ŽÒ–¼")]
+            public string h_name { get; set; }                      //”í•ÛŒ¯ŽÒ–¼
 
             [Required]
             [DataType(DataType.Date)]
@@ -247,11 +226,11 @@ namespace Dairiten.Pages.Moshikomi
 
             [Required]
             [Display(Name = "Žè‘±ˆË—Š‘”­s‹æ•ª")]
-            public int tetsuzukiiraishohakko_kbn { get; set; }      //Žè‘±ˆË—Š‘”­s‹æ•ª
+            public string tetsuzukiiraishohakko_kbn { get; set; }   //Žè‘±ˆË—Š‘”­s‹æ•ª
 
             [Required]
             [Display(Name = "W‹à•û–@")]
-            public int shukinhoho { get; set; }                     //W‹à•û–@
+            public string shukinhoho { get; set; }                  //W‹à•û–@
 
             [Display(Name = "‘¼‚Ì•ÛŒ¯")]
             public bool other_hoken { get; set; }                   //‘¼‚Ì•ÛŒ¯
@@ -322,14 +301,9 @@ namespace Dairiten.Pages.Moshikomi
             public string daihyosha_yakushoku { get; set; }         //‘ã•\ŽÒ_–ðE
 
             [Required]
-            [StringLength(50, ErrorMessage = "‘ã•\ŽÒ_©‚Í‚T‚O•¶ŽšˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            [Display(Name = "‘ã•\ŽÒ_©")]
-            public string daihyosha_sei { get; set; }               //‘ã•\ŽÒ_©
-
-            [Required]
-            [StringLength(50, ErrorMessage = "‘ã•\ŽÒ_–¼‚Í‚T‚O•¶ŽšˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            [Display(Name = "‘ã•\ŽÒ_–¼")]
-            public string daihyosha_mei { get; set; }               //‘ã•\ŽÒ_–¼
+            [StringLength(50, ErrorMessage = "‘ã•\ŽÒ–¼‚Í‚T‚O•¶ŽšˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
+            [Display(Name = "‘ã•\ŽÒ–¼")]
+            public string daihyosha_name { get; set; }               //‘ã•\ŽÒ–¼
 
             [Display(Name = "–@l“Á–ñ")]
             public bool hojin_tokuyaku { get; set; }                //–@l“Á–ñ
@@ -592,19 +566,32 @@ namespace Dairiten.Pages.Moshikomi
             [DataType(DataType.Date)]
             [Display(Name = "“o˜^“ú")]
             public DateTime torokubi { get; set; }                  //“o˜^“ú
+
+            [Required]
+            [Display(Name = "‘—•t‹æ•ª")]
+            public int sofu_kbn { get; set; }                      //‘—•t‹æ•ª
         }
 
-        public class KeiyakuKakunin
-        {
-            public string shohin_name { get; set; }
-            public string hoshonin_kbn { get; set; }
+        //¤•i‹æ•ª
+        public string[] shohin_kbns = new string[1];
 
-            public string hoshonin_kbn_other { get; set; }
+        //Œ_–ñŽÒ‹æ•ª
+        public string[] keiyakusha_kbns = new string[1];
 
-            public string tetsuzukiiraishohakko_kbn { get; set; }
+        //•ÛŒ¯ŠúŠÔ
+        public string[] hokenkikans = new[] { "", "‚P”N", "‚Q”N" };
 
-            public string shukinhoho { get; set; }
-        }
+        //¤•iƒL[
+        public string[] m_shohin_ids = new string[1];
+
+        //•ÛØl‹æ•ª
+        public string[] hoshonin_kbns = new string[1];
+
+        //Žè‘±ˆË—Š‘”­s
+        public string[] tetsuzukiiraishohakko_kbns = new string[1];
+
+        //W‹à•û–@
+        public string[] shukinhohoes = new string[1];
 
         public async Task OnGetAsync()
         {
@@ -612,14 +599,115 @@ namespace Dairiten.Pages.Moshikomi
 
         public void OnPost()
         {
-
             var pm = new Program(_context);
             string[] arr = pm.Dairiten_Get(User.Identity.GetUserId());
             d_no = arr[0];
             d_name = arr[1];
             bnin_key = arr[2];
 
+            //¤•i‹æ•ª
+            int shohin_kbns_cnt = _context.m_master.Where(m => m.m_master_kbn_id == 7).Count();
+            Array.Resize(ref shohin_kbns, shohin_kbns_cnt + 1);
+            var masters1 = _context.m_master.Where(m => m.m_master_kbn_id == 7).ToArray();
+            for (int i = 0; i < shohin_kbns_cnt + 1; i++)
+            {
+                if (i == 0)
+                {
+                    shohin_kbns[i] = "";
+                }
+                else
+                {
+                    shohin_kbns[i] = masters1[i - 1].item_name;
+                }
+            }
 
+            //Œ_–ñŽÒ‹æ•ª
+            int keiyakusha_kbns_cnt = _context.m_master.Where(m => m.m_master_kbn_id == 6).Count();
+            Array.Resize(ref keiyakusha_kbns, keiyakusha_kbns_cnt + 1);
+            var masters2 = _context.m_master.Where(m => m.m_master_kbn_id == 6).ToArray();
+            for (int i = 0; i < keiyakusha_kbns_cnt + 1; i++)
+            {
+                if (i == 0)
+                {
+                    keiyakusha_kbns[i] = "";
+                }
+                else
+                {
+                    keiyakusha_kbns[i] = masters2[i - 1].item_name;
+                }
+            }
+
+            //¤•iƒL[
+            int m_shohin_ids_cnt = _context.m_shohin.Where(m => m.hokenkikan == 1).Count();//¦‘I‘ð‚³‚ê‚½•ÛŒ¯ŠúŠÔ‚Å¤•i‚ði‚è‚½‚¢
+            Array.Resize(ref m_shohin_ids, m_shohin_ids_cnt + 1);
+            var shohins = _context.m_shohin.Where(m => m.hokenkikan == 1).ToArray();
+            for (int i = 0; i < m_shohin_ids_cnt + 1; i++)
+            {
+                if (i == 0)
+                {
+                    m_shohin_ids[i] = "";
+                }
+                else
+                {
+                    m_shohin_ids[i] = shohins[i - 1].shohin_name;
+                }
+            }
+
+            //•ÛØl‹æ•ª
+            int hoshonin_kbns_cnt = _context.m_master.Where(m => m.m_master_kbn_id == 10).Count();
+            Array.Resize(ref hoshonin_kbns, hoshonin_kbns_cnt + 1);
+            var masters3 = _context.m_master.Where(m => m.m_master_kbn_id == 10).ToArray();
+            for (int i = 0; i < hoshonin_kbns_cnt + 1; i++)
+            {
+                if (i == 0)
+                {
+                    hoshonin_kbns[i] = "";
+                }
+                else
+                {
+                    hoshonin_kbns[i] = masters3[i - 1].item_name;
+                }
+            }
+
+            //Žè‘±ˆË—Š‘”­s
+            int tetsuzukiiraishohakko_kbns_cnt = _context.m_master.Where(m => m.m_master_kbn_id == 12).Count();
+            Array.Resize(ref tetsuzukiiraishohakko_kbns, tetsuzukiiraishohakko_kbns_cnt);
+            var masters4 = _context.m_master.Where(m => m.m_master_kbn_id == 12).ToArray();
+            for (int i = 0; i < tetsuzukiiraishohakko_kbns_cnt; i++)
+            {
+                tetsuzukiiraishohakko_kbns[i] = masters4[i].item_name;
+            }
+
+            //W‹à•û–@
+            int shukinhohoes_cnt = _context.m_master.Where(m => m.m_master_kbn_id == 13).Count();
+            Array.Resize(ref shukinhohoes, shukinhohoes_cnt);
+            var masters5 = _context.m_master.Where(m => m.m_master_kbn_id == 13).ToArray();
+            for (int i = 0; i < shukinhohoes_cnt; i++)
+            {
+                shukinhohoes[i] = masters5[i].item_name;
+            }
+
+            //Œ_–ñŽÒ_ŒËŒš‚Ä
+            Boolean k_kodate = false;
+            if (Input.k_kodate == "" || Input.k_kodate == null || Input.k_kodate == "false")
+            {
+                k_kodate = false;
+            }
+            else
+            {
+                k_kodate = true;
+            }
+
+            //–Ú“I’n_ŒËŒš‚Ä
+            Boolean h_kodate = false;
+            if (Input.h_kodate == "" || Input.h_kodate == null || Input.h_kodate == "false")
+            {
+                h_kodate = false;
+            }
+            else
+            {
+                h_kodate = true;
+            }
 
             // Œ_–ñƒ^ƒCƒv‚Ìƒvƒ‹ƒ_ƒEƒ“‚Å‘I‘ð‚µ‚½¤•i‚ÌID‚ðŽæ“¾
             string shohin_selected = (string)Request.Form["shohin"];
@@ -690,49 +778,43 @@ namespace Dairiten.Pages.Moshikomi
                 rireki_no = Input.rireki_no,
                 keijozuki = Input.keijozuki,
                 uketsuke_kbn = Input.uketsuke_kbn,
-                shohin_kbn = Input.shohin_kbn,
-                keiyakusha_kbn = Input.keiyakusha_kbn,
+                shohin_kbn = Array.IndexOf(shohin_kbns, Input.shohin_kbn),
+                keiyakusha_kbn = Array.IndexOf(keiyakusha_kbns, Input.keiyakusha_kbn),
                 moshikomisho_day = Input.moshikomisho_day,
                 yoho = Input.yoho,
                 hokenshiki = Input.hokenshiki,
                 hokenshuki = Input.hokenshuki,
-                hokenkikan = Input.hokenkikan,
+                hokenkikan = Array.IndexOf(hokenkikans, Input.hokenkikan),
                 tokuyaku1 = Input.tokuyaku1,
-                m_shohin_id = shohin_num,
+                m_shohin_id = Array.IndexOf(m_shohin_ids, Input.m_shohin_id),
                 k_tel = Input.k_tel,
                 k_mobile = Input.k_mobile,
-                k_kodate = Input.k_kodate,
-                k_bukken_no = Input.k_bukken_no,
+                k_kodate = k_kodate,
                 k_zip = Input.k_zip,
                 k_address1 = Input.k_address1,
                 k_address2 = Input.k_address2,
                 k_address3 = Input.k_address3,
                 k_address4 = Input.k_address4,
-                k_sei_kana = Input.k_sei_kana,
-                k_mei_kana = Input.k_mei_kana,
-                k_sei = Input.k_sei,
-                k_mei = Input.k_mei,
+                k_kana = Input.k_kana,
+                k_name = Input.k_name,
                 k_birth = Input.k_birth,
                 k_mail = Input.k_mail,
-                hoshonin_kbn = hoshonin_num,
+                hoshonin_kbn = Array.IndexOf(hoshonin_kbns, Input.hoshonin_kbn),
                 hoshonin_kbn_other = Input.hoshonin_kbn_other,
                 fukusu_tokuyaku = Input.fukusu_tokuyaku,
                 k_onaji = Input.k_onaji,
-                h_kodate = Input.h_kodate,
-                h_bukken_no = Input.h_bukken_no,
+                h_kodate = h_kodate,
                 h_zip = Input.h_zip,
                 h_address1 = Input.h_address1,
                 h_address2 = Input.h_address2,
                 h_address3 = Input.h_address3,
                 h_address4 = Input.h_address4,
                 hihokensha_kbn = Input.hihokensha_kbn,
-                h_sei_kana = Input.h_sei_kana,
-                h_mei_kana = Input.h_mei_kana,
-                h_sei = Input.h_sei,
-                h_mei = Input.h_mei,
+                h_kana = Input.h_kana,
+                h_name = Input.h_name,
                 h_birth = Input.h_birth,
-                tetsuzukiiraishohakko_kbn = tetsuzukiiraishohakko_num,
-                shukinhoho = shukinhoho_num,
+                tetsuzukiiraishohakko_kbn = Array.IndexOf(tetsuzukiiraishohakko_kbns, Input.tetsuzukiiraishohakko_kbn),
+                shukinhoho = Array.IndexOf(shukinhohoes, Input.shukinhoho),
                 other_hoken = Input.other_hoken,
                 other_hoken_umu = Input.other_hoken_umu,
                 other_hoken_company = Input.other_hoken_company,
@@ -751,8 +833,7 @@ namespace Dairiten.Pages.Moshikomi
                 k_hojinmei_kanji = Input.k_hojinmei_kanji,
                 shiten = Input.shiten,
                 daihyosha_yakushoku = Input.daihyosha_yakushoku,
-                daihyosha_sei = Input.daihyosha_sei,
-                daihyosha_mei = Input.daihyosha_mei,
+                daihyosha_name = Input.daihyosha_name,
                 hojin_tokuyaku = Input.hojin_tokuyaku,
                 h_hojinkeitai = Input.h_hojinkeitai,
                 h_hojinkeitai_other = Input.h_hojinkeitai_other,
@@ -824,15 +905,6 @@ namespace Dairiten.Pages.Moshikomi
                 yayoi_flg = Input.yayoi_flg,
                 torokubi = Input.torokubi,
             };
-
-            k_kakunin = new KeiyakuKakunin
-            {
-                shohin_name = (string)Request.Form["shohin"],
-                hoshonin_kbn = (string)Request.Form["hoshonin_kbn"],
-                tetsuzukiiraishohakko_kbn = (string)Request.Form["tetsuzukiiraishohakko_kbn"],
-                shukinhoho = (string)Request.Form["shukinhoho"],
-            };
-            
         }
     }
 }

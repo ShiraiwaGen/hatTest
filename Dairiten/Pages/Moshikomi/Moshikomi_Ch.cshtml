@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-8">
                     <div class="atai1 mb-1 ps-2">
-                        <label class="col-form-label" style="line-height: 16px;" id="shohin_kbn"></label>
+                        <label class="col-form-label" style="line-height: 16px;" id="shohin_kbn">@Model.shohin_kbns[Model.keiyaku.shohin_kbn]</label>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                 </div>
                 <div class="col-8">
                     <div class="atai1 mb-1 ps-2">
-                        <label class="col-form-label" style="line-height: 16px;" id="keiyakusha_kbn"></label>
+                        <label class="col-form-label" style="line-height: 16px;" id="keiyakusha_kbn">@Model.keiyakusha_kbns[Model.keiyaku.keiyakusha_kbn]</label>
                     </div>
                 </div>
             </div>
@@ -125,7 +125,7 @@
         </div>
         <div class="col-10">
             <div class="atai2 mb-1 ps-2">
-                <label class="col-form-label" style="line-height: 16px;"></label>
+                <label class="col-form-label" style="line-height: 16px;">@Model.hokenkikans[Model.keiyaku.hokenkikan]</label>
             </div>
         </div>
     </div>
@@ -135,7 +135,16 @@
         </div>
         <div class="col-10">
             <div class="atai2 mb-1 ps-2">
-                <label class="col-form-label" style="line-height: 16px;">@Model.k_kakunin.shohin_name</label>
+                <label class="col-form-label" style="line-height: 16px;">
+                    @if (Model.keiyaku.m_shohin_id < 0)
+                    {
+                        
+                    }
+                    else
+                    {
+                        @Model.m_shohin_ids[Model.keiyaku.m_shohin_id]
+                    }
+                </label>
             </div>
         </div>
     </div>
@@ -213,10 +222,15 @@
         </div>
         <div class="col-10">
             <div class="atai2 mb-1 ps-2">
-                <label class="col-form-label" style="line-height: 16px;"></label>
+                <label class="col-form-label" style="line-height: 16px;">
+                    @if (@Model.keiyaku.k_kodate == true)
+                    {
+                        @Model.kodate
+                    }
+                </label>
             </div>
             <div class="atai2 mb-1 ps-2">
-                <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.k_bukken_no</label>
+                <label class="col-form-label" style="line-height: 16px;">@Model.Input.k_bukken_no</label>
             </div>
             <div class="atai2 mb-1 ps-2">
                 <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.k_zip</label>
@@ -245,10 +259,10 @@
         </div>
         <div class="col-10">
             <div class="atai2 mb-1 ps-2">
-                <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.k_sei_kana @Model.keiyaku.k_mei_kana</label>
+                <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.k_kana</label>
             </div>
             <div class="atai2 mb-1 ps-2">
-                <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.k_sei　@Model.keiyaku.k_mei</label>
+                <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.k_name</label>
             </div>
         </div>
     </div>
@@ -288,12 +302,19 @@
         <div class="col-10">
             <div class="atai2 mb-1 ps-2">
                 <label class="col-form-label" style="line-height: 16px;">
-                    @if (@Model.k_kakunin.hoshonin_kbn != "その他")
+                    @if (Model.keiyaku.hoshonin_kbn < 0)
                     {
-                        @Model.k_kakunin.hoshonin_kbn
-                    }else
+                        
+                    }
+                    else
                     {
-                        @(@Model.k_kakunin.hoshonin_kbn + "　" + @Model.keiyaku.hoshonin_kbn_other)
+                        @if (@Model.hoshonin_kbns[Model.keiyaku.hoshonin_kbn] != "その他")
+                        {
+                            @Model.hoshonin_kbns[Model.keiyaku.hoshonin_kbn]
+                        }else
+                        {
+                            @(@Model.hoshonin_kbns[Model.keiyaku.hoshonin_kbn] + "　" + @Model.keiyaku.hoshonin_kbn_other)
+                        }
                     }
                 </label>
             </div>
@@ -336,10 +357,15 @@
         </div>
         <div class="col-10">
             <div class="atai2 mb-1 ps-2">
-                <label class="col-form-label" style="line-height: 16px;"></label>
+                <label class="col-form-label" style="line-height: 16px;">
+                    @if (@Model.keiyaku.h_kodate == true)
+                    {
+                        @Model.kodate
+                    }
+                </label>
             </div>
             <div class="atai2 mb-1 ps-2">
-                <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.h_bukken_no</label>
+                <label class="col-form-label" style="line-height: 16px;">@Model.Input.h_bukken_no</label>
             </div>
             <div class="atai2 mb-1 ps-2">
                 <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.h_zip</label>
@@ -378,10 +404,10 @@
         </div>
         <div class="col-10">
             <div class="atai2 mb-1 ps-2">
-                <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.h_sei_kana @Model.keiyaku.h_mei_kana</label>
+                <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.h_kana</label>
             </div>
             <div class="atai2 mb-1 ps-2">
-                <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.h_sei　@Model.keiyaku.h_mei</label>
+                <label class="col-form-label" style="line-height: 16px;">@Model.keiyaku.h_name</label>
             </div>
         </div>
     </div>
@@ -412,7 +438,9 @@
         </div>
         <div class="col-10">
             <div class="atai2 mb-1 ps-2">
-                <label class="col-form-label" style="line-height: 16px;">@Model.k_kakunin.tetsuzukiiraishohakko_kbn</label>
+                <label class="col-form-label" style="line-height: 16px;">
+                    @Model.tetsuzukiiraishohakko_kbns[Model.keiyaku.tetsuzukiiraishohakko_kbn]
+                </label>
             </div>
         </div>
     </div>
@@ -422,7 +450,7 @@
         </div>
         <div class="col-10">
             <div class="atai2 mb-1 ps-2">
-                <label class="col-form-label" style="line-height: 16px;">@Model.k_kakunin.shukinhoho</label>
+                <label class="col-form-label" style="line-height: 16px;">@Model.shukinhohoes[Model.keiyaku.shukinhoho]</label>
             </div>
         </div>
     </div>

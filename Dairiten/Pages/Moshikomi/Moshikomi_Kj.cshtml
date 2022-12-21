@@ -37,11 +37,11 @@
                     </div>
                     <div class="col-8">
                         <div class="atai1 mb-1 ps-2">
-                            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;" name="yukojotai">
+                            <select asp-for="Input.yukojotai" class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;">
                                 <option selected></option>
-                                @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 16))
+                                @foreach (var item in Model.yukojotais)
                                 {
-                                    <option>@Html.DisplayFor(modelItem => item.item_name)</option>
+                                    <option>@Html.DisplayFor(modelItem => item)</option>
                                 }
                             </select>
                         </div>
@@ -53,120 +53,11 @@
                     </div>
                     <div class="col-8">
                         <div class="atai1 mb-1 ps-2">
-                            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;" name="seiritsujokyo">
+                            <select asp-for="Input.seiritsujokyo" class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;">
                                 <option selected></option>
-                                @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 30))
+                                @foreach (var item in Model.seiritsujokyoes)
                                 {
-                                    <option>@Html.DisplayFor(modelItem => item.item_name)</option>
-                                }
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row g-0">
-                    <div class="col-4">
-                        <div class="komoku9 text-white mb-1 w-100">入力者区分</div>
-                    </div>
-                    <div class="col-8">
-                        <div class="atai1 mb-1 ps-2">
-                            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;" name="inputter">
-                                <option selected></option>
-                                @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 18))
-                                {
-                                    <option>@Html.DisplayFor(modelItem => item.item_name)</option>
-                                }
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row g-0">
-                    <div class="col-4">
-                        <div class="komoku9 text-white mb-1 w-100">商品区分</div>
-                    </div>
-                    <div class="col-8">
-                        <div class="atai1 mb-1 ps-2">
-                            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;" name="shohin">
-                                <option selected></option>
-                                @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 7))
-                                {
-                                    <option>@Html.DisplayFor(modelItem => item.item_name)</option>
-                                }
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row g-0">
-                    <div class="col-4">
-                        <div class="komoku9 text-white mb-1 w-100">証券番号</div>
-                    </div>
-                    <div class="col-8">
-                        <div class="atai1 mb-1 ps-2">
-                            <div class="row">
-                              <div class="col-sm-9">
-                                <input type="tel" class="form-control form-control-sm" id="shoken_no" asp-for="data.shoken_no" pattern="^[a-zA-Z0-9]+$">
-                              </div>
-                              <label for="shoken_no" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角)</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row g-0">
-                    <div class="col-4">
-                        <div class="komoku9 text-white mb-1 w-100">旧証券番号</div>
-                    </div>
-                    <div class="col-8">
-                        <div class="atai1 mb-1 ps-2">
-                            <div class="row">
-                              <div class="col-sm-9">
-                                <input type="tel" class="form-control form-control-sm" id="old_shoken_no" asp-for="data.old_shoken_no" pattern="^[a-zA-Z0-9]+$">
-                              </div>
-                              <label for="old_shoken_no" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角)</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row g-0">
-                    <div class="col-4">
-                        <div class="komoku9 text-white mb-1 w-100">募集人コード</div>
-                    </div>
-                    <div class="col-8">
-                        <div class="atai1 mb-1 ps-2">
-                            <div class="row">
-                              <div class="col-sm-9">
-                                <input type="tel" class="form-control form-control-sm" name="boshuninCD" pattern="^[a-zA-Z0-9]+$">
-                              </div>
-                              <label for="boshuninCD" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角)</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row g-0">
-                    <div class="col-4">
-                        <div class="komoku9 text-white mb-1 w-100">コード</div>
-                    </div>
-                    <div class="col-8">
-                        <div class="atai1 mb-1 ps-2">
-                            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;" name="code">
-                                <option selected></option>
-                                @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 33))
-                                {
-                                    <option>@Html.DisplayFor(modelItem => item.item_name)</option>
-                                }
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row g-0">
-                    <div class="col-4">
-                        <div class="komoku9 text-white mb-1 w-100">集金方法</div>
-                    </div>
-                    <div class="col-8">
-                        <div class="atai1 mb-1 ps-2">
-                            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;" name="shukinhoho">
-                                <option selected></option>
-                                @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 13))
-                                {
-                                    <option>@Html.DisplayFor(modelItem => item.item_name)</option>
+                                    <option>@Html.DisplayFor(modelItem => item)</option>
                                 }
                             </select>
                         </div>
@@ -186,7 +77,7 @@
                         <div class="atai1 mb-1 ps-2">
                             <div class="row">
                               <div class="col-sm-9">
-                                <input type="text" class="form-control form-control-sm" id="keiyakushameiKana" name="keiyakushameiKana" onchange="toFullZenkana(this, id)">
+                                <input asp-for="Input.keiyakushameiKana" type="text" class="form-control form-control-sm" id="keiyakushameiKana" onchange="toFullZenkana(this, id)">
                               </div>
                               <label for="keiyakushameiKana" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角カナ)</label>
                             </div>
@@ -194,13 +85,51 @@
                         <div class="atai1 mb-1 ps-2">
                             <div class="row">
                               <div class="col-sm-9">
-                                <input type="text" class="form-control form-control-sm" id="keiyakushamei" name="keiyakushamei">
+                                <input asp-for="Input.keiyakushamei" type="text" class="form-control form-control-sm" id="keiyakushamei">
                               </div>
                               <label for="keiyakushamei" class="col-sm-3 col-form-label col-form-label-sm text-red">(全角)</label>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-md-6">
+                <div class="row g-0">
+                    <div class="col-4">
+                        <div class="komoku9 text-white mb-1 w-100">入力者区分</div>
+                    </div>
+                    <div class="col-8">
+                        <div class="atai1 mb-1 ps-2">
+                            <select asp-for="Input.inputter" class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;">
+                                <option selected></option>
+                                @foreach (var item in Model.inputters)
+                                {
+                                    <option>@Html.DisplayFor(modelItem => item)</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-0">
+                    <div class="col-4">
+                        <div class="komoku9 text-white mb-1 w-100">商品区分</div>
+                    </div>
+                    <div class="col-8">
+                        <div class="atai1 mb-1 ps-2">
+                            <select asp-for="Input.shohin" class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;">
+                                <option selected></option>
+                                @foreach (var item in Model.shohins)
+                                {
+                                    <option>@Html.DisplayFor(modelItem => item)</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
                 <div class="row g-0">
                     <div class="col-2 pe-1" >
                         <div class="komoku2 text-white mb-1 w-100">被保険者名</div>
@@ -213,7 +142,7 @@
                         <div class="atai1 mb-1 ps-2">
                             <div class="row">
                               <div class="col-sm-9">
-                                <input type="text" class="form-control form-control-sm" id="hihokenshameiKana" name="hihokenshameiKana" onchange="toFullZenkana(this, id)">
+                                <input asp-for="Input.hihokenshameiKana" type="text" class="form-control form-control-sm" id="hihokenshameiKana" onchange="toFullZenkana(this, id)">
                               </div>
                               <label for="hihokenshameiKana" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角カナ)</label>
                             </div>
@@ -221,13 +150,34 @@
                         <div class="atai1 mb-1 ps-2">
                             <div class="row">
                               <div class="col-sm-9">
-                                <input type="text" class="form-control form-control-sm" id="hihokenshamei" name="hihokenshamei">
+                                <input asp-for="Input.hihokenshamei" type="text" class="form-control form-control-sm" id="hihokenshamei">
                               </div>
                               <label for="hihokenshamei" class="col-sm-3 col-form-label col-form-label-sm text-red">(全角)</label>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-md-6">
+                <div class="row g-0">
+                    <div class="col-4">
+                        <div class="komoku9 text-white mb-1 w-100">証券番号</div>
+                    </div>
+                    <div class="col-8">
+                        <div class="atai1 mb-1 ps-2">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                <input asp-for="Input.shoken_no" type="tel" class="form-control form-control-sm" id="shoken_no" pattern="^[a-zA-Z0-9]+$">
+                                </div>
+                                <label for="shoken_no" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
                 <div class="row g-0">
                     <div class="col-4">
                         <div class="komoku9 text-white mb-1 w-100">被保険者住所</div>
@@ -236,13 +186,34 @@
                         <div class="atai1 mb-1 ps-2">
                             <div class="row">
                               <div class="col-sm-9">
-                                <input type="text" class="form-control form-control-sm" id="hihokenshaAdd" name="hihokenshaAdd">
+                                <input asp-for="Input.hihokenshaAdd" type="text" class="form-control form-control-sm" id="hihokenshaAdd">
                               </div>
                               <label for="hihokenshaAdd" class="col-sm-3 col-form-label col-form-label-sm text-red">(全角)</label>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-md-6">
+                <div class="row g-0">
+                    <div class="col-4">
+                        <div class="komoku9 text-white mb-1 w-100">旧証券番号</div>
+                    </div>
+                    <div class="col-8">
+                        <div class="atai1 mb-1 ps-2">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                <input asp-for="Input.old_shoken_no" type="tel" class="form-control form-control-sm" id="old_shoken_no" pattern="^[a-zA-Z0-9]+$">
+                                </div>
+                                <label for="old_shoken_no" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
                 <div class="row g-0">
                     <div class="col-4">
                         <div class="komoku9 text-white mb-1 w-100">被保険者建物名</div>
@@ -251,13 +222,34 @@
                         <div class="atai1 mb-1 ps-2">
                             <div class="row">
                               <div class="col-sm-9">
-                                <input type="text" class="form-control form-control-sm" id="hihokenshaTatemono" name="hihokenshaTatemono">
+                                <input asp-for="Input.hihokenshaTatemono" type="text" class="form-control form-control-sm" id="hihokenshaTatemono">
                               </div>
                               <label for="hihokenshaTatemono" class="col-sm-3 col-form-label col-form-label-sm text-red">(全角)</label>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-md-6">
+                <div class="row g-0">
+                    <div class="col-4">
+                        <div class="komoku9 text-white mb-1 w-100">募集人コード</div>
+                    </div>
+                    <div class="col-8">
+                        <div class="atai1 mb-1 ps-2">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                <input asp-for="Input.boshuninCD" type="tel" class="form-control form-control-sm" pattern="^[a-zA-Z0-9]+$">
+                                </div>
+                                <label for="boshuninCD" class="col-sm-3 col-form-label col-form-label-sm text-red">(半角)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
                 <div class="row g-0">
                     <div class="col-4">
                         <div class="komoku9 text-white mb-1 w-100">申込書作成日</div>
@@ -266,16 +258,38 @@
                         <div class="atai1 mb-1 ps-2">
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <input type="date" class="form-control form-control-sm" id="date1_From" asp-for="sakuseibi_From" value="年/月/日" onChange="onChange1()">
+                                    <input asp-for="Input.sakuseibi_From" type="date" class="form-control form-control-sm" id="date1_From" value="年/月/日" min="1900-01-01" max="9999-12-31" onChange="onChange1()">
                                 </div>
                                 <label for="date1_From" class="col-sm-1 col-form-label col-form-label-sm">～</label>
                                 <div class="col-sm-5">
-                                    <input type="date" class="form-control form-control-sm" id="date1_To" asp-for="sakuseibi_To" value="年/月/日" onChange="onChange1()">
+                                    <input asp-for="Input.sakuseibi_To" type="date" class="form-control form-control-sm" id="date1_To" value="年/月/日" min="1900-01-01" max="9999-12-31" onChange="onChange1()">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-md-6">
+                <div class="row g-0">
+                    <div class="col-4">
+                        <div class="komoku9 text-white mb-1 w-100">コード</div>
+                    </div>
+                    <div class="col-8">
+                        <div class="atai1 mb-1 ps-2">
+                            <select asp-for="Input.code" class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;">
+                                <option selected></option>
+                                @foreach (var item in Model.codes)
+                                {
+                                    <option>@Html.DisplayFor(modelItem => item)</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
                 <div class="row g-0">
                     <div class="col-4">
                         <div class="komoku9 text-white mb-1 w-100">保険始期</div>
@@ -284,16 +298,38 @@
                         <div class="atai1 mb-1 ps-2">
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <input type="date" class="form-control form-control-sm" id="date2_From" asp-for="hokenshiki_From" value="年/月/日" onChange="onChange2()">
+                                    <input asp-for="Input.hokenshiki_From" type="date" class="form-control form-control-sm" id="date2_From" value="年/月/日" min="1900-01-01" max="9999-12-31" onChange="onChange2()">
                                 </div>
                                 <label for="date2_From" class="col-sm-1 col-form-label col-form-label-sm">～</label>
                                 <div class="col-sm-5">
-                                    <input type="date" class="form-control form-control-sm" id="date2_To" asp-for="hokenshiki_To" value="年/月/日" onChange="onChange2()">
+                                    <input asp-for="Input.hokenshiki_To" type="date" class="form-control form-control-sm" id="date2_To" value="年/月/日" min="1900-01-01" max="9999-12-31" onChange="onChange2()">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class="col-md-6">
+                <div class="row g-0">
+                    <div class="col-4">
+                        <div class="komoku9 text-white mb-1 w-100">集金方法</div>
+                    </div>
+                    <div class="col-8">
+                        <div class="atai1 mb-1 ps-2">
+                            <select asp-for="Input.shukinhoho" class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 200px;">
+                                <option selected></option>
+                                @foreach (var item in Model.shukinhohoes)
+                                {
+                                    <option>@Html.DisplayFor(modelItem => item)</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
                 <div class="row g-0">
                     <div class="col-4">
                         <div class="komoku9 text-white mb-1 w-100"></div>

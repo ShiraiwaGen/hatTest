@@ -68,11 +68,11 @@
         <div class="col-5">
             <div class="atai2 mb-1 py-1 ps-2">
                 <div class="form-check form-check-inline">
-                    <input asp-for="Input.shohin_kbn" class="form-check-input" type="radio" name="shohinKbnRadio" value="住宅用" id="shohinKbnRadio1" onclick="shohinKbnBtnClick()" checked>
+                    <input asp-for="Input.shohin_kbn" class="form-check-input" type="radio" value="住宅用" id="shohinKbnRadio1" onclick="shohinKbnBtnClick()" checked>
                     <label class="form-check-label" for="shohinKbnRadio1">住宅用</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input asp-for="Input.shohin_kbn" class="form-check-input" type="radio" name="shohinKbnRadio" value="事業用" id="shohinKbnRadio2" onclick="shohinKbnBtnClick()">
+                    <input asp-for="Input.shohin_kbn" class="form-check-input" type="radio" value="事業用" id="shohinKbnRadio2" onclick="shohinKbnBtnClick()">
                     <label class="form-check-label" for="shohinKbnRadio2">事業用</label>
                 </div>
             </div>
@@ -100,15 +100,15 @@
             <div class="col-5">
                 <div class="atai2 mb-1 py-1 ps-2">
                     <div class="form-check form-check-inline">
-                        <input asp-for="Input.keiyakusha_kbn" class="form-check-input" type="radio" name="keiyakushaKbnRadio" value="個人" id="keiyakushaKbnRadio1" onclick="keiyakushaKbnBtnClick()" checked>
+                        <input asp-for="Input.keiyakusha_kbn" class="form-check-input" type="radio" value="個人" id="keiyakushaKbnRadio1" onclick="keiyakushaKbnBtnClick()" checked>
                         <label class="form-check-label" for="keiyakushaKbnRadio1">個人</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input asp-for="Input.keiyakusha_kbn" class="form-check-input" type="radio" name="keiyakushaKbnRadio" value="法人" id="keiyakushaKbnRadio2" onclick="keiyakushaKbnBtnClick()">
+                        <input asp-for="Input.keiyakusha_kbn" class="form-check-input" type="radio" value="法人" id="keiyakushaKbnRadio2" onclick="keiyakushaKbnBtnClick()">
                         <label class="form-check-label" for="keiyakushaKbnRadio2">法人</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input asp-for="Input.keiyakusha_kbn" class="form-check-input" type="radio" name="keiyakushaKbnRadio" value="個人事業主" id="keiyakushaKbnRadio3" onclick="keiyakushaKbnBtnClick()">
+                        <input asp-for="Input.keiyakusha_kbn" class="form-check-input" type="radio" value="個人事業主" id="keiyakushaKbnRadio3" onclick="keiyakushaKbnBtnClick()">
                         <label class="form-check-label" for="keiyakushaKbnRadio3">個人事業主</label>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
             </div>
         </div>
     </div>
-    <div id="jigyo-form" style="display:none">
+    <div id="jigyo-form2" style="display:none">
         <div class="row g-0">
             <div class="col-2">
                 <div class="komoku9 text-white mb-1 w-100">
@@ -168,7 +168,7 @@
         </div>
         <div class="col-5">
             <div class="atai2 mb-1 ps-2">
-                <input type="date" asp-for="Input.moshikomisho_day" class="form-control form-control-sm w-50" id="moshikomisho_day">
+                <input type="date" asp-for="Input.moshikomisho_day" class="form-control form-control-sm w-50" id="moshikomisho_day" min="1900-01-01" max="9999-12-31">
             </div>
         </div>
         <div class="col-5">
@@ -195,7 +195,7 @@
             </div>
             <div class="col-5">
                 <div class="atai2 mb-1 ps-2">
-                    <input type="date" asp-for="Input.hokenshiki" class="form-control form-control-sm w-50" id="hokenshiki" value="年/月/日">
+                    <input type="date" asp-for="Input.hokenshiki" class="form-control form-control-sm w-50" id="hokenshiki" value="年/月/日" min="1900-01-01" max="9999-12-31">
                 </div>
             </div>
             <div class="col-5">
@@ -220,11 +220,11 @@
             <div class="col-5">
                 <div class="atai2 mb-1 py-1 ps-2">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="jutaku_hokenkikanRadio" id="jutaku_hokenkikanRadio1" onclick="hokenkikanBtnClick()" checked>
+                        <input asp-for="Input.hokenkikan" class="form-check-input" type="radio" value="１年" id="jutaku_hokenkikanRadio1" onclick="hokenkikanBtnClick()" checked>
                         <label class="form-check-label" for="jutaku_hokenkikanRadio1">１年</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="jutaku_hokenkikanRadio" id="jutaku_hokenkikanRadio2" onclick="hokenkikanBtnClick()">
+                        <input asp-for="Input.hokenkikan" class="form-check-input" type="radio" value="２年" id="jutaku_hokenkikanRadio2" onclick="hokenkikanBtnClick()">
                         <label class="form-check-label" for="jutaku_hokenkikanRadio2">２年</label>
                     </div>
                 </div>
@@ -250,7 +250,7 @@
             </div>
             <div class="col-5">
                 <div class="atai3 mb-1 pt-1 ps-2">
-                    <select class="form-select form-select-sm w-50" aria-label=".form-select-sm example" name="shohin">
+                    <select asp-for="Input.m_shohin_id" class="form-select form-select-sm w-50" aria-label=".form-select-sm example">
                         <option selected></option>
                         @foreach (var item in Model.m_Shohin.Where(m => m.hokenkikan == 1)) //上で選択した保険期間で商品を絞る？
                         {
@@ -323,7 +323,7 @@
                     <div class="row mb-3 g-0">
                         <div class="col-sm-6">
                             <div class="form-check">
-                                <input class="form-check-input mt-2" type="checkbox" value="" id="k_kodateCheck">
+                                <input asp-for="Input.k_kodate" class="form-check-input mt-2" type="checkbox" value="1" id="k_kodateCheck">
                                 <label class="form-check-label mt-1" for="k_kodateCheck">
                                     戸建て
                                 </label>
@@ -439,20 +439,14 @@
                             <div class="col-sm-10">
                                 <div class="row g-0">
                                     <div class="col-2" style="text-align: center;">
-                                        <p>ｾｲ</p>
+                                        <p>ｶﾅ</p>
                                     </div>
-                                    <div class="col-4">
-                                        <input type="text" asp-for="Input.k_sei_kana" class="form-control form-control-sm" id="k_sei_kana" pattern="[\uFF66-\uFF9F]*" maxlength="50" onchange="toHankakuKana(this, id)">
-                                    </div>
-                                    <div class="col-2" style="text-align: center;">
-                                        <p>ﾒｲ</p>
-                                    </div>
-                                    <div class="col-4">
-                                        <input type="text" asp-for="Input.k_mei_kana" class="form-control form-control-sm" id="k_mei_kana" pattern="[\uFF66-\uFF9F]*" maxlength="50" onchange="toHankakuKana(this, id)">
+                                    <div class="col-8">
+                                        <input type="text" asp-for="Input.k_kana" class="form-control form-control-sm" id="k_kana" pattern="[\uFF66-\uFF9F]*" maxlength="50" onchange="toHankakuKana(this, id)">
                                     </div>
                                 </div>
                             </div>
-                            <label for="k_mei_kana" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(半角カナ)</label>
+                            <label for="k_kana" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(半角カナ)</label>
                         </div>
                     </div>
                     <div class="atai5 mb-1 pt-1">
@@ -460,20 +454,14 @@
                             <div class="col-sm-10">
                                 <div class="row g-0">
                                     <div class="col-2" style="text-align: center;">
-                                        <p>姓</p>
+                                        <p>氏名</p>
                                     </div>
-                                    <div class="col-4">
-                                        <input type="text" asp-for="Input.k_sei" class="form-control form-control-sm" id="k_sei" maxlength="50">
-                                    </div>
-                                    <div class="col-2" style="text-align: center;">
-                                        <p>名</p>
-                                    </div>
-                                    <div class="col-4">
-                                        <input type="text" asp-for="Input.k_mei" class="form-control form-control-sm" id="k_mei" maxlength="50">
+                                    <div class="col-8">
+                                        <input type="text" asp-for="Input.k_name" class="form-control form-control-sm" id="k_name" maxlength="50">
                                     </div>
                                 </div>
                             </div>
-                            <label for="k_mei" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
+                            <label for="k_name" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
                         </div>
                     </div>
                 </div>
@@ -511,7 +499,7 @@
                 </div>
                 <div class="col-5">
                     <div class="atai2 mb-1 ps-2">
-                        <input type="date" asp-for="Input.k_birth" class="form-control form-control-sm w-50" id="k_birth" value="年/月/日">
+                        <input type="date" asp-for="Input.k_birth" class="form-control form-control-sm w-50" id="k_birth" value="年/月/日" min="1900-01-01" max="9999-12-31">
                     </div>
                 </div>
                 <div class="col-5">
@@ -546,7 +534,7 @@
                 </div>
                 <div class="col-5">
                     <div class="atai4 mb-1 pt-1 ps-2">
-                        <select class="form-select form-select-sm w-50" aria-label=".form-select-sm example" id="hoshonin_kbn" name="hoshonin_kbn" onchange="hoshonin_kbnChange()">
+                        <select asp-for="Input.hoshonin_kbn" class="form-select form-select-sm w-50" aria-label=".form-select-sm example" id="hoshonin_kbn" onchange="hoshonin_kbnChange()">
                             <option selected></option>
                             @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 10))
                             {
@@ -777,23 +765,10 @@
                     </div>
                     <div class="atai2 mb-1 ps-2">
                         <div class="row mb-3 g-0">
-                            <div class="col-sm-10">
-                                <div class="row g-0">
-                                    <div class="col-2 pt-1" style="text-align: center;">
-                                        <p>姓</p>
-                                    </div>
-                                    <div class="col-4">
-                                        <input type="text" class="form-control form-control-sm" id="daihyosha_sei" name="daihyosha_sei" maxlength="50">
-                                    </div>
-                                    <div class="col-2 pt-1" style="text-align: center;">
-                                        <p>名</p>
-                                    </div>
-                                    <div class="col-4">
-                                        <input type="text" class="form-control form-control-sm" id="daihyosha_mei" name="daihyosha_mei" maxlength="50">
-                                    </div>
-                                </div>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control form-control-sm" id="daihyosha_name" maxlength="50">
                             </div>
-                            <label for="daihyosha_mei" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
+                            <label for="daihyosha_name" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
                         </div>
                     </div>
                 </div>
@@ -962,7 +937,7 @@
                 </div>
                 <div class="col-5">
                     <div class="atai2 mb-1 ps-2">
-                        <input type="date" class="form-control form-control-sm w-50" id="k_birth" value="年/月/日">
+                        <input type="date" class="form-control form-control-sm w-50" id="k_birth" value="年/月/日" min="1900-01-01" max="9999-12-31">
                     </div>
                 </div>
                 <div class="col-5">
@@ -1087,7 +1062,7 @@
                     <div class="row mb-3 g-0">
                         <div class="col-sm-6">
                             <div class="form-check">
-                                <input class="form-check-input mt-2" type="checkbox" value="" id="h_kodateCheck">
+                                <input asp-for="Input.h_kodate" class="form-check-input mt-2" type="checkbox" value="1" id="h_kodateCheck">
                                 <label class="form-check-label mt-1" for="h_kodateCheck">
                                     戸建て
                                 </label>
@@ -1233,20 +1208,14 @@
                         <div class="col-sm-10">
                             <div class="row g-0">
                                 <div class="col-2" style="text-align: center;">
-                                    <p>ｾｲ</p>
+                                    <p>ｶﾅ</p>
                                 </div>
-                                <div class="col-4">
-                                    <input type="text" asp-for="Input.h_sei_kana" class="form-control form-control-sm" id="h_sei_kana" pattern="[\uFF66-\uFF9F]*" maxlength="50" onchange="toHankakuKana(this, id)">
-                                </div>
-                                <div class="col-2" style="text-align: center;">
-                                    <p>ﾒｲ</p>
-                                </div>
-                                <div class="col-4">
-                                    <input type="text" asp-for="Input.h_mei_kana" class="form-control form-control-sm" id="h_mei_kana" pattern="[\uFF66-\uFF9F]*" maxlength="50" onchange="toHankakuKana(this, id)">
+                                <div class="col-8">
+                                    <input type="text" asp-for="Input.h_kana" class="form-control form-control-sm" id="h_kana" pattern="[\uFF66-\uFF9F]*" maxlength="50" onchange="toHankakuKana(this, id)">
                                 </div>
                             </div>
                         </div>
-                        <label for="h_mei_kana" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(半角カナ)</label>
+                        <label for="h_kana" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(半角カナ)</label>
                     </div>
                 </div>
                 <div class="atai5 mb-1 pt-1">
@@ -1254,20 +1223,14 @@
                         <div class="col-sm-10">
                             <div class="row g-0">
                                 <div class="col-2" style="text-align: center;">
-                                    <p>姓</p>
+                                    <p>氏名</p>
                                 </div>
-                                <div class="col-4">
-                                    <input type="text" asp-for="Input.h_sei" class="form-control form-control-sm" id="h_sei" maxlength="50">
-                                </div>
-                                <div class="col-2" style="text-align: center;">
-                                    <p>名</p>
-                                </div>
-                                <div class="col-4">
-                                    <input type="text" asp-for="Input.h_mei" class="form-control form-control-sm" id="h_mei" maxlength="50">
+                                <div class="col-8">
+                                    <input type="text" asp-for="Input.h_name" class="form-control form-control-sm" id="h_name" maxlength="50">
                                 </div>
                             </div>
                         </div>
-                        <label for="h_mei" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
+                        <label for="h_name" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
                     </div>
                 </div>
             </div>
@@ -1305,7 +1268,7 @@
             </div>
             <div class="col-5">
                 <div class="atai2 mb-1 ps-2">
-                    <input type="date" asp-for="Input.h_birth" class="form-control form-control-sm w-50" id="h_birth" value="年/月/日">
+                    <input type="date" asp-for="Input.h_birth" class="form-control form-control-sm w-50" id="h_birth" value="年/月/日" min="1900-01-01" max="9999-12-31">
                 </div>
             </div>
             <div class="col-5">
@@ -1331,7 +1294,7 @@
             </div>
             <div class="col-5">
                 <div class="atai2 mb-1 ps-2">
-                    <select class="form-select form-select-sm w-50" aria-label=".form-select-sm example" name="tetsuzukiiraishohakko_kbn" id="tetsuzukiiraishohakko_kbn">
+                    <select asp-for="Input.tetsuzukiiraishohakko_kbn" class="form-select form-select-sm w-50" aria-label=".form-select-sm example" id="tetsuzukiiraishohakko_kbn">
                         @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 12))
                         {
                             <option>@Html.DisplayFor(modelItem => item.item_name)</option>
@@ -1360,7 +1323,7 @@
             </div>
             <div class="col-5">
                 <div class="atai2 mb-1 ps-2">
-                    <select class="form-select form-select-sm w-50" aria-label=".form-select-sm example" name="shukinhoho" id="shukinhoho">
+                    <select asp-for="Input.shukinhoho" class="form-select form-select-sm w-50" aria-label=".form-select-sm example" id="shukinhoho">
                         @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 13))
                         {
                             <option>@Html.DisplayFor(modelItem => item.item_name)</option>
@@ -1632,7 +1595,7 @@
     @***************************************************************************************************************@
     @****************************************事業用*****************************************************************@
     @***************************************************************************************************************@
-    <div id="jigyo-form2" style="display:none">
+    <div id="jigyo-form" style="display:none">
         <div class="row g-0">
             <div class="col-2">
                 <div class="komoku9 text-white mb-1 w-100">
@@ -1648,7 +1611,7 @@
             </div>
             <div class="col-5">
                 <div class="atai2 mb-1 ps-2">
-                    <input type="date" class="form-control form-control-sm w-50" id="ji_hokenshiki" value="年/月/日">
+                    <input type="date" class="form-control form-control-sm w-50" id="ji_hokenshiki" value="年/月/日" min="1900-01-01" max="9999-12-31">
                 </div>
             </div>
             <div class="col-5">
@@ -1869,7 +1832,7 @@
                     <div class="row mb-3 g-0">
                         <div class="col-sm-6">
                             <div class="form-check">
-                                <input class="form-check-input mt-2" type="checkbox" value="" id="ji_k_kodateCheck">
+                                <input asp-for="Input.ji_k_kodate" class="form-check-input mt-2" type="checkbox" value="1" id="ji_k_kodateCheck">
                                 <label class="form-check-label mt-1" for="ji_k_kodateCheck">
                                     戸建て
                                 </label>
@@ -2179,23 +2142,10 @@
                     </div>
                     <div class="atai2 mb-1 ps-2">
                         <div class="row mb-3 g-0">
-                            <div class="col-sm-10">
-                                <div class="row g-0">
-                                    <div class="col-2 pt-1" style="text-align: center;">
-                                        <p>姓</p>
-                                    </div>
-                                    <div class="col-4">
-                                        <input type="text" class="form-control form-control-sm" id="ji_daihyosha_sei" name="ji_daihyosha_sei" maxlength="50">
-                                    </div>
-                                    <div class="col-2 pt-1" style="text-align: center;">
-                                        <p>名</p>
-                                    </div>
-                                    <div class="col-4">
-                                        <input type="text" class="form-control form-control-sm" id="ji_daihyosha_mei" name="ji_daihyosha_mei" maxlength="50">
-                                    </div>
-                                </div>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control form-control-sm" id="ji_daihyosha_name" maxlength="50">
                             </div>
-                            <label for="ji_daihyosha_mei" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
+                            <label for="ji_daihyosha_name" class="col-sm-2 col-form-label col-form-label-sm text-red" style="text-align: center;">(全角)</label>
                         </div>
                     </div>
                 </div>
@@ -2364,7 +2314,7 @@
                 </div>
                 <div class="col-5">
                     <div class="atai2 mb-1 ps-2">
-                        <input type="date" class="form-control form-control-sm w-50" id="ji_k_birth" value="年/月/日">
+                        <input type="date" class="form-control form-control-sm w-50" id="ji_k_birth" value="年/月/日" min="1900-01-01" max="9999-12-31">
                     </div>
                 </div>
                 <div class="col-5">
@@ -2464,7 +2414,7 @@
                     <div class="row mb-3 g-0">
                         <div class="col-sm-6">
                             <div class="form-check">
-                                <input class="form-check-input mt-2" type="checkbox" value="" id="ji_h_kodateCheck">
+                                <input asp-for="Input.ji_h_kodate" class="form-check-input mt-2" type="checkbox" value="1" id="ji_h_kodateCheck">
                                 <label class="form-check-label mt-1" for="ji_h_kodateCheck">
                                     戸建て
                                 </label>
@@ -2896,7 +2846,7 @@
                 </div>
                 <div class="col-5">
                     <div class="atai2 mb-1 ps-2">
-                        <input type="date" class="form-control form-control-sm w-50" id="ji_h_birth" value="年/月/日">
+                        <input type="date" class="form-control form-control-sm w-50" id="ji_h_birth" value="年/月/日" min="1900-01-01" max="9999-12-31">
                     </div>
                 </div>
                 <div class="col-5">
@@ -2923,7 +2873,7 @@
             </div>
             <div class="col-5">
                 <div class="atai2 mb-1 ps-2">
-                    <select class="form-select form-select-sm w-50" aria-label=".form-select-sm example" name="ji_tetsuzukiiraishohakko_kbn" id="ji_tetsuzukiiraishohakko_kbn">
+                    <select asp-for="Input.ji_tetsuzukiiraishohakko_kbn" class="form-select form-select-sm w-50" aria-label=".form-select-sm example" id="ji_tetsuzukiiraishohakko_kbn">
                         @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 12))
                         {
                             <option>@Html.DisplayFor(modelItem => item.item_name)</option>
@@ -2952,7 +2902,7 @@
             </div>
             <div class="col-5">
                 <div class="atai2 mb-1 ps-2">
-                    <select class="form-select form-select-sm w-50" aria-label=".form-select-sm example" name="ji_shukinhoho" id="ji_shukinhoho">
+                    <select asp-for="Input.shukinhoho" class="form-select form-select-sm w-50" aria-label=".form-select-sm example" id="ji_shukinhoho">
                         @foreach (var item in Model.m_Master.Where(m => m.m_master_kbn_id == 13))
                         {
                             <option>@Html.DisplayFor(modelItem => item.item_name)</option>

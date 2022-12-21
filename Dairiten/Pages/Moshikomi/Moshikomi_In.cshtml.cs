@@ -64,11 +64,11 @@ namespace Dairiten.Pages
 
             [Required]
             [Display(Name = "¤•i‹æ•ª")]
-            public int shohin_kbn { get; set; }                     //¤•i‹æ•ª
+            public string shohin_kbn { get; set; }                  //¤•i‹æ•ª
 
             [Required]
             [Display(Name = "Œ_–ñÒ‹æ•ª")]
-            public int keiyakusha_kbn { get; set; }                 //Œ_–ñÒ‹æ•ª
+            public string keiyakusha_kbn { get; set; }              //Œ_–ñÒ‹æ•ª
 
             [Required]
             [DataType(DataType.Date)]
@@ -91,14 +91,14 @@ namespace Dairiten.Pages
 
             [Required]
             [Display(Name = "•ÛŒ¯ŠúŠÔ")]
-            public int hokenkikan { get; set; }                     //•ÛŒ¯ŠúŠÔ
+            public string hokenkikan { get; set; }                  //•ÛŒ¯ŠúŠÔ
 
             [Display(Name = "Z‘î“à“ü‹Ò€–S”ï—p“Á–ñ")]
             public bool tokuyaku1 { get; set; }                     //Z‘î“à“ü‹Ò€–S”ï—p“Á–ñ
 
             [Required]
             [Display(Name = "¤•iƒL[")]
-            public int m_shohin_id { get; set; }                    //¤•iƒL[
+            public string m_shohin_id { get; set; }                    //¤•iƒL[
 
             [Phone]
             [StringLength(50, ErrorMessage = "Œ_–ñÒ˜A—æ‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
@@ -111,7 +111,7 @@ namespace Dairiten.Pages
             public string? k_mobile { get; set; }                   //Œ_–ñÒŒg‘Ñ
 
             [Display(Name = "Œ_–ñÒ_ŒËŒš‚Ä")]
-            public bool k_kodate { get; set; }                      //Œ_–ñÒ_ŒËŒš‚Ä
+            public string k_kodate { get; set; }                    //Œ_–ñÒ_ŒËŒš‚Ä
 
             [RegularExpression(@"[0-9]+", ErrorMessage = "”¼Šp”š‚Ì‚İ“ü—Í‚Å‚«‚Ü‚·")]
             [Display(Name = "Œ_–ñÒ_•¨Œ”Ô†")]
@@ -141,24 +141,14 @@ namespace Dairiten.Pages
             public string? k_address4 { get; set; }                 //Œ_–ñÒ_ZŠi†ºj
 
             [Required]
-            [StringLength(50, ErrorMessage = "Œ_–ñÒ–¼_ƒZƒC‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            [Display(Name = "Œ_–ñÒ–¼_ƒZƒC")]
-            public string k_sei_kana { get; set; }                 //Œ_–ñÒ–¼_ƒZƒC
+            [StringLength(50, ErrorMessage = "Œ_–ñÒ–¼ƒJƒi‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
+            [Display(Name = "Œ_–ñÒ–¼ƒJƒi")]
+            public string k_kana { get; set; }                      //Œ_–ñÒ–¼ƒJƒi
 
             [Required]
-            [StringLength(50, ErrorMessage = "Œ_–ñÒ–¼_ƒƒC‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            [Display(Name = "Œ_–ñÒ–¼_ƒƒC")]
-            public string k_mei_kana { get; set; }                 //Œ_–ñÒ–¼_ƒƒC
-
-            [Required]
-            [StringLength(50, ErrorMessage = "Œ_–ñÒ–¼_©‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            [Display(Name = "Œ_–ñÒ–¼_©")]
-            public string k_sei { get; set; }                      //Œ_–ñÒ–¼_©
-
-            [Required]
-            [StringLength(50, ErrorMessage = "Œ_–ñÒ–¼_–¼‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            [Display(Name = "Œ_–ñÒ–¼_–¼")]
-            public string k_mei { get; set; }                      //Œ_–ñÒ–¼_–¼
+            [StringLength(50, ErrorMessage = "Œ_–ñÒ–¼‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
+            [Display(Name = "Œ_–ñÒ–¼")]
+            public string k_name { get; set; }                      //Œ_–ñÒ–¼
 
             [Required]
             [DataType(DataType.Date)]
@@ -170,7 +160,7 @@ namespace Dairiten.Pages
             public string? k_mail { get; set; }                     //Œ_–ñÒ_ƒ[ƒ‹ƒAƒhƒŒƒX
 
             [Display(Name = "•ÛØl‹æ•ª")]
-            public int hoshonin_kbn { get; set; }                   //•ÛØl‹æ•ª
+            public string hoshonin_kbn { get; set; }                //•ÛØl‹æ•ª
 
             [StringLength(100, ErrorMessage = "•ÛØl‹æ•ª‚»‚Ì‘¼‚Í‚P‚O‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [Display(Name = "•ÛØl‹æ•ª‚»‚Ì‘¼")]
@@ -183,7 +173,7 @@ namespace Dairiten.Pages
             public bool k_onaji { get; set; }                       //Œ_–ñÒ‚Æ“¯‚¶
 
             [Display(Name = "–Ú“I’n_ŒËŒš‚Ä")]
-            public bool h_kodate { get; set; }                      //–Ú“I’n_ŒËŒš‚Ä
+            public string h_kodate { get; set; }                    //–Ú“I’n_ŒËŒš‚Ä
 
             [RegularExpression(@"[0-9]+", ErrorMessage = "”¼Šp”š‚Ì‚İ“ü—Í‚Å‚«‚Ü‚·")]
             [Display(Name = "–Ú“I’n_•¨Œ”Ô†")]
@@ -217,24 +207,14 @@ namespace Dairiten.Pages
             public int hihokensha_kbn { get; set; }                 //”í•ÛŒ¯Ò‹æ•ª
 
             [Required]
-            [StringLength(50, ErrorMessage = "”í•ÛŒ¯Ò–¼_ƒZƒC‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            [Display(Name = "”í•ÛŒ¯Ò–¼_ƒZƒC")]
-            public string h_sei_kana { get; set; }                 //”í•ÛŒ¯Ò–¼_ƒZƒC
+            [StringLength(50, ErrorMessage = "”í•ÛŒ¯Ò–¼ƒJƒi‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
+            [Display(Name = "”í•ÛŒ¯Ò–¼ƒJƒi")]
+            public string h_kana { get; set; }                      //”í•ÛŒ¯Ò–¼ƒJƒi
 
             [Required]
-            [StringLength(50, ErrorMessage = "”í•ÛŒ¯Ò–¼_ƒƒC‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            [Display(Name = "”í•ÛŒ¯Ò–¼_ƒƒC")]
-            public string h_mei_kana { get; set; }                 //”í•ÛŒ¯Ò–¼_ƒƒC
-
-            [Required]
-            [StringLength(50, ErrorMessage = "”í•ÛŒ¯Ò–¼_©‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            [Display(Name = "”í•ÛŒ¯Ò–¼_©")]
-            public string h_sei { get; set; }                      //”í•ÛŒ¯Ò–¼_©
-
-            [Required]
-            [StringLength(50, ErrorMessage = "”í•ÛŒ¯Ò–¼_–¼‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            [Display(Name = "”í•ÛŒ¯Ò–¼_–¼")]
-            public string h_mei { get; set; }                      //”í•ÛŒ¯Ò–¼_–¼
+            [StringLength(50, ErrorMessage = "”í•ÛŒ¯Ò–¼‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
+            [Display(Name = "”í•ÛŒ¯Ò–¼")]
+            public string h_name { get; set; }                      //”í•ÛŒ¯Ò–¼
 
             [Required]
             [DataType(DataType.Date)]
@@ -243,11 +223,11 @@ namespace Dairiten.Pages
 
             [Required]
             [Display(Name = "è‘±ˆË—Š‘”­s‹æ•ª")]
-            public int tetsuzukiiraishohakko_kbn { get; set; }      //è‘±ˆË—Š‘”­s‹æ•ª
+            public string tetsuzukiiraishohakko_kbn { get; set; }   //è‘±ˆË—Š‘”­s‹æ•ª
 
             [Required]
             [Display(Name = "W‹à•û–@")]
-            public int shukinhoho { get; set; }                     //W‹à•û–@
+            public string shukinhoho { get; set; }                  //W‹à•û–@
 
             [Display(Name = "‘¼‚Ì•ÛŒ¯")]
             public bool other_hoken { get; set; }                   //‘¼‚Ì•ÛŒ¯
@@ -318,14 +298,9 @@ namespace Dairiten.Pages
             public string daihyosha_yakushoku { get; set; }         //‘ã•\Ò_–ğE
 
             [Required]
-            [StringLength(50, ErrorMessage = "‘ã•\Ò_©‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            [Display(Name = "‘ã•\Ò_©")]
-            public string daihyosha_sei { get; set; }               //‘ã•\Ò_©
-
-            [Required]
-            [StringLength(50, ErrorMessage = "‘ã•\Ò_–¼‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            [Display(Name = "‘ã•\Ò_–¼")]
-            public string daihyosha_mei { get; set; }               //‘ã•\Ò_–¼
+            [StringLength(50, ErrorMessage = "‘ã•\Ò–¼‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
+            [Display(Name = "‘ã•\Ò–¼")]
+            public string daihyosha_name { get; set; }               //‘ã•\Ò–¼
 
             [Display(Name = "–@l“Á–ñ")]
             public bool hojin_tokuyaku { get; set; }                //–@l“Á–ñ
@@ -588,6 +563,14 @@ namespace Dairiten.Pages
             [DataType(DataType.Date)]
             [Display(Name = "“o˜^“ú")]
             public DateTime torokubi { get; set; }                  //“o˜^“ú
+
+            [Required]
+            [Display(Name = "‘—•t‹æ•ª")]
+            public int sofu_kbn { get; set; }                      //‘—•t‹æ•ª
+
+            public string ji_k_kodate { get; set; }                //–‹Æ—pŒ_–ñÒ_ŒËŒš‚Ä
+            public string ji_h_kodate { get; set; }                //–‹Æ—p–Ú“I’n_ŒËŒš‚Ä
+            public string ji_tetsuzukiiraishohakko_kbn { get; set; }   //–‹Æ—pè‘±ˆË—Š‘”­s‹æ•ª
         }
 
 
