@@ -72,7 +72,7 @@ namespace Dairiten.Pages
 
             [Required]
             [DataType(DataType.Date)]
-            [Display(Name = "申込書作成日")]
+            [Display(Name = @"申込書作成日")]
             public DateTime moshikomisho_day { get; set; }          //申込書作成日
 
             [Required]
@@ -293,13 +293,13 @@ namespace Dairiten.Pages
             public string? shiten { get; set; }                     //支店支社営業所等
 
             [Required]
-            [StringLength(100, ErrorMessage = "代表者_役職は１００文字以内でお願いします")]
-            [Display(Name = "代表者_役職")]
+            [StringLength(100, ErrorMessage = @"代表者_役職は１００文字以内でお願いします")]
+            [Display(Name = @"代表者_役職")]
             public string daihyosha_yakushoku { get; set; }         //代表者_役職
 
             [Required]
-            [StringLength(50, ErrorMessage = "代表者名は５０文字以内でお願いします")]
-            [Display(Name = "代表者名")]
+            [StringLength(50, ErrorMessage = @"代表者名は５０文字以内でお願いします")]
+            [Display(Name = @"代表者名")]
             public string daihyosha_name { get; set; }               //代表者名
 
             [Display(Name = "法人特約")]
@@ -379,7 +379,7 @@ namespace Dairiten.Pages
             public int yukojotai { get; set; }                      //有効状態
 
             [Required]
-            [Display(Name = "申込状況")]
+            [Display(Name = @"申込状況")]
             public int moshikomijokyo { get; set; }                 //申込状況
 
             [Display(Name = "お客さま専用ページ")]
@@ -461,7 +461,7 @@ namespace Dairiten.Pages
             public string? kanrigaiido { get; set; }                //管理外異動
 
             [Required]
-            [Display(Name = "申込書送付キー")]
+            [Display(Name = @"申込書送付キー")]
             public int t_moshikomisho_id { get; set; }              //申込書送付キー
 
             [Display(Name = "更新状態")]
@@ -487,7 +487,7 @@ namespace Dairiten.Pages
             public int t_nyukin_id { get; set; }                    //入金キー
 
             [DataType(DataType.Date)]
-            [Display(Name = "申込日")]
+            [Display(Name = @"申込日")]
             public DateTime moshikomibi { get; set; }               //申込日
 
             [StringLength(50, ErrorMessage = "特約は５０文字以内でお願いします")]
@@ -545,7 +545,7 @@ namespace Dairiten.Pages
 
             [Required]
             [DisplayFormat(DataFormatString = "{0:yyyy/MM}")]
-            [Display(Name = "送付予定月")]
+            [Display(Name = @"送付予定月")]
             public DateTime sofuyoteizuki { get; set; }             //送付予定月
 
             [Display(Name = "手数料")]

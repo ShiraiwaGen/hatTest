@@ -54,7 +54,7 @@ namespace Dairiten.Pages.Sofuichiran_Kj
         //検索用
         public class InputModel
         {
-            [DisplayName("送付予定月")]
+            [DisplayName(@"送付予定月")]
             [Required]
             [StringLength(10, ErrorMessage = "10文字以内でお願いします")]
             [RegularExpression(@"[0-9]+", ErrorMessage = "半角数字のみ入力できます")]
@@ -115,7 +115,7 @@ namespace Dairiten.Pages.Sofuichiran_Kj
             //送付予定月
             if (Input.sofuyoteizuki == null)
             {
-                error_msg = "送付予定月を入力してください。";
+                error_msg = @"送付予定月を入力してください。";
                 return;
             }
             else
