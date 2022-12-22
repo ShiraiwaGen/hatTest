@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'hatnets'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_EACCBA4E0362450A9126E79B78D7812B }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_AC452956933B489BAD22339DEEB1CF2E }}
           package: .
