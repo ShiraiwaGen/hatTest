@@ -39,4 +39,6 @@
     <Folder Include="Data\Migrations\" />
   </ItemGroup>
 
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v.*\Web\Microsoft.Web.Publishing.targets" />
+  
 </Project>
