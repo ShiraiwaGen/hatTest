@@ -547,7 +547,7 @@ namespace Dairiten.Pages.Moshikomi
             public DateTime koshin_nengetsu { get; set; }           //更新年月
 
             [Required]
-            [DisplayFormat(DataFormatString = "{0:yyyy/MM}")]
+            //[DisplayFormat(DataFormatString = "{0:yyyy/MM}")]
             [Display(Name = "送付予定月")]
             public DateTime sofuyoteizuki { get; set; }             //送付予定月
 
