@@ -1,5 +1,5 @@
 using Dairiten.Models;
-using Microsoft.AspNet.Identity;
+//using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
@@ -12,18 +12,20 @@ namespace Dairiten.Pages.Moshikomi
 
         public Moshikomi_ChModel(Dairiten.Data.ApplicationDbContext context)
         {
-            _context = context;
+            _context = context; 
         }
 
         [BindProperty]
-        public InputModel Input { get; set; }
+        public InputModel Input { get; set; } = null!;
 
         [BindProperty]
-        public t_keiyaku keiyaku { get; set; }
+        public t_keiyaku keiyaku { get; set; } = null!;
 
         public string kodate = "ŒËŒš‚Ä";
 
-        public string d_no, d_name, bnin_key;
+        public string d_no = null!;
+        public string d_name = null!;
+        public string bnin_key = null!;
 
         public class InputModel
         {
@@ -43,18 +45,18 @@ namespace Dairiten.Pages.Moshikomi
             [StringLength(10, ErrorMessage = "ØŒ””Ô†‚Í‚P‚OŒ…‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [RegularExpression(@"[a-zA-Z0-9]+", ErrorMessage = "”¼Šp‰p”š‚Ì‚İ“ü—Í‚Å‚«‚Ü‚·B")]
             [Display(Name = "ØŒ””Ô†")]
-            public string shoken_no { get; set; }                  //ØŒ””Ô†
+            public string shoken_no { get; set; } = null!;                 //ØŒ””Ô†
 
             [MinLength(10, ErrorMessage = "ØŒ””Ô†‚Í‚P‚OŒ…‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [StringLength(10, ErrorMessage = "ØŒ””Ô†‚Í‚P‚OŒ…‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [RegularExpression(@"[a-zA-Z0-9]+", ErrorMessage = "”¼Šp‰p”š‚Ì‚İ“ü—Í‚Å‚«‚Ü‚·B")]
             [Display(Name = "‹ŒØŒ””Ô†")]
-            public string old_shoken_no { get; set; }              //‹ŒØŒ””Ô†
+            public string old_shoken_no { get; set; } = null!;             //‹ŒØŒ””Ô†
 
             [Required]
             [StringLength(10)]
             [Display(Name = "—š—ğ”Ô†")]
-            public string rireki_no { get; set; }                  //—š—ğ”Ô†
+            public string rireki_no { get; set; } = null!;                 //—š—ğ”Ô†
 
             [Required]
             [DataType(DataType.Date)]
@@ -67,11 +69,11 @@ namespace Dairiten.Pages.Moshikomi
 
             [Required]
             [Display(Name = "¤•i‹æ•ª")]
-            public string shohin_kbn { get; set; }                  //¤•i‹æ•ª
+            public string shohin_kbn { get; set; } = null!;                  //¤•i‹æ•ª
 
             [Required]
             [Display(Name = "Œ_–ñÒ‹æ•ª")]
-            public string keiyakusha_kbn { get; set; }              //Œ_–ñÒ‹æ•ª
+            public string keiyakusha_kbn { get; set; } = null!;             //Œ_–ñÒ‹æ•ª
 
             [Required]
             [DataType(DataType.Date)]
@@ -94,14 +96,14 @@ namespace Dairiten.Pages.Moshikomi
 
             [Required]
             [Display(Name = "•ÛŒ¯ŠúŠÔ")]
-            public string hokenkikan { get; set; }                  //•ÛŒ¯ŠúŠÔ
+            public string hokenkikan { get; set; } = null!;                 //•ÛŒ¯ŠúŠÔ
 
             [Display(Name = "Z‘î“à“ü‹Ò€–S”ï—p“Á–ñ")]
             public bool tokuyaku1 { get; set; }                     //Z‘î“à“ü‹Ò€–S”ï—p“Á–ñ
 
             [Required]
             [Display(Name = "¤•iƒL[")]
-            public string m_shohin_id { get; set; }                    //¤•iƒL[
+            public string m_shohin_id { get; set; } = null!;                   //¤•iƒL[
 
             [Phone]
             [StringLength(50, ErrorMessage = "Œ_–ñÒ˜A—æ‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
@@ -114,7 +116,7 @@ namespace Dairiten.Pages.Moshikomi
             public string? k_mobile { get; set; }                   //Œ_–ñÒŒg‘Ñ
 
             [Display(Name = "Œ_–ñÒ_ŒËŒš‚Ä")]
-            public string k_kodate { get; set; }                    //Œ_–ñÒ_ŒËŒš‚Ä
+            public string k_kodate { get; set; } = null!;                   //Œ_–ñÒ_ŒËŒš‚Ä
 
             [RegularExpression(@"[0-9]+", ErrorMessage = "”¼Šp”š‚Ì‚İ“ü—Í‚Å‚«‚Ü‚·")]
             [Display(Name = "Œ_–ñÒ_•¨Œ”Ô†")]
@@ -124,16 +126,16 @@ namespace Dairiten.Pages.Moshikomi
             [StringLength(7, ErrorMessage = "—X•Ö”Ô†‚ÍƒnƒCƒtƒ“i|j‚È‚µ‚Ì”š‚VŒ…‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [RegularExpression(@"[0-9]+", ErrorMessage = "”¼Šp”š‚Ì‚İ“ü—Í‚Å‚«‚Ü‚·")]
             [Display(Name = "Œ_–ñÒ_—X•Ö”Ô†")]
-            public string k_zip { get; set; }                      //Œ_–ñÒ_—X•Ö”Ô†
+            public string k_zip { get; set; } = null!;                     //Œ_–ñÒ_—X•Ö”Ô†
 
             [Required]
             [StringLength(55, ErrorMessage = "ZŠi“s“¹•{Œ§s‹æ’¬‘ºj‚Í‚T‚T•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [Display(Name = "Œ_–ñÒ_ZŠi“s“¹•{Œ§s‹æ’¬‘ºj")]
-            public string k_address1 { get; set; }                 //Œ_–ñÒ_ZŠi“s“¹•{Œ§s‹æ’¬‘ºj
+            public string k_address1 { get; set; } = null!;                 //Œ_–ñÒ_ZŠi“s“¹•{Œ§s‹æ’¬‘ºj
 
             [StringLength(25, ErrorMessage = "ZŠi’š–Ú”Ô’nj‚Í‚Q‚T•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [Display(Name = "Œ_–ñÒ_ZŠi’š–Ú”Ô’nj")]
-            public string k_address2 { get; set; }                 //Œ_–ñÒ_ZŠi’š–Ú”Ô’nj
+            public string k_address2 { get; set; } = null!;                //Œ_–ñÒ_ZŠi’š–Ú”Ô’nj
 
             [StringLength(50, ErrorMessage = "ZŠiŒš•¨–¼j‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [Display(Name = "Œ_–ñÒ_ZŠiŒš•¨–¼j")]
@@ -146,12 +148,12 @@ namespace Dairiten.Pages.Moshikomi
             [Required]
             [StringLength(50, ErrorMessage = "Œ_–ñÒ–¼ƒJƒi‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [Display(Name = "Œ_–ñÒ–¼ƒJƒi")]
-            public string k_kana { get; set; }                      //Œ_–ñÒ–¼ƒJƒi
+            public string k_kana { get; set; } = null!;                      //Œ_–ñÒ–¼ƒJƒi
 
             [Required]
             [StringLength(50, ErrorMessage = "Œ_–ñÒ–¼‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [Display(Name = "Œ_–ñÒ–¼")]
-            public string k_name { get; set; }                      //Œ_–ñÒ–¼
+            public string k_name { get; set; } = null!;                     //Œ_–ñÒ–¼
 
             [Required]
             [DataType(DataType.Date)]
@@ -163,7 +165,7 @@ namespace Dairiten.Pages.Moshikomi
             public string? k_mail { get; set; }                     //Œ_–ñÒ_ƒ[ƒ‹ƒAƒhƒŒƒX
 
             [Display(Name = "•ÛØl‹æ•ª")]
-            public string hoshonin_kbn { get; set; }                //•ÛØl‹æ•ª
+            public string hoshonin_kbn { get; set; } = null!;                //•ÛØl‹æ•ª
 
             [StringLength(100, ErrorMessage = "•ÛØl‹æ•ª‚»‚Ì‘¼‚Í‚P‚O‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [Display(Name = "•ÛØl‹æ•ª‚»‚Ì‘¼")]
@@ -176,7 +178,7 @@ namespace Dairiten.Pages.Moshikomi
             public bool k_onaji { get; set; }                       //Œ_–ñÒ‚Æ“¯‚¶
 
             [Display(Name = "–Ú“I’n_ŒËŒš‚Ä")]
-            public string h_kodate { get; set; }                      //–Ú“I’n_ŒËŒš‚Ä
+            public string h_kodate { get; set; } = null!;                      //–Ú“I’n_ŒËŒš‚Ä
 
             [RegularExpression(@"[0-9]+", ErrorMessage = "”¼Šp”š‚Ì‚İ“ü—Í‚Å‚«‚Ü‚·")]
             [Display(Name = "–Ú“I’n_•¨Œ”Ô†")]
@@ -186,16 +188,16 @@ namespace Dairiten.Pages.Moshikomi
             [StringLength(7, ErrorMessage = "—X•Ö”Ô†‚ÍƒnƒCƒtƒ“i|j‚È‚µ‚Ì”š‚VŒ…‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [RegularExpression(@"[0-9]+", ErrorMessage = "”¼Šp”š‚Ì‚İ“ü—Í‚Å‚«‚Ü‚·")]
             [Display(Name = "–Ú“I’n_—X•Ö”Ô†")]
-            public string h_zip { get; set; }                      //–Ú“I’n_—X•Ö”Ô†
+            public string h_zip { get; set; } = null!;                     //–Ú“I’n_—X•Ö”Ô†
 
             [Required]
             [StringLength(55, ErrorMessage = "ZŠi“s“¹•{Œ§s‹æ’¬‘ºj‚Í‚T‚T•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [Display(Name = "–Ú“I’n_ZŠi“s“¹•{Œ§s‹æ’¬‘ºj")]
-            public string h_address1 { get; set; }                 //–Ú“I’n_ZŠi“s“¹•{Œ§s‹æ’¬‘ºj
+            public string h_address1 { get; set; } = null!;                //–Ú“I’n_ZŠi“s“¹•{Œ§s‹æ’¬‘ºj
 
             [StringLength(25, ErrorMessage = "ZŠi’š–Ú”Ô’nj‚Í‚Q‚T•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [Display(Name = "–Ú“I’n_ZŠi’š–Ú”Ô’nj")]
-            public string h_address2 { get; set; }                 //–Ú“I’n_ZŠi’š–Ú”Ô’nj
+            public string h_address2 { get; set; } = null!;                //–Ú“I’n_ZŠi’š–Ú”Ô’nj
 
             [StringLength(50, ErrorMessage = "ZŠiŒš•¨–¼j‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [Display(Name = "–Ú“I’n_ZŠiŒš•¨–¼j")]
@@ -212,12 +214,12 @@ namespace Dairiten.Pages.Moshikomi
             [Required]
             [StringLength(50, ErrorMessage = "”í•ÛŒ¯Ò–¼ƒJƒi‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [Display(Name = "”í•ÛŒ¯Ò–¼ƒJƒi")]
-            public string h_kana { get; set; }                      //”í•ÛŒ¯Ò–¼ƒJƒi
+            public string h_kana { get; set; } = null!;                      //”í•ÛŒ¯Ò–¼ƒJƒi
 
             [Required]
             [StringLength(50, ErrorMessage = "”í•ÛŒ¯Ò–¼‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [Display(Name = "”í•ÛŒ¯Ò–¼")]
-            public string h_name { get; set; }                      //”í•ÛŒ¯Ò–¼
+            public string h_name { get; set; } = null!;                     //”í•ÛŒ¯Ò–¼
 
             [Required]
             [DataType(DataType.Date)]
@@ -226,11 +228,11 @@ namespace Dairiten.Pages.Moshikomi
 
             [Required]
             [Display(Name = "è‘±ˆË—Š‘”­s‹æ•ª")]
-            public string tetsuzukiiraishohakko_kbn { get; set; }   //è‘±ˆË—Š‘”­s‹æ•ª
+            public string tetsuzukiiraishohakko_kbn { get; set; } = null!;   //è‘±ˆË—Š‘”­s‹æ•ª
 
             [Required]
             [Display(Name = "W‹à•û–@")]
-            public string shukinhoho { get; set; }                  //W‹à•û–@
+            public string shukinhoho { get; set; } = null!;                 //W‹à•û–@
 
             [Display(Name = "‘¼‚Ì•ÛŒ¯")]
             public bool other_hoken { get; set; }                   //‘¼‚Ì•ÛŒ¯
@@ -284,12 +286,12 @@ namespace Dairiten.Pages.Moshikomi
             [Required]
             [StringLength(100, ErrorMessage = "Œ_–ñÒ_–@l–¼_ƒJƒi‚Í‚P‚O‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [Display(Name = "Œ_–ñÒ_–@l–¼_ƒJƒi")]
-            public string k_hojinmei_kana { get; set; }             //Œ_–ñÒ_–@l–¼_ƒJƒi
+            public string k_hojinmei_kana { get; set; } = null!;             //Œ_–ñÒ_–@l–¼_ƒJƒi
 
             [Required]
             [StringLength(100, ErrorMessage = "Œ_–ñÒ_–@l–¼_Š¿š‚Í‚P‚O‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [Display(Name = "Œ_–ñÒ_–@l–¼_Š¿š")]
-            public string k_hojinmei_kanji { get; set; }            //Œ_–ñÒ_–@l–¼_Š¿š
+            public string k_hojinmei_kanji { get; set; } = null!;            //Œ_–ñÒ_–@l–¼_Š¿š
 
             [StringLength(100, ErrorMessage = "x“XxĞ‰c‹ÆŠ“™‚Í‚P‚O‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [Display(Name = "x“XxĞ‰c‹ÆŠ“™")]
@@ -298,12 +300,12 @@ namespace Dairiten.Pages.Moshikomi
             [Required]
             [StringLength(100, ErrorMessage = @"‘ã•\Ò_–ğE‚Í‚P‚O‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [Display(Name = @"‘ã•\Ò_–ğE")]
-            public string daihyosha_yakushoku { get; set; }         //‘ã•\Ò_–ğE
+            public string daihyosha_yakushoku { get; set; } = null!;         //‘ã•\Ò_–ğE
 
             [Required]
             [StringLength(50, ErrorMessage = @"‘ã•\Ò–¼‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [Display(Name = @"‘ã•\Ò–¼")]
-            public string daihyosha_name { get; set; }               //‘ã•\Ò–¼
+            public string daihyosha_name { get; set; } = null!;              //‘ã•\Ò–¼
 
             [Display(Name = "–@l“Á–ñ")]
             public bool hojin_tokuyaku { get; set; }                //–@l“Á–ñ
@@ -323,17 +325,17 @@ namespace Dairiten.Pages.Moshikomi
             [Required]
             [StringLength(100, ErrorMessage = "”í•ÛŒ¯Ò_–@l–¼_ƒJƒi‚Í‚P‚O‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [Display(Name = "”í•ÛŒ¯Ò_–@l–¼_ƒJƒi")]
-            public string h_hojinmei_kana { get; set; }             //”í•ÛŒ¯Ò_–@l–¼_ƒJƒi
+            public string h_hojinmei_kana { get; set; } = null!;             //”í•ÛŒ¯Ò_–@l–¼_ƒJƒi
 
             [Required]
             [StringLength(100, ErrorMessage = "”í•ÛŒ¯Ò_–@l–¼_Š¿š‚Í‚P‚O‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [Display(Name = "”í•ÛŒ¯Ò_–@l–¼_Š¿š")]
-            public string h_hojinmei_kanji { get; set; }            //”í•ÛŒ¯Ò_–@l–¼_Š¿š
+            public string h_hojinmei_kanji { get; set; } = null!;           //”í•ÛŒ¯Ò_–@l–¼_Š¿š
 
             [Required]
             [StringLength(100, ErrorMessage = "‹Æí‚Í‚P‚O‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [Display(Name = "‹Æí")]
-            public string gyoshu { get; set; }                      //‹Æí
+            public string gyoshu { get; set; } = null!;                      //‹Æí
 
             [Display(Name = "‹ÆíŠm”FÏ‚İ")]
             public string? gyoshu_sumi { get; set; }                //‹ÆíŠm”FÏ‚İ
@@ -595,15 +597,25 @@ namespace Dairiten.Pages.Moshikomi
 
         public async Task OnGetAsync()
         {
+            await Task.CompletedTask.ConfigureAwait(false);
         }
 
         public void OnPost()
         {
             var pm = new Program(_context);
-            string[] arr = pm.Dairiten_Get(User.Identity.GetUserId());
-            d_no = arr[0];
-            d_name = arr[1];
-            bnin_key = arr[2];
+            //string[] arr = pm.Dairiten_Get(User.Identity.GetUserId());
+            //var employeeCode = HttpContext.Session.GetString("employee_code");
+
+            var ap = new AppUser();
+            var employeeCode = ap.Id;
+
+            if (employeeCode != null)
+            {
+                string[] arr = pm.Dairiten_Get(employeeCode);
+                d_no = arr[0];
+                d_name = arr[1];
+                bnin_key = arr[2];
+            }
 
             //¤•i‹æ•ª
             int shohin_kbns_cnt = _context.m_master.Where(m => m.m_master_kbn_id == 7).Count();

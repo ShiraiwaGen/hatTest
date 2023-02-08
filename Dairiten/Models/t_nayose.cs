@@ -26,7 +26,7 @@ namespace Dairiten.Models
 
         [DisplayName("理由備考")]
         [StringLength(100, ErrorMessage = "理由備考は１００文字以内でお願いします")]
-        public string riyu { get; set; }
+        public string riyu { get; set; } = null!;
 
         [DisplayName("募集人キー")]
         [Required]

@@ -1,14 +1,14 @@
 using Dairiten.Areas.Identity;
 using Dairiten.Data;
 using Dairiten.Models;
-using Microsoft.AspNet.Identity;
+//using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Data.SqlClient;
+//using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 using System.Text;
-using System.Xml.Linq;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+//using System.Xml.Linq;
+//using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -12,7 +12,7 @@ namespace Dairiten.Models
 
         [DisplayName("送付予定月")]
         [Required]
-        public string sofuyoteizuki { get; set; }
+        public string sofuyoteizuki { get; set; } = null!;
 
         [DisplayName("送付区分")]
         [Required]

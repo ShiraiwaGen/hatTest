@@ -10,28 +10,28 @@ namespace Dairiten.Models
         public int id { get; set; }
 
         [DisplayName("全国地方公共団体コード")]
-        public string kokyodantai_code { get; set; }
+        public string kokyodantai_code { get; set; } = null!;
 
         [DisplayName("旧郵便番号")]
-        public string old_zipcode { get; set; }
+        public string old_zipcode { get; set; } = null!;
 
         [DisplayName("郵便番号")]
-        public string zipcode { get; set; }
+        public string zipcode { get; set; } = null!;
 
         [DisplayName("都道府県カナ")]
-        public string prefectures_kana { get; set; }
+        public string prefectures_kana { get; set; } = null!;
 
         [DisplayName("市区町村名カナ")]
-        public string municipality_kana { get; set; }
+        public string municipality_kana { get; set; } = null!;
 
         [DisplayName("町域名カナ")]
         public string? town_kana { get; set; }
 
         [DisplayName("都道府県")]
-        public string prefectures { get; set; }
+        public string prefectures { get; set; } = null!;
 
         [DisplayName("市区町村名")]
-        public string municipality { get; set; }
+        public string municipality { get; set; } = null!;
 
         [DisplayName("町域名")]
         public string? town { get; set; }

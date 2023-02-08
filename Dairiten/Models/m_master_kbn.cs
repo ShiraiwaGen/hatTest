@@ -14,6 +14,6 @@ namespace Dairiten.Models
         [DisplayName("マスター区分名")]
         [Required]
         [StringLength(50, ErrorMessage = "マスター区分名は５０文字以内でお願いします")]
-        public string master_kbn_name { get; set; }
+        public string master_kbn_name { get; set; } = null!;
     }
 }

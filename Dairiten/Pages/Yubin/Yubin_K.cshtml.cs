@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authorization;
-using Dairiten.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNet.Identity;
+//using Dairiten.Models;
+//using Microsoft.EntityFrameworkCore;
+//using Microsoft.AspNet.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
@@ -21,20 +21,20 @@ namespace Dairiten.Pages.Yubin_K
         }
 
         [BindProperty]
-        public InputModel Input { get; set; }
+        public InputModel Input { get; set; } = null!;
 
         private int clear_flg = 0;
 
         //ŒŸõ—p
         public class InputModel
         {
-            public string target_kbn { get; set; }
+            public string target_kbn { get; set; } = null!;
 
             [DisplayName("—X•Ö”Ô†")]
             [Required]
             [StringLength(7, ErrorMessage = "—X•Ö”Ô†‚ÍƒnƒCƒtƒ“i|j‚È‚µ‚Ì”š‚VŒ…‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [RegularExpression(@"[0-9]+", ErrorMessage = "”¼Šp”š‚Ì‚İ“ü—Í‚Å‚«‚Ü‚·")]
-            public string zipcode { get; set; }
+            public string zipcode { get; set; } = null!;
 
             [DisplayName("ZŠ")]
             //[Required]

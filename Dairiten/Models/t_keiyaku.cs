@@ -20,18 +20,18 @@ namespace Dairiten.Models
         [StringLength(10, ErrorMessage = "証券番号は１０桁でお願いします")]
         [RegularExpression(@"[a-zA-Z0-9]+", ErrorMessage = "半角英数字のみ入力できます。")]
         [Display(Name = "証券番号")]
-        public string shoken_no { get; set; }                  //証券番号
+        public string shoken_no { get; set; } = null!;                  //証券番号
 
         [MinLength(10, ErrorMessage = "証券番号は１０桁でお願いします")]
         [StringLength(10, ErrorMessage = "証券番号は１０桁でお願いします")]
         [RegularExpression(@"[a-zA-Z0-9]+", ErrorMessage = "半角英数字のみ入力できます。")]
         [Display(Name = "旧証券番号")]
-        public string old_shoken_no { get; set; }              //旧証券番号
+        public string old_shoken_no { get; set; } = null!;              //旧証券番号
 
         [Required]
         [StringLength(10)]
         [Display(Name = "履歴番号")]
-        public string rireki_no { get; set; }                  //履歴番号
+        public string rireki_no { get; set; } = null!;                  //履歴番号
 
         [Required]
         [DataType(DataType.Date)]
@@ -97,16 +97,16 @@ namespace Dairiten.Models
         [StringLength(7, ErrorMessage = "郵便番号はハイフン（－）なしの数字７桁でお願いします")]
         [RegularExpression(@"[0-9]+", ErrorMessage = "半角数字のみ入力できます")]
         [Display(Name = "契約者_郵便番号")]
-        public string k_zip { get; set; }                      //契約者_郵便番号
+        public string k_zip { get; set; } = null!;                      //契約者_郵便番号
 
         [Required]
         [StringLength(55, ErrorMessage = "住所（都道府県市区町村）は５５文字以内でお願いします")]
         [Display(Name = "契約者_住所（都道府県市区町村）")]
-        public string k_address1 { get; set; }                 //契約者_住所（都道府県市区町村）
+        public string k_address1 { get; set; } = null!;                 //契約者_住所（都道府県市区町村）
 
         [StringLength(25, ErrorMessage = "住所（丁目番地）は２５文字以内でお願いします")]
         [Display(Name = "契約者_住所（丁目番地）")]
-        public string k_address2 { get; set; }                 //契約者_住所（丁目番地）
+        public string k_address2 { get; set; } = null!;                 //契約者_住所（丁目番地）
 
         [StringLength(50, ErrorMessage = "住所（建物名）は５０文字以内でお願いします")]
         [Display(Name = "契約者_住所（建物名）")]
@@ -119,12 +119,12 @@ namespace Dairiten.Models
         [Required]
         [StringLength(50, ErrorMessage = "契約者名カナは５０文字以内でお願いします")]
         [Display(Name = "契約者名カナ")]
-        public string k_kana { get; set; }                      //契約者名カナ
+        public string k_kana { get; set; } = null!;                      //契約者名カナ
 
         [Required]
         [StringLength(50, ErrorMessage = "契約者名は５０文字以内でお願いします")]
         [Display(Name = "契約者名")]
-        public string k_name { get; set; }                      //契約者名
+        public string k_name { get; set; } = null!;                      //契約者名
 
         [Required]
         [DataType(DataType.Date)]
@@ -155,20 +155,20 @@ namespace Dairiten.Models
         [StringLength(7, ErrorMessage = "郵便番号はハイフン（－）なしの数字７桁でお願いします")]
         [RegularExpression(@"[0-9]+", ErrorMessage = "半角数字のみ入力できます")]
         [Display(Name = "目的地_郵便番号")]
-        public string h_zip { get; set; }                      //目的地_郵便番号
+        public string h_zip { get; set; } = null!;                      //目的地_郵便番号
 
         [Required]
         [StringLength(55, ErrorMessage = "住所（都道府県市区町村）は５５文字以内でお願いします")]
         [Display(Name = "目的地_住所（都道府県市区町村）")]
-        public string h_address1 { get; set; }                 //目的地_住所（都道府県市区町村）
+        public string h_address1 { get; set; } = null!;                 //目的地_住所（都道府県市区町村）
 
         [StringLength(25, ErrorMessage = "住所（丁目番地）は２５文字以内でお願いします")]
         [Display(Name = "目的地_住所（丁目番地）")]
-        public string h_address2 { get; set; }                 //目的地_住所（丁目番地）
+        public string h_address2 { get; set; } = null!;                //目的地_住所（丁目番地）
 
         [StringLength(50, ErrorMessage = "住所（建物名）は５０文字以内でお願いします")]
         [Display(Name = "目的地_住所（建物名）")]
-        public string? h_address3 { get; set; }                 //目的地_住所（建物名）
+        public string? h_address3 { get; set; }                //目的地_住所（建物名）
 
         [StringLength(25, ErrorMessage = "住所（号室）は２５文字以内でお願いします")]
         [Display(Name = "目的地_住所（号室）")]
@@ -181,12 +181,12 @@ namespace Dairiten.Models
         [Required]
         [StringLength(50, ErrorMessage = "被保険者名カナは５０文字以内でお願いします")]
         [Display(Name = "被保険者名カナ")]
-        public string h_kana { get; set; }                      //被保険者名カナ
+        public string h_kana { get; set; } = null!;                      //被保険者名カナ
 
         [Required]
         [StringLength(50, ErrorMessage = "被保険者名は５０文字以内でお願いします")]
         [Display(Name = "被保険者名")]
-        public string h_name { get; set; }                      //被保険者名
+        public string h_name { get; set; } = null!;                      //被保険者名
 
         [Required]
         [DataType(DataType.Date)]
@@ -253,12 +253,12 @@ namespace Dairiten.Models
         [Required]
         [StringLength(100, ErrorMessage = "契約者_法人名_カナは１００文字以内でお願いします")]
         [Display(Name = "契約者_法人名_カナ")]
-        public string k_hojinmei_kana { get; set; }             //契約者_法人名_カナ
+        public string k_hojinmei_kana { get; set; } = null!;             //契約者_法人名_カナ
 
         [Required]
         [StringLength(100, ErrorMessage = "契約者_法人名_漢字は１００文字以内でお願いします")]
         [Display(Name = "契約者_法人名_漢字")]
-        public string k_hojinmei_kanji { get; set; }            //契約者_法人名_漢字
+        public string k_hojinmei_kanji { get; set; } = null!;            //契約者_法人名_漢字
 
         [StringLength(100, ErrorMessage = "支店支社営業所等は１００文字以内でお願いします")]
         [Display(Name = "支店支社営業所等")]
@@ -267,12 +267,12 @@ namespace Dairiten.Models
         [Required]
         [StringLength(100, ErrorMessage = "代表者_役職は１００文字以内でお願いします")]
         [Display(Name = "代表者_役職")]
-        public string daihyosha_yakushoku { get; set; }         //代表者_役職
+        public string daihyosha_yakushoku { get; set; } = null!;         //代表者_役職
 
         [Required]
         [StringLength(50, ErrorMessage = "代表者名は５０文字以内でお願いします")]
         [Display(Name = "代表者名")]
-        public string daihyosha_name { get; set; }               //代表者名
+        public string daihyosha_name { get; set; } = null!;               //代表者名
 
         [Display(Name = "法人特約")]
         public bool hojin_tokuyaku { get; set; }                //法人特約
@@ -292,17 +292,17 @@ namespace Dairiten.Models
         [Required]
         [StringLength(100, ErrorMessage = "被保険者_法人名_カナは１００文字以内でお願いします")]
         [Display(Name = "被保険者_法人名_カナ")]
-        public string h_hojinmei_kana { get; set; }             //被保険者_法人名_カナ
+        public string h_hojinmei_kana { get; set; } = null!;             //被保険者_法人名_カナ
 
         [Required]
         [StringLength(100, ErrorMessage = "被保険者_法人名_漢字は１００文字以内でお願いします")]
         [Display(Name = "被保険者_法人名_漢字")]
-        public string h_hojinmei_kanji { get; set; }            //被保険者_法人名_漢字
+        public string h_hojinmei_kanji { get; set; } = null!;            //被保険者_法人名_漢字
 
         [Required]
         [StringLength(100, ErrorMessage = "業種は１００文字以内でお願いします")]
         [Display(Name = "業種")]
-        public string gyoshu { get; set; }                      //業種
+        public string gyoshu { get; set; } = null!;                      //業種
 
         [Display(Name = "業種確認済み")]
         public string? gyoshu_sumi { get; set; }                //業種確認済み

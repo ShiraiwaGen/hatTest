@@ -28,28 +28,28 @@ namespace Dairiten.Areas.Identity.Pages.Account
         }
 
         [BindProperty]
-        public InputModel Input { get; set; }
+        public InputModel Input { get; set; } = null!;
 
-        public IList<AuthenticationScheme> ExternalLogins { get; set; }
+        public IList<AuthenticationScheme> ExternalLogins { get; set; } = null!;
 
-        public string ReturnUrl { get; set; }
+        public string ReturnUrl { get; set; } = null!;
 
         [TempData]
-        public string ErrorMessage { get; set; }
+        public string ErrorMessage { get; set; } = null!;
 
         public class InputModel
         {
             [Required(ErrorMessage = "入力してください。")]
             [Display(Name = "募集人コード")]
-            public string employee_code { get; set; }
+            public string employee_code { get; set; } = null!;
 
             [Required(ErrorMessage = "入力してください。")]
             [Display(Name = "パスワード")]
             [DataType(DataType.Password)]
-            public string Password { get; set; }
+            public string Password { get; set; } = null!;
         }
 
-        public async Task OnGetAsync(string returnUrl = null)
+        public async Task OnGetAsync(string returnUrl = null!)
         {
             if (!string.IsNullOrEmpty(ErrorMessage))
             {
@@ -66,7 +66,7 @@ namespace Dairiten.Areas.Identity.Pages.Account
             ReturnUrl = returnUrl;
         }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(string returnUrl = null!)
         {
             returnUrl ??= Url.Content("~/");
 
