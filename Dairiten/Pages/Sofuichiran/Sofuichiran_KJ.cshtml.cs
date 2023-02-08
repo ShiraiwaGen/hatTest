@@ -1,12 +1,15 @@
-using Microsoft.AspNet.Identity;
+//using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
+//using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+//using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
-using System.Web.Http;
-using Microsoft.CodeAnalysis.Options;
 using Dairiten.Models;
+//using System.Web.Http;
+//using Microsoft.CodeAnalysis.Options;
+//using Dairiten.Models;
 
 namespace Dairiten.Pages.Sofuichiran_Kj
 {
@@ -30,17 +33,27 @@ namespace Dairiten.Pages.Sofuichiran_Kj
             main_data();
         }
 
-        public string d_no, d_name;
+        public string d_no = null!;
+        public string d_name = null!;
         public int d_id, bnin_id;
         public void main_data()
         {
             var pm = new Program(_context);
-            string[] arr = pm.Dairiten_Get(User.Identity.GetUserId());
-            d_no = arr[0];
-            d_name = arr[1];
-            //bnin_no = arr[2];
-            d_id = Int32.Parse(arr[3]);
-            bnin_id = Int32.Parse(arr[4]);
+
+            //string[] arr = pm.Dairiten_Get(User.Identity.GetUserId());
+            //var employeeCode = HttpContext.Session.GetString("employee_code");
+            var ap = new AppUser();
+            var employeeCode = ap.Id;
+
+            if (employeeCode != null)
+            {
+                string[] arr = pm.Dairiten_Get(employeeCode);
+                d_no = arr[0];
+                d_name = arr[1];
+                //bnin_no = arr[2];
+                d_id = Int32.Parse(arr[3]);
+                bnin_id = Int32.Parse(arr[4]);
+            }
 
             //送付区分
             foreach (var item in _context.m_master.Where(m => m.m_master_kbn_id == 26))
@@ -50,7 +63,7 @@ namespace Dairiten.Pages.Sofuichiran_Kj
         }
 
         [BindProperty]
-        public InputModel Input { get; set; }
+        public InputModel Input { get; set; } = null!;
         //検索用
         public class InputModel
         {
@@ -62,9 +75,9 @@ namespace Dairiten.Pages.Sofuichiran_Kj
 
             [DisplayName("送付状印刷日")]
             [DataType(DataType.Date, ErrorMessage = "日付で入力してください。")]
-            public string sofu_start { get; set; }
+            public string sofu_start { get; set; } = null!;
             [DataType(DataType.Date, ErrorMessage = "日付で入力してください。")]
-            public string sofu_end { get; set; }
+            public string sofu_end { get; set; } = null!;
 
             [DisplayName("送付区分")]
             [RegularExpression(@"[0-9]+", ErrorMessage = "半角数字のみ入力できます")]

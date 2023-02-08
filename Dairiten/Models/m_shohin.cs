@@ -8,7 +8,7 @@ namespace Dairiten.Models
         public int id { get; set; }
         [StringLength(10, ErrorMessage = "商品名は１０文字以内でお願いします")]
         [DisplayName("商品名")]
-        public string shohin_name { get; set; }
+        public string shohin_name { get; set; } = null!;
 
         [DisplayName("保険料")]
         [RegularExpression(@"[0-9]+", ErrorMessage = "半角数字のみ入力できます")]

@@ -15,13 +15,13 @@ namespace Dairiten.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         //public DateTime kaisibi { get; set; }
-        public String kaisibi { get; set; }
+        public String kaisibi { get; set; } = null!;
 
         [DisplayName("終了日")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         //public DateTime shuryobi { get; set; }
-        public String? shuryobi { get; set; }
+        public String? shuryobi { get; set; } = null!;
 
         [DisplayName("消費税")]
         [RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "少数以下２桁以上は入力できません")]

@@ -23,6 +23,6 @@ namespace Dairiten.Models
         [DisplayName("項目名")]
         [Required]
         [StringLength(50, ErrorMessage = "項目名は５０文字以内でお願いします")]
-        public string item_name { get; set; }
+        public string item_name { get; set; } = null!;
     }
 }

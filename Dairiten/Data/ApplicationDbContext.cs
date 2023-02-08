@@ -13,23 +13,23 @@ namespace Dairiten.Data
         {
         }
 
-        public DbSet<AppUser> appUsers { get; set; }
-        public DbSet<Dairiten.Models.m_company> m_company { get; set; }
-        public DbSet<Dairiten.Models.m_shohin> m_shohin { get; set; }
-        public DbSet<Dairiten.Models.m_dairiten> m_dairiten { get; set; }
-        public DbSet<Dairiten.Models.m_master> m_master { get; set; }
-        public DbSet<Dairiten.Models.m_master_kbn> m_master_kbn { get; set; }
-        public DbSet<Dairiten.Models.m_tax> m_tax { get; set; }
-        public DbSet<Dairiten.Models.m_yubin> m_yubin { get; set; }
-        public DbSet<Dairiten.Models.t_keiyaku> t_keiyaku { get; set; }
-        public DbSet<Dairiten.Models.t_bukken> t_bukken { get; set; }
-        public DbSet<Dairiten.Models.t_karibukken> t_karibukken { get; set; }
-        public DbSet<Dairiten.Models.t_company_employee> t_company_employee { get; set; }
-        public DbSet<Dairiten.Models.t_dairiten_employee> t_dairiten_employee { get; set; }
-        public DbSet<Dairiten.Models.t_seikyu> t_seikyu { get; set; }
-        public DbSet<Dairiten.Models.t_moshikomisho> t_moshikomisho { get; set; }
-        public DbSet<Dairiten.Models.t_nayose> t_nayose { get; set; }
-        public DbSet<Dairiten.Models.t_kaiyaku> t_kaiyaku { get; set; }
+        public DbSet<AppUser> appUsers { get; set; } = null!;
+        public DbSet<Dairiten.Models.m_company> m_company { get; set; } = null!;
+        public DbSet<Dairiten.Models.m_shohin> m_shohin { get; set; } = null!;
+        public DbSet<Dairiten.Models.m_dairiten> m_dairiten { get; set; } = null!;
+        public DbSet<Dairiten.Models.m_master> m_master { get; set; } = null!;
+        public DbSet<Dairiten.Models.m_master_kbn> m_master_kbn { get; set; } = null!;
+        public DbSet<Dairiten.Models.m_tax> m_tax { get; set; } = null!;
+        public DbSet<Dairiten.Models.m_yubin> m_yubin { get; set; } = null!;
+        public DbSet<Dairiten.Models.t_keiyaku> t_keiyaku { get; set; } = null!;
+        public DbSet<Dairiten.Models.t_bukken> t_bukken { get; set; } = null!;
+        public DbSet<Dairiten.Models.t_karibukken> t_karibukken { get; set; } = null!;
+        public DbSet<Dairiten.Models.t_company_employee> t_company_employee { get; set; } = null!;
+        public DbSet<Dairiten.Models.t_dairiten_employee> t_dairiten_employee { get; set; } = null!;
+        public DbSet<Dairiten.Models.t_seikyu> t_seikyu { get; set; } = null!;
+        public DbSet<Dairiten.Models.t_moshikomisho> t_moshikomisho { get; set; } = null!;
+        public DbSet<Dairiten.Models.t_nayose> t_nayose { get; set; } = null!;
+        public DbSet<Dairiten.Models.t_kaiyaku> t_kaiyaku { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -2,8 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authorization;
 using Dairiten.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNet.Identity;
+//using Microsoft.EntityFrameworkCore;
+//using Microsoft.AspNet.Identity;
 
 namespace Dairiten.Pages
 {
@@ -25,38 +25,42 @@ namespace Dairiten.Pages
         public List<String> shukinhohoes = new List<String>();
 
 
-        public IList<t_keiyaku> Keiyakus { get; set; }
+        public IList<t_keiyaku> Keiyakus { get; set; } = null!;
 
-        public string d_no, d_name, bnin_key;
+        public string d_no = null!;
+        public string d_name = null!;
+        public string bnin_key = null!;
 
         [BindProperty]
-        public InputModel Input { get; set; }
+        public InputModel Input { get; set; } = null!;
+
         //ŒŸõ—p
         public class InputModel
         {
-            public string yukojotai { get; set; }
-            public string seiritsujokyo { get; set; }
-            public string keiyakushameiKana { get; set; }
-            public string keiyakushamei { get; set; }
-            public string inputter { get; set; }
-            public string shohin { get; set; }
-            public string hihokenshameiKana { get; set; }
-            public string hihokenshamei { get; set; }
-            public string shoken_no { get; set; }
-            public string hihokenshaAdd { get; set; }
-            public string old_shoken_no { get; set; }
-            public string hihokenshaTatemono { get; set; }
-            public string boshuninCD { get; set; }
+            public string yukojotai { get; set; } = null!;
+            public string seiritsujokyo { get; set; } = null!;
+            public string keiyakushameiKana { get; set; } = null!;
+            public string keiyakushamei { get; set; } = null!;
+            public string inputter { get; set; } = null!;
+            public string shohin { get; set; } = null!;
+            public string hihokenshameiKana { get; set; } = null!;
+            public string hihokenshamei { get; set; } = null!;
+            public string shoken_no { get; set; } = null!;
+            public string hihokenshaAdd { get; set; } = null!;
+            public string old_shoken_no { get; set; } = null!;
+            public string hihokenshaTatemono { get; set; } = null!;
+            public string boshuninCD { get; set; } = null!;
             public DateTime sakuseibi_From { get; set; }
             public DateTime sakuseibi_To { get; set; }
-            public string code { get; set; }
+            public string code { get; set; } = null!;
             public DateTime hokenshiki_From { get; set; }
             public DateTime hokenshiki_To { get; set; }
-            public string shukinhoho { get; set; }
+            public string shukinhoho { get; set; } = null!;
         }
 
         public async Task OnGetAsync()
         {
+            await Task.CompletedTask.ConfigureAwait(false);
             main_data();
         }
 
@@ -236,7 +240,7 @@ namespace Dairiten.Pages
             string search_HihokenshaTatemono = System.Text.RegularExpressions.Regex.Replace((string)Request.Form["hihokenshaTatemono"], @"[\s]+", "");
             if (!string.IsNullOrEmpty(search_HihokenshaTatemono))
             {
-                moshikomis = moshikomis.Where(k => k.h_address3.Contains(search_HihokenshaTatemono));
+                moshikomis = moshikomis.Where(k => k.h_address3!.Contains(search_HihokenshaTatemono));
             }
 
             //\ž‘ì¬“ú(From)
@@ -269,10 +273,21 @@ namespace Dairiten.Pages
         public void main_data()
         {
             var pm = new Program(_context);
-            string[] arr = pm.Dairiten_Get(User.Identity.GetUserId());
-            d_no = arr[0];
-            d_name = arr[1];
-            bnin_key = arr[2];
+            //string[] arr = pm.Dairiten_Get(User.Identity.GetUserId());
+            //var employeeCode = HttpContext.Session.GetString("employee_code");
+
+            
+            var ap = new AppUser();
+            var userId = ap.Id;
+
+
+            if (userId != null)
+            {
+                string[] arr = pm.Dairiten_Get(userId);
+                d_no = arr[0];
+                d_name = arr[1];
+                bnin_key = arr[2];
+            }
 
             //—LŒøó‘Ô
             foreach (var item in _context.m_master.Where(m => m.m_master_kbn_id == 16))

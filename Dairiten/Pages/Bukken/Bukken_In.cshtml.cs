@@ -1,24 +1,24 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.VisualBasic.FileIO;
+//using Microsoft.VisualBasic.FileIO;
 using System.Data;
-using System.Text;
-using System;
+//using System.Text;
+//using System;
 using Dairiten.Models;
-using System.Reflection.Emit;
-using Microsoft.EntityFrameworkCore;
-using System.Xml.Linq;
-using Microsoft.AspNetCore.Identity;
-using System.Security.Claims;
-using Dairiten.Data;
-using Microsoft.AspNetCore.Authorization;
-using System.Web.Http;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.CodeAnalysis.Scripting;
-using System.Linq;
-using Newtonsoft.Json.Linq;
+//using System.Reflection.Emit;
+//using Microsoft.EntityFrameworkCore;
+//using System.Xml.Linq;
+//using Microsoft.AspNetCore.Identity;
+//using System.Security.Claims;
+//using Dairiten.Data;
+//using Microsoft.AspNetCore.Authorization;
+//using System.Web.Http;
+//using Microsoft.AspNet.Identity;
+//using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+//using Microsoft.EntityFrameworkCore.Metadata.Internal;
+//using Microsoft.CodeAnalysis.Scripting;
+//using System.Linq;
+//using Newtonsoft.Json.Linq;
 
 namespace Dairiten.Pages.Bukken
 {
@@ -34,16 +34,16 @@ namespace Dairiten.Pages.Bukken
         //画面表示用(htmlタグあり)
         public class Bukken1
         {
-            public string? b_count2 { get; set; }
-            public string? bukken_no { get; set; }
-            public string? b_zip { get; set; }
-            public string? b_address1 { get; set; }
-            public string? b_address2 { get; set; }
-            public string? b_address3 { get; set; }
-            public string? b_address4 { get; set; }
-            public string? b_address5 { get; set; }
-            public string? b_kodate { get; set; }
-            public string? d_code { get; set; }
+            public string? b_count2 { get; set; } = null!;
+            public string? bukken_no { get; set; } = null!;
+            public string? b_zip { get; set; } = null!;
+            public string? b_address1 { get; set; } = null!;
+            public string? b_address2 { get; set; } = null!;
+            public string? b_address3 { get; set; } = null!;
+            public string? b_address4 { get; set; } = null!;
+            public string? b_address5 { get; set; } = null!;
+            public string? b_kodate { get; set; } = null!;
+            public string? d_code { get; set; } = null!;
         }
         public List<Bukken1> mylist = new List<Bukken1>();
 
@@ -61,7 +61,7 @@ namespace Dairiten.Pages.Bukken
         //    public int m_dairiten_id { get; set; }
         //    public int employee_key { get; set; }
         //}
-        public t_karibukken t_karibukken;
+        public t_karibukken t_karibukken = null!;
 
         public int so_kensu = 0;
         public int err_kensu = 0;
@@ -72,17 +72,31 @@ namespace Dairiten.Pages.Bukken
         public String error_msg { get; set; } = "";
         public String kanryo_msg { get; set; } = "";
 
-        public string d_no, d_name;
+        public string d_no = null!;
+        public string d_name = null!;
         public int d_id, bnin_id;
         public void main_data()
         {
             var pm = new Program(_context);
-            string[] arr = pm.Dairiten_Get(User.Identity.GetUserId());
-            d_no = arr[0];
-            d_name = arr[1];
-            //bnin_no = arr[2];
-            d_id = Int32.Parse(arr[3]);
-            bnin_id = Int32.Parse(arr[4]);
+            //string[] arr = pm.Dairiten_Get(User.Identity.GetUserId());
+            //var employeeCode = HttpContext.Session.GetString("employee_code");
+
+            var ap = new AppUser();
+            var employeeCode = ap.Id;
+
+            if (employeeCode != null)
+
+                if (employeeCode != null) {
+                string[] arr = pm.Dairiten_Get(employeeCode);
+                d_no = arr[0];
+                d_name = arr[1];
+                //bnin_no = arr[2];
+                d_id = Int32.Parse(arr[3]);
+                bnin_id = Int32.Parse(arr[4]);
+
+            }
+
+
         }
 
         public void OnGet()
@@ -144,7 +158,7 @@ namespace Dairiten.Pages.Bukken
             _context.SaveChanges();
 
             // 初期化
-            string line;
+            string line = null!;
 
             var ms = new MemoryStream();
             formfile.CopyTo(ms);
@@ -153,7 +167,8 @@ namespace Dairiten.Pages.Bukken
             // クラスにマッピング (Shift-JIS)
             using (var sr = new StreamReader(ms, System.Text.Encoding.GetEncoding("shift_jis")))
             {
-                List<t_karibukken> mylist1 = new List<t_karibukken>();
+                //List<t_karibukken> mylist1 = new List<t_karibukken>();
+                List<t_karibukken> mylist1 = new ();
 
                 // 1行目(項目名)読み捨てる
                 sr.ReadLine();
@@ -163,7 +178,7 @@ namespace Dairiten.Pages.Bukken
                 int b_count = 1;
 
                 // ファイルの内容を1行づ読み込み
-                while ((line = sr.ReadLine()) != null)
+                while ((line = sr.ReadLine()!) != null)
                 {
                     so_kensu++;
 
@@ -498,7 +513,7 @@ namespace Dairiten.Pages.Bukken
 
                                 //重複チェック
                                 emsg = "";
-                                var work_bukken = _context.t_bukken                                    
+                                var work_bukken = _context.t_bukken
                                     .Where(x => x.b_zip == values[1])
                                     .Where(x => x.b_address1 == values[2])
                                     .Where(x => x.b_address2 == values[3])
@@ -507,7 +522,7 @@ namespace Dairiten.Pages.Bukken
                                     .Where(x => x.b_address5 == values[6])
                                     .Where(x => x.m_dairiten_id == d_id)
                                     .Select(x => x.id)
-                                    .Count();                                 
+                                    .Count();
                                 if (work_bukken != 0)
                                 {
                                     emsg = "既に登録済みの住所です。";
@@ -545,6 +560,7 @@ namespace Dairiten.Pages.Bukken
                         }
                     }
                 }
+
                 if (eflg == false)
                 {
                     //foreach (var item in mylist1)

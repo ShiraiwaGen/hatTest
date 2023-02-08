@@ -17,17 +17,17 @@ namespace Dairiten.Models
         [Required]
         [RegularExpression(@"[a-zA-Z0-9]+", ErrorMessage = "半角英数字のみ入力できます")]
         [StringLength(50, ErrorMessage = "募集人コードは５０文字以内でお願いします")]
-        public string employee_code { get; set; }
+        public string employee_code { get; set; } = null!;
 
         [Display(Name = "社員_姓")]
         [Required]
         [StringLength(50, ErrorMessage = "社員_姓は５０文字以内でお願いします")]
-        public string employee_sei { get; set; }
+        public string employee_sei { get; set; } = null!;
 
         [Display(Name = "社員_名")]
         [Required]
         [StringLength(50, ErrorMessage = "社員_名は５０文字以内でお願いします")]
-        public string employee_mei { get; set; }
+        public string employee_mei { get; set; } = null!;
 
         [Display(Name = "パスワード変更日")]
         public DateTime pass_day { get; set; }

@@ -1,12 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authorization;
-using Dairiten.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNet.Identity;
+//using Microsoft.AspNetCore.Identity;
+//using Dairiten.Models;
+//using Microsoft.EntityFrameworkCore;
+//using Microsoft.AspNet.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Dairiten.Models;
+//using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Dairiten.Pages
 {
@@ -21,9 +23,9 @@ namespace Dairiten.Pages
         }
 
         [BindProperty]
-        public InputModel Input { get; set; }
+        public InputModel Input { get; set; } = null!;
         [BindProperty]
-        public string pageFlg { get; set; }
+        public string pageFlg { get; set; } = null!;
 
         private int clear_flg = 0;
 
@@ -34,26 +36,26 @@ namespace Dairiten.Pages
             [Required]
             [StringLength(10, ErrorMessage = "10•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [RegularExpression(@"[0-9]+", ErrorMessage = "”¼Šp”š‚Ì‚İ“ü—Í‚Å‚«‚Ü‚·")]
-            public string? bukken_no { get; set; }
+            public string? bukken_no { get; set; } = null!;
 
             [DisplayName("—X•Ö”Ô†")]
             [Required]
             [StringLength(7, ErrorMessage = "—X•Ö”Ô†‚ÍƒnƒCƒtƒ“i|j‚È‚µ‚Ì”š‚VŒ…‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
             [RegularExpression(@"[0-9]+", ErrorMessage = "”¼Šp”š‚Ì‚İ“ü—Í‚Å‚«‚Ü‚·")]
-            public string b_zip { get; set; }
+            public string b_zip { get; set; } = null!;
 
             [DisplayName("ZŠi“s“¹•{Œ§s‹æ’¬‘ºj")]
             [Required]
             [StringLength(55, ErrorMessage = "ZŠi“s“¹•{Œ§s‹æ’¬‘ºj‚Í‚T‚T•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            public string? b_address1 { get; set; }
+            public string? b_address1 { get; set; } = null!;
 
             [Required]
             [StringLength(25, ErrorMessage = "ZŠi’š–Ú”Ô’nj‚Í‚Q‚T•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            public string? b_address2 { get; set; }
+            public string? b_address2 { get; set; } = null!;
 
             [DisplayName("ZŠiŒš•¨–¼j")]
             [StringLength(50, ErrorMessage = "ZŠiŒš•¨–¼j‚Í‚T‚O•¶šˆÈ“à‚Å‚¨Šè‚¢‚µ‚Ü‚·")]
-            public string? b_address3 { get; set; }
+            public string? b_address3 { get; set; } = null!;
             //public string? b_address4 { get; set; }
             //public string? b_address5 { get; set; }
             //public string? b_kodate { get; set; }
@@ -63,32 +65,43 @@ namespace Dairiten.Pages
         public class Bukken1
         {
             public int id { get; set; }
-            public string? bukken_no { get; set; }
-            public string? b_zip { get; set; }
-            public string? b_address1 { get; set; }
-            public string? b_address2 { get; set; }
-            public string? b_address3 { get; set; }
-            public string? b_address4 { get; set; }
-            public string? b_address5 { get; set; }
-            public string? b_kodate { get; set; }
+            public string? bukken_no { get; set; } = null!;
+            public string? b_zip { get; set; } = null!;
+            public string? b_address1 { get; set; } = null!;
+            public string? b_address2 { get; set; } = null!;
+            public string? b_address3 { get; set; } = null!;
+            public string? b_address4 { get; set; } = null!;
+            public string? b_address5 { get; set; } = null!;
+            public string? b_kodate { get; set; } = null!;
             public int m_dairiten_id { get; set; }
-            public string? dairiten_code { get; set; }
-            public string? d_mei { get; set; }
+            public string? dairiten_code { get; set; } = null!;
+            public string? d_mei { get; set; } = null!;
         }
         //public List<t_bukken> mylist = new List<t_bukken>();
         public List<Bukken1> mylist = new List<Bukken1>();
 
-        public string d_no, d_name;
+        public string d_no = null!;
+        public string d_name = null!;
         public int d_id, bnin_id;
         public void main_data()
         {
             var pm = new Program(_context);
-            string[] arr = pm.Dairiten_Get(User.Identity.GetUserId());
-            //d_no = arr[0];
-            //d_name = arr[1];
-            //bnin_no = arr[2];
-            d_id = Int32.Parse(arr[3]);
-            //bnin_id = Int32.Parse(arr[4]);
+            //string[] arr = pm.Dairiten_Get(User.Identity.GetUserId());
+            //var employeeCode = HttpContext.Session.GetString("employee_code");
+
+            var ap = new AppUser();
+            var employeeCode = ap.Id;
+
+            if (employeeCode != null)
+            {
+                string[] arr = pm.Dairiten_Get(employeeCode);
+                //d_no = arr[0];
+                //d_name = arr[1];
+                //bnin_no = arr[2];
+                d_id = Int32.Parse(arr[3]);
+                //bnin_id = Int32.Parse(arr[4]);
+            }
+
         }
 
         public void OnGet(string pflg)
